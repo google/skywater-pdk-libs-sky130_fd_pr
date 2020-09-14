@@ -14,8 +14,8 @@
 
 * SKY130 Spice File.
 * statistics {
-*   mismatch {
-*     }
+* 	mismatch {
+*     	}
 * }
 .subckt  sky130_fd_pr__res_xhigh_po_0p69 r0 r1 b
 + 

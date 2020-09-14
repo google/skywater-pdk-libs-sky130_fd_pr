@@ -16,11 +16,12 @@
 .param sky130_fd_pr__res_high_po__slope_spectre = 0.0
 .param sky130_fd_pr__res_high_po__con_slope_spectre = 0.0
 * statistics {
-*   mismatch {
-*   vary  sky130_fd_pr__res_high_po__slope_spectre dist=gauss std=1.0
-*   vary  sky130_fd_pr__res_high_po__con_slope_spectre dist=gauss std=1.0
-*     }
+* 	mismatch {
+*   		vary  sky130_fd_pr__res_high_po__slope_spectre dist=gauss std=1.0
+* 		vary  sky130_fd_pr__res_high_po__con_slope_spectre dist=gauss std=1.0
+*     	}
 * }
+.include "../cells/res_high_po/sky130_fd_pr__res_high_po.model.spice"
 .include "../cells/res_xhigh_po/sky130_fd_pr__res_xhigh_po_0p35.model.spice"
 .include "../cells/res_xhigh_po/sky130_fd_pr__res_xhigh_po_0p69.model.spice"
 .include "../cells/res_xhigh_po/sky130_fd_pr__res_xhigh_po_1p41.model.spice"

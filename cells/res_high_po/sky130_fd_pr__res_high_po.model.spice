@@ -1,0 +1,37 @@
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+
+* SKY130 Spice File.
+* statistics {
+* 	mismatch {
+*     	}
+* }
+.subckt  sky130_fd_pr__res_high_po r0 r1
++ w=1 l=1
+.param  mult = 1.0
++ rsheet = 317.3885
++ rbody_dw = -0.001
++ rhead_ps = 345.8312
++ mm_const = {(w<0.69)?0.1:0.2}
++ body_pelgrom = 0.03552
++ head_pelgrom = 0.0761
++ num_con_row = {max(floor(0.5+(w-0.33)/0.36),1)}
++ rbody_match = {body_pelgrom/sqrt(w*l*mult)*sky130_fd_pr__res_high_po__slope_spectre}
++ rend_match = {head_pelgrom/sqrt((w+0.525)*num_con_row*mult)*sky130_fd_pr__res_high_po__con_slope_spectre}
++ weff = {w+rbody_dw-0.0672*max(0.69-w,0)}
++ rbody = {rsheet*(l+0.247)/weff*(1+rbody_match)}
++ rhead = {rhead_ps/(weff+0.1558)*(1+rend_match)}
+rbody r0 rb  r = {rbody*(1+v(r0,r1))}
+rhead rb r1  r = {rhead}
+.ends sky130_fd_pr__res_high_po
