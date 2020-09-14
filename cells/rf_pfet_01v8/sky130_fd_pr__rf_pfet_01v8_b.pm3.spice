@@ -757,7 +757,7 @@ msky130_fd_pr__rf_pfet_01v8_bM02 d g s b sky130_fd_pr__rf_pfet_01v8_bM02__model 
 .ends sky130_fd_pr__rf_pfet_01v8_bM02
 .subckt  sky130_fd_pr__rf_pfet_01v8_bM02W3p00 d g s b
 + 
-.param  l = 1 ad = 0 as = 0 pd = 0 ps = 0 nrd = 0 nrs = 0 sa = 0 sb = 0 sd = 0 mult = 1 nf = 1.0
+.param  l = 1 w = 3.01 ad = 0 as = 0 pd = 0 ps = 0 nrd = 0 nrs = 0 sa = 0 sb = 0 sd = 0 mult = 1 nf = 1.0
 msky130_fd_pr__rf_pfet_01v8_bM02W3p00 d g s b sky130_fd_pr__rf_pfet_01v8_bM02__model l = {l} w = 3.01 ad = {ad} as = {as} pd = {pd} ps = {ps} nrd = {nrd} nrs = {nrs} sa = {sa} sb = {sb} sd = {sd} nf = {nf}
 .model sky130_fd_pr__rf_pfet_01v8_bM02__model.3 pmos
 * DC IV MOS Parameters
@@ -1485,7 +1485,7 @@ msky130_fd_pr__rf_pfet_01v8_bM02W3p00 d g s b sky130_fd_pr__rf_pfet_01v8_bM02__m
 .ends sky130_fd_pr__rf_pfet_01v8_bM02W3p00
 .subckt  sky130_fd_pr__rf_pfet_01v8_bM02W5p00 d g s b
 + 
-.param  l = 1 ad = 0 as = 0 pd = 0 ps = 0 nrd = 0 nrs = 0 sa = 0 sb = 0 sd = 0 mult = 1 nf = 1.0
+.param  l = 1 w = 5.05 ad = 0 as = 0 pd = 0 ps = 0 nrd = 0 nrs = 0 sa = 0 sb = 0 sd = 0 mult = 1 nf = 1.0
 msky130_fd_pr__rf_pfet_01v8_bM02W5p00 d g s b sky130_fd_pr__rf_pfet_01v8_bM02__model l = {l} w = 5.05 ad = {ad} as = {as} pd = {pd} ps = {ps} nrd = {nrd} nrs = {nrs} sa = {sa} sb = {sb} sd = {sd} nf = {nf}
 .model sky130_fd_pr__rf_pfet_01v8_bM02__model.6 pmos
 * DC IV MOS Parameters
@@ -2941,7 +2941,7 @@ msky130_fd_pr__rf_pfet_01v8_bM04 d g s b sky130_fd_pr__rf_pfet_01v8_bM04__model 
 .ends sky130_fd_pr__rf_pfet_01v8_bM04
 .subckt  sky130_fd_pr__rf_pfet_01v8_bM04W3p00 d g s b
 + 
-.param  l = 1 ad = 0 as = 0 pd = 0 ps = 0 nrd = 0 nrs = 0 sa = 0 sb = 0 sd = 0 mult = 1 nf = 1.0
+.param  l = 1 w = 3.01 ad = 0 as = 0 pd = 0 ps = 0 nrd = 0 nrs = 0 sa = 0 sb = 0 sd = 0 mult = 1 nf = 1.0
 msky130_fd_pr__rf_pfet_01v8_bM04W3p00 d g s b sky130_fd_pr__rf_pfet_01v8_bM04__model l = {l} w = 3.01 ad = {ad} as = {as} pd = {pd} ps = {ps} nrd = {nrd} nrs = {nrs} sa = {sa} sb = {sb} sd = {sd} nf = {nf}
 .model sky130_fd_pr__rf_pfet_01v8_bM04__model.3 pmos
 * DC IV MOS Parameters
@@ -3669,7 +3669,7 @@ msky130_fd_pr__rf_pfet_01v8_bM04W3p00 d g s b sky130_fd_pr__rf_pfet_01v8_bM04__m
 .ends sky130_fd_pr__rf_pfet_01v8_bM04W3p00
 .subckt  sky130_fd_pr__rf_pfet_01v8_bM04W5p00 d g s b
 + 
-.param  l = 1 ad = 0 as = 0 pd = 0 ps = 0 nrd = 0 nrs = 0 sa = 0 sb = 0 sd = 0 mult = 1 nf = 1.0
+.param  l = 1 w = 5.05 ad = 0 as = 0 pd = 0 ps = 0 nrd = 0 nrs = 0 sa = 0 sb = 0 sd = 0 mult = 1 nf = 1.0
 msky130_fd_pr__rf_pfet_01v8_bM04W5p00 d g s b sky130_fd_pr__rf_pfet_01v8_bM04__model l = {l} w = 5.05 ad = {ad} as = {as} pd = {pd} ps = {ps} nrd = {nrd} nrs = {nrs} sa = {sa} sb = {sb} sd = {sd} nf = {nf}
 .model sky130_fd_pr__rf_pfet_01v8_bM04__model.6 pmos
 * DC IV MOS Parameters
