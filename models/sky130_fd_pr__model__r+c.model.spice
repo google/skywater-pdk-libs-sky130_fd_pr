@@ -149,3 +149,5 @@
 .model mrcvia3 r tc1r = {tc1rvia3} tc2r = {tc2rvia3} res = {rcvia3} tref = 30.0
 .model mrcvia4 r tc1r = {tc1rvia4} tc2r = {tc2rvia4} res = {rcvia4} tref = 30.0
 .model mrcrdlcon r tc1r = {tc1rrdlcon} tc2r = {tc2rrdlcon} res = {rcrdlcon} tref = 25.0
+.include "../cells/res_generic_nd/sky130_fd_pr__res_generic_nd.model.spice"
+.include "../cells/res_generic_pd/sky130_fd_pr__res_generic_pd.model.spice"

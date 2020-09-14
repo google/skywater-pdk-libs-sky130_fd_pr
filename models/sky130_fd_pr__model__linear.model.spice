@@ -20,7 +20,13 @@
 *   		vary  sky130_fd_pr__res_high_po__slope_spectre dist=gauss std=1.0
 * 		vary  sky130_fd_pr__res_high_po__con_slope_spectre dist=gauss std=1.0
 *     	}
+*         process {
+* 		vary sky130_fd_pr__res_xhigh_po__var_mult dist=gauss std=0.025
+* 		vary sky130_fd_pr__res_high_po__var       dist=gauss std=0.025
+*         }
 * }
+.include "parasitics/sky130_fd_pr__model__parasitic__res_po.model.spice"
+.include "../cells/res_xhigh_po/sky130_fd_pr__res_xhigh_po.model.spice"
 .include "../cells/res_high_po/sky130_fd_pr__res_high_po.model.spice"
 .include "../cells/res_xhigh_po/sky130_fd_pr__res_xhigh_po_0p35.model.spice"
 .include "../cells/res_xhigh_po/sky130_fd_pr__res_xhigh_po_0p69.model.spice"

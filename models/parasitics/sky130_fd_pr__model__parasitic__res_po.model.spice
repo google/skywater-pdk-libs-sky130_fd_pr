@@ -21,8 +21,8 @@
 * 		vary sky130_fd_pr__res_high_po__var       dist=gauss std=0.025
 *         }
 * }
-.subckt  sky130_fd_pr__res_xhigh_po_1p41 r0 r1 b
-+ 
-.param  w = 1.41 l = 5 mult = 1.0
-Xsky130_fd_pr__res_xhigh_po_1p41 r0 r1 b sky130_fd_pr__res_xhigh_po__base w = {w} l = {l} mult = {mult}
-.ends sky130_fd_pr__res_xhigh_po_1p41
+.subckt  sky130_fd_pr__model__parasitic__res_po r0 r1 sub
++ w=1 l=1
+c0 r0 sub  c = {((l+2*2.08)*w*crpf_precision*1e-12+2*(l+2*2.08+w)*crpfsw_precision_1_1*1e-6)/2}
+c1 r1 sub  c = {((l+2*2.08)*w*crpf_precision*1e-12+2*(l+2*2.08+w)*crpfsw_precision_1_1*1e-6)/2}
+.ends sky130_fd_pr__model__parasitic__res_po

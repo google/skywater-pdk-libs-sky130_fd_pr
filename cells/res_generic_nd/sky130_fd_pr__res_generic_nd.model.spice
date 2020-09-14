@@ -13,16 +13,9 @@
 * limitations under the License.
 
 * SKY130 Spice File.
-* statistics {
-* 	mismatch {
-*     	}
-*         process {
-* 		vary sky130_fd_pr__res_xhigh_po__var_mult dist=gauss std=0.025
-* 		vary sky130_fd_pr__res_high_po__var       dist=gauss std=0.025
-*         }
-* }
-.subckt  sky130_fd_pr__res_xhigh_po_1p41 r0 r1 b
-+ 
-.param  w = 1.41 l = 5 mult = 1.0
-Xsky130_fd_pr__res_xhigh_po_1p41 r0 r1 b sky130_fd_pr__res_xhigh_po__base w = {w} l = {l} mult = {mult}
-.ends sky130_fd_pr__res_xhigh_po_1p41
+.subckt  sky130_fd_pr__res_generic_nd t1 t2 b
++ w=1 l=1
+r0 t1 t2 sky130_fd_pr__res_generic_nd w = {w} l = {l}
+d0 b t1 sky130_fd_pr__diode_pw2nd_05v5 area = 'w*l*0.5' pj = 'w+l'
+d1 b t2 sky130_fd_pr__diode_pw2nd_05v5 area = 'w*l*0.5' pj = 'w+l'
+.ends sky130_fd_pr__res_generic_nd
