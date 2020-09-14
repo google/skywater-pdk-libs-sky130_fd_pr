@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1898pt" height="1059pt" viewBox="0 0 1898 1059" version="1.2">
+<defs>
+<clipPath id="clip1">
+  <path d="M 18.5 2.5 L 1898 2.5 L 1898 1059 L 18.5 1059 Z M 18.5 2.5 "/>
+</clipPath>
+<clipPath id="clip2">
+  <path d="M 790.5 364.5 L 1134.5 364.5 L 1134.5 708.5 L 790.5 708.5 Z M 790.5 364.5 "/>
+</clipPath>
+<clipPath id="clip3">
+  <path d="M 524.5 98.5 L 1400.5 98.5 L 1400.5 974.5 L 524.5 974.5 Z M 524.5 98.5 "/>
+</clipPath>
+<clipPath id="clip4">
+  <path d="M 880.5 454.5 L 1045.5 454.5 L 1045.5 619.5 L 880.5 619.5 Z M 880.5 454.5 "/>
+</clipPath>
+<image id="image201" width="32" height="32" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAAAAmJLR0QA/4ePzL8AAAAaSURBVDiNY2CgOWD8T3s7Rt0w6oZRN9DADQB1CQgBGUNA2QAAAABJRU5ErkJggg=="/>
+<pattern id="pattern0" patternUnits="userSpaceOnUse" width="32" height="32"  patternTransform="matrix(1,0,0,1,0.5,1079.5)">
+  <use xlink:href="#image201"/>
+</pattern>
+<mask id="mask0">
+<rect x="0" y="0" width="1898" height="1059" style="fill:url(#pattern0);stroke:none;"/>
+</mask>
+<clipPath id="clip5">
+  <path d="M 194.5 429.5 L 1071.5 429.5 L 1071.5 431.5 L 194.5 431.5 Z M 194.5 431.5 L 196.5 431.5 L 196.5 1059 L 194.5 1059 Z M 1069.5 431.5 L 1071.5 431.5 L 1071.5 1059 L 1069.5 1059 Z M 1069.5 431.5 "/>
+</clipPath>
+</defs>
+<g id="surface198">
+<g clip-path="url(#clip1)" clip-rule="nonzero">
+
+</g>
+<g clip-path="url(#clip2)" clip-rule="nonzero">
+<rect x="0" y="0" width="1898" height="1059" style="fill:rgb(50.980395%,0%,76.862746%);fill-opacity:0.629921;stroke:none;"/>
+</g>
+<g clip-path="url(#clip3)" clip-rule="nonzero">
+<rect x="0" y="0" width="1898" height="1059" style="fill:rgb(84.705883%,0%,41.568631%);fill-opacity:0.629921;stroke:none;"/>
+</g>
+<path style="fill:none;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke:rgb(33.725494%,33.725494%,33.725494%);stroke-opacity:0.724409;stroke-miterlimit:10;" d="M 880 625 L 1045 625 M 880 460 L 1045 460 M 880 460 L 880 625 M 1045 460 L 1045 625 " transform="matrix(1,0,0,-1,0.5,1079.5)"/>
+<g clip-path="url(#clip4)" clip-rule="nonzero">
+<rect x="0" y="0" width="1898" height="1059" style="fill:rgb(33.725494%,33.725494%,33.725494%);fill-opacity:0.724409;stroke:none;" mask="url(#mask0)"/>
+</g>
+<g clip-path="url(#clip5)" clip-rule="nonzero">
+
+</g>
+</g>
+</svg>

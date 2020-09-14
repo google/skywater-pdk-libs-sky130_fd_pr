@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1898pt" height="1059pt" viewBox="0 0 1898 1059" version="1.2">
+<defs>
+<clipPath id="clip1">
+  <path d="M 18.5 2.5 L 1898 2.5 L 1898 1059 L 18.5 1059 Z M 18.5 2.5 "/>
+</clipPath>
+<clipPath id="clip2">
+  <path d="M 600.5 171.5 L 1327.5 171.5 L 1327.5 899.5 L 600.5 899.5 Z M 600.5 171.5 "/>
+</clipPath>
+<clipPath id="clip3">
+  <path d="M 526.5 98.5 L 1401.5 98.5 L 1401.5 171.5 L 526.5 171.5 Z M 526.5 171.5 L 1401.5 171.5 L 1401.5 899.5 L 526.5 899.5 Z M 526.5 899.5 L 1401.5 899.5 L 1401.5 973.5 L 526.5 973.5 Z M 526.5 899.5 "/>
+</clipPath>
+<clipPath id="clip4">
+  <path d="M 600.5 171.5 L 1327.5 171.5 L 1327.5 899.5 L 600.5 899.5 Z M 600.5 171.5 "/>
+</clipPath>
+<image id="image203" width="32" height="32" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAAAAmJLR0QA/4ePzL8AAAApSURBVDiNY2Rg+M/AiAczMdAe/P+PH9PBDYyj4cDAwDAaDjAwGg4QAAAzhF/RgilCzQAAAABJRU5ErkJggg=="/>
+<pattern id="pattern0" patternUnits="userSpaceOnUse" width="32" height="32"  patternTransform="matrix(1,0,0,1,0.5,1079.5)">
+  <use xlink:href="#image203"/>
+</pattern>
+<mask id="mask0">
+<rect x="0" y="0" width="1898" height="1059" style="fill:url(#pattern0);stroke:none;"/>
+</mask>
+</defs>
+<g id="surface200">
+<g clip-path="url(#clip1)" clip-rule="nonzero">
+
+</g>
+<g clip-path="url(#clip2)" clip-rule="nonzero">
+<rect x="0" y="0" width="1898" height="1059" style="fill:rgb(0%,52.549022%,50.196081%);fill-opacity:0.629921;stroke:none;"/>
+</g>
+<g clip-path="url(#clip3)" clip-rule="nonzero">
+<rect x="0" y="0" width="1898" height="1059" style="fill:rgb(50.980395%,0%,76.862746%);fill-opacity:0.629921;stroke:none;"/>
+</g>
+<path style="fill:none;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke:rgb(27.450985%,84.705883%,60.392159%);stroke-opacity:0.724409;stroke-miterlimit:10;" d="M 600 908 L 1327 908 M 600 180 L 1327 180 M 600 180 L 600 908 M 1327 180 L 1327 908 " transform="matrix(1,0,0,-1,0.5,1079.5)"/>
+<g clip-path="url(#clip4)" clip-rule="nonzero">
+<rect x="0" y="0" width="1898" height="1059" style="fill:rgb(27.450985%,84.705883%,60.392159%);fill-opacity:0.724409;stroke:none;" mask="url(#mask0)"/>
+</g>
+</g>
+</svg>

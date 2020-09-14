@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1898pt" height="1059pt" viewBox="0 0 1898 1059" version="1.2">
+<defs>
+<clipPath id="clip1">
+  <path d="M 18.5 2.5 L 1898 2.5 L 1898 1059 L 18.5 1059 Z M 18.5 2.5 "/>
+</clipPath>
+<clipPath id="clip2">
+  <path d="M 637.5 96.5 L 1296.5 96.5 L 1296.5 202.5 L 637.5 202.5 Z M 637.5 202.5 L 1296.5 202.5 L 1296.5 862.5 L 637.5 862.5 Z M 637.5 862.5 L 1296.5 862.5 L 1296.5 968.5 L 637.5 968.5 Z M 637.5 862.5 "/>
+</clipPath>
+<clipPath id="clip3">
+  <path d="M 578.5 143.5 L 1355.5 143.5 L 1355.5 202.5 L 578.5 202.5 Z M 578.5 202.5 L 1355.5 202.5 L 1355.5 862.5 L 578.5 862.5 Z M 578.5 862.5 L 1355.5 862.5 L 1355.5 921.5 L 578.5 921.5 Z M 578.5 862.5 "/>
+</clipPath>
+<clipPath id="clip4">
+  <path d="M 637.5 202.5 L 1296.5 202.5 L 1296.5 862.5 L 637.5 862.5 Z M 637.5 202.5 "/>
+</clipPath>
+<image id="image201" width="32" height="32" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAAAAmJLR0QA/4ePzL8AAAApSURBVDiNY2Rg+M/AiAczMdAe/P+PH9PBDYyj4cDAwDAaDjAwGg4QAAAzhF/RgilCzQAAAABJRU5ErkJggg=="/>
+<pattern id="pattern0" patternUnits="userSpaceOnUse" width="32" height="32"  patternTransform="matrix(1,0,0,1,0.5,1079.5)">
+  <use xlink:href="#image201"/>
+</pattern>
+<mask id="mask0">
+<rect x="0" y="0" width="1898" height="1059" style="fill:url(#pattern0);stroke:none;"/>
+</mask>
+</defs>
+<g id="surface198">
+<g clip-path="url(#clip1)" clip-rule="nonzero">
+
+</g>
+<g clip-path="url(#clip2)" clip-rule="nonzero">
+<rect x="0" y="0" width="1898" height="1059" style="fill:rgb(100%,47.84314%,95.686275%);fill-opacity:0.629921;stroke:none;"/>
+</g>
+<g clip-path="url(#clip3)" clip-rule="nonzero">
+<rect x="0" y="0" width="1898" height="1059" style="fill:rgb(53.333336%,53.333336%,53.333336%);fill-opacity:0.629921;stroke:none;"/>
+</g>
+<g clip-path="url(#clip4)" clip-rule="nonzero">
+<rect x="0" y="0" width="1898" height="1059" style="fill:rgb(100%,100%,0%);fill-opacity:0.724409;stroke:none;" mask="url(#mask0)"/>
+</g>
+</g>
+</svg>
