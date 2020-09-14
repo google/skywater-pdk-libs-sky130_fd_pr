@@ -20,12 +20,10 @@
 .param num_contacts = '(wc*lc/via3_spacing)'
 .param r1 = 'rm3*(lc)/(wc)'
 .param r2 = 'rcvia3/num_contacts'
-.param vc1 = -25.0e-6
-.param vc2 = 90.0e-6
 .param carea = 'camimc*(wc)*(lc)'
 .param cperim = 'cpmimc*((wc)+(lc))*2'
 .param czero = 'carea + cperim' dev/gauss='0.01*2.8*(carea + cperim)/sqrt(wc*lc*mf)'
-c1 c0       a 'czero*(1+vc1*(v(c0)-v(c1))+vc2*(v(c0)-v(c1))*(v(c0)-v(c1)))' tc1 = 0 tc2 = 0.0
+c1 c0       a 'czero' tc1 = 0 tc2 = 0.0
 rs1 a        b1 'r1' tc1 = {tc1rm3} tc2 = {tc2rm3}
 rs2 b1        c1 'r2' tc1 = {tc1rvia3} tc2 = {tc2rvia3}
 .ends sky130_fd_pr__cap_mim_m3_1
