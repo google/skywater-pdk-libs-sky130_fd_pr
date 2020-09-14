@@ -14,6 +14,7 @@
 *
 * SPDX-License-Identifier: Apache-2.0
 
-.SUBCKT sky130_fd_pr__cap_vpp_04p4x04p6_m1m2m3_shieldl1 PIN0 PIN1 PIN2
-*.PININFO PIN0:? PIN1:? PIN2:?
+.SUBCKT sky130_fd_pr__cap_vpp_04p4x04p6_m1m2m3_shieldl1 C0 C1 SUB
+*.PININFO C0:? C1:? SUB:?
+X1 C0 C1 SUB sky130_fd_pr__cap_vpp_04p4x04p6_m1m2m3_shieldl1
 .ENDS sky130_fd_pr__cap_vpp_04p4x04p6_m1m2m3_shieldl1

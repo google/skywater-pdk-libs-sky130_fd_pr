@@ -15,6 +15,6 @@
 * SPDX-License-Identifier: Apache-2.0
 
 
-.subckt sky130_fd_pr__pnp_05v5_W3p40L3p40 BASE COLLECTOR EMITTER
-X0 EMITTER BASE COLLECTOR sky130_fd_pr__pnp_05v0 area=1.156e+13p
-.ends
+* Top level circuit sky130_fd_pr__pnp_05v5_W3p40L3p40
+X0 a_330_330# w_153_153# SUBS sky130_fd_pr__pnp_05v0 area=4.624e+11p
+.end

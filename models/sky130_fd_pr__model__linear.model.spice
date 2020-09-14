@@ -1,0 +1,28 @@
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+
+* SKY130 Spice File.
+.param sky130_fd_pr__res_high_po__slope_spectre = 0.0
+.param sky130_fd_pr__res_high_po__con_slope_spectre = 0.0
+* statistics {
+*   mismatch {
+*   vary  sky130_fd_pr__res_high_po__slope_spectre dist=gauss std=1.0
+*   vary  sky130_fd_pr__res_high_po__con_slope_spectre dist=gauss std=1.0
+*     }
+* }
+.include "../cells/res_high_po/sky130_fd_pr__res_high_po_0p35.model.spice"
+.include "../cells/res_high_po/sky130_fd_pr__res_high_po_0p69.model.spice"
+.include "../cells/res_high_po/sky130_fd_pr__res_high_po_1p41.model.spice"
+.include "../cells/res_high_po/sky130_fd_pr__res_high_po_2p85.model.spice"
+.include "../cells/res_high_po/sky130_fd_pr__res_high_po_5p73.model.spice"
