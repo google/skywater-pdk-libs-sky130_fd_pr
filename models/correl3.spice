@@ -23,6 +23,9 @@
 .include "../cells/nfet_g5v0d16v0/sky130_fd_pr__nfet_g5v0d16v0__tt_discrete.corner.spice"
 .include "../cells/esd_nfet_g5v0d10v5/sky130_fd_pr__esd_nfet_g5v0d10v5__tt.corner.spice"
 .include "corners/tt/nonfet.spice"
+.include "../cells/nfet_20v0/sky130_fd_pr__nfet_20v0__tt_discrete.corner.spice"
+.include "../cells/pfet_20v0/sky130_fd_pr__pfet_20v0__tt_discrete.corner.spice"
+.include "../cells/nfet_20v0_nvt/sky130_fd_pr__nfet_20v0_nvt__tt_discrete.corner.spice"
 .include "all.spice"
 * RF MOS Parameters: Correlation follows the same factors as Analog models
 .include "../cells/rf_nfet_01v8/sky130_fd_pr__rf_nfet_01v8_b__tt_correln.corner.spice"

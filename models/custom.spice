@@ -25,3 +25,6 @@
 .include "../cells/nfet_03v3_nvt/sky130_fd_pr__nfet_03v3_nvt__mismatch.corner.spice"
 .include "all.spice"
 .include "corners/tt/rf.spice"
+.include "../cells/nfet_20v0/sky130_fd_pr__nfet_20v0__tt_discrete.corner.spice"
+.include "../cells/pfet_20v0/sky130_fd_pr__pfet_20v0__tt_discrete.corner.spice"
+.include "../cells/nfet_20v0_nvt/sky130_fd_pr__nfet_20v0_nvt__tt_discrete.corner.spice"

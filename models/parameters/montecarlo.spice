@@ -8975,6 +8975,36 @@
 + mcrdlp1f_cf_w_1_200_s_1_260 = '-3.00000e-13*ic_cap*ic_cap+-1.75000e-13*ic_cap+3.80000e-11'
 + mcrdlp1f_cf_w_1_200_s_2_310 = '-3.15625e-13*ic_cap*ic_cap+-1.87500e-13*ic_cap+4.71000e-11'
 + mcrdlp1f_cf_w_1_200_s_5_250 = '-2.93750e-13*ic_cap*ic_cap+-1.75000e-13*ic_cap+5.35000e-11'
++ sky130_fd_pr__nfet_20v0_nvt__hvvsat_mult = '2.48546e-02*hvn_saturation*hvn_saturation+-5.96510e-02*hvn_saturation+1.00000e-18'
++ sky130_fd_pr__nfet_20v0_nvt__k2_diff = '2.67500e-04*hvn_bodyeffect*hvn_bodyeffect+-1.23650e-01'
++ sky130_fd_pr__nfet_20v0_nvt__rdrift_mult = '9.42313e-03*sky130_fd_pr__nfet_20v0_nvt*sky130_fd_pr__nfet_20v0_nvt+1.17758e-01*sky130_fd_pr__nfet_20v0_nvt+7.26100e-01'
++ sky130_fd_pr__nfet_20v0_nvt__vth0_diff = '1.63812e-04*hvntvn_threshold*hvntvn_threshold+3.39563e-02*hvntvn_threshold+3.06540e-02'
++ sky130_fd_pr__nfet_20v0_nvt_iso__hvvsat_mult = '2.48544e-02*hvn_saturation*hvn_saturation+-5.96505e-02*hvn_saturation+1.00000e-18'
++ sky130_fd_pr__nfet_20v0_nvt_iso__rdrift_mult = '2.07703e-02*sky130_fd_pr__nfet_20v0_nvt_iso*sky130_fd_pr__nfet_20v0_nvt_iso+1.69501e-01*sky130_fd_pr__nfet_20v0_nvt_iso+8.20770e-01'
++ sky130_fd_pr__nfet_20v0_nvt_iso__vth0_diff = '2.00325e-04*hvntvn_threshold*hvntvn_threshold+3.47038e-02*hvntvn_threshold+4.46980e-03'
++ sky130_fd_pr__nfet_20v0__ajunction_mult = '8.57188e-04*hvn_diode*hvn_diode+1.47809e-01*hvn_diode+9.95050e-01'
++ sky130_fd_pr__nfet_20v0__dlc_diff = '-4.33125e-09*poly_cd'
++ sky130_fd_pr__nfet_20v0__dwc_diff = '8.04375e-09*ndiff_cd'
++ sky130_fd_pr__nfet_20v0__hvvsat_mult = '1.77529e-02*hvn_saturation*hvn_saturation+-4.26070e-02*hvn_saturation+1.00000e-18'
++ sky130_fd_pr__nfet_20v0__k2_diff = '5.62500e-07*hvn_bodyeffect*hvn_bodyeffect+4.02000e-04*hvn_bodyeffect+-2.74000e-02'
++ sky130_fd_pr__nfet_20v0__lint_diff = '-4.33125e-09*poly_cd'
++ sky130_fd_pr__nfet_20v0__overlap_mult = '6.37187e-03*hvtox*hvtox+-2.25000e-01*hvtox+8.98050e-01'
++ sky130_fd_pr__nfet_20v0__pjunction_mult = '1.53313e-03*hvn_diode*hvn_diode+1.40267e-01*hvn_diode+1.01440e+00'
++ sky130_fd_pr__nfet_20v0__rdrift_mult = '1.18628e-02*sky130_fd_pr__nfet_20v0*sky130_fd_pr__nfet_20v0+1.65219e-01*sky130_fd_pr__nfet_20v0+9.69820e-01'
++ sky130_fd_pr__nfet_20v0__toxe_mult = '1.50000e-02*hvtox+1.00000e+00'
++ sky130_fd_pr__nfet_20v0__vth0_diff = '5.06875e-05*hvn_threshold*hvn_threshold+3.60338e-02*hvn_threshold+3.48240e-02'
++ sky130_fd_pr__nfet_20v0__wint_diff = '8.04375e-09*ndiff_cd'
++ sky130_fd_pr__nfet_20v0_iso__hvvsat_mult = '2.48546e-02*hvn_saturation*hvn_saturation+-5.96511e-02*hvn_saturation+1.00000e-18'
++ sky130_fd_pr__nfet_20v0_iso__k2_diff = '6.75000e-06*hvn_bodyeffect*hvn_bodyeffect+7.95000e-05*hvn_bodyeffect+-1.98730e-02'
++ sky130_fd_pr__nfet_20v0_iso__rdrift_mult = '2.61019e-02*sky130_fd_pr__nfet_20v0_iso*sky130_fd_pr__nfet_20v0_iso+2.62590e-01*sky130_fd_pr__nfet_20v0_iso+9.16610e-01'
++ sky130_fd_pr__nfet_20v0_iso__vth0_diff = '9.62000e-05*hvn_threshold*hvn_threshold+3.58925e-02*hvn_threshold+-1.23920e-03'
++ n20zvtvh1defet_js_mult_pmc = '2.81250e-01*n20zvtvh1defet*n20zvtvh1defet+-1.12500e+00*n20zvtvh1defet+1.00000e+00'
++ sky130_fd_pr__nfet_20v0_zvt__agidl_diff = '1.40625e-16*hvn_subvt*hvn_subvt+-5.62500e-16*hvn_subvt'
++ sky130_fd_pr__nfet_20v0_zvt__ags_diff = '4.64219e-02*hvn_saturation*hvn_saturation+1.85688e-01*hvn_saturation'
++ sky130_fd_pr__nfet_20v0_zvt__keta_diff = '5.85125e-03*hvn_bodyeffect*hvn_bodyeffect+2.34050e-02*hvn_bodyeffect'
++ sky130_fd_pr__nfet_20v0_zvt__rdrift_mult = '4.43304e-02*sky130_fd_pr__nfet_20v0_zvt*sky130_fd_pr__nfet_20v0_zvt+2.53678e-01*sky130_fd_pr__nfet_20v0_zvt+1.00000e+00'
++ sky130_fd_pr__nfet_20v0_zvt__u0_diff = '4.88469e-03*hvn_mobility*hvn_mobility+-1.95388e-02*hvn_mobility'
++ sky130_fd_pr__nfet_20v0_zvt__vth0_diff = '1.07719e-03*hvn_threshold*hvn_threshold+9.52125e-03*hvn_threshold'
 + sky130_fd_pr__nfet_g5v0d10v5__a0_diff_1 = '6.72069e-04*hvn_saturation*hvn_saturation+-2.19321e-02*hvn_saturation+-2.15260e-03'
 + sky130_fd_pr__nfet_g5v0d10v5__a0_diff_10 = '1.21613e-05*hvn_saturation*hvn_saturation+-8.96250e-04*hvn_saturation+-4.36880e-04'
 + sky130_fd_pr__nfet_g5v0d10v5__a0_diff_14 = '6.05656e-04*hvn_saturation*hvn_saturation+-1.46919e-02*hvn_saturation+-2.46390e-02'
@@ -10736,6 +10766,17 @@
 + sky130_fd_pr__nfet_g5v0d16v0__wint_diff = '8.04375e-09*diff_cd'
 + sky130_fd_pr__model__parasitic__diode_ps2nw__ajunction_mult = '6.93889e-18*well_diode*well_diode+4.81850e-02*well_diode+9.82860e-01'
 + sky130_fd_pr__model__parasitic__diode_ps2nw__pjunction_mult = '6.93889e-18*well_diode*well_diode+1.80650e-02*well_diode+9.89540e-01'
++ sky130_fd_pr__pfet_20v0__ajunction_mult = '3.10000e-04*hvp_diode*hvp_diode+1.81850e-02*hvp_diode+1.00000e+00'
++ sky130_fd_pr__pfet_20v0__dlc_diff = '2.17734e-09*poly_cd*poly_cd+-1.30406e-08*poly_cd'
++ sky130_fd_pr__pfet_20v0__dwc_diff = '8.04375e-09*pdiff_cd'
++ sky130_fd_pr__pfet_20v0__lint_diff = '-4.33125e-09*poly_cd'
++ sky130_fd_pr__pfet_20v0__overlap_mult = '1.85000e-02*hvtox*hvtox+2.99000e-01*hvtox+1.00000e+00'
++ sky130_fd_pr__pfet_20v0__pjunction_mult = '5.61250e-04*hvp_diode*hvp_diode+1.61550e-02*hvp_diode+1.00000e+00'
++ sky130_fd_pr__pfet_20v0__rdrift_mult = '6.55156e-03*sky130_fd_pr__pfet_20v0*sky130_fd_pr__pfet_20v0+6.84013e-02*sky130_fd_pr__pfet_20v0+9.17770e-01'
++ sky130_fd_pr__pfet_20v0__toxe_mult = '2.50000e-04*hvtox*hvtox+1.40000e-02*hvtox+1.00000e+00'
++ sky130_fd_pr__pfet_20v0__u0_diff = '1.20212e-04*hvp_mobility*hvp_mobility+-2.71625e-03*hvp_mobility+-1.24040e-03'
++ sky130_fd_pr__pfet_20v0__vth0_diff = '-2.11250e-05*hvp_threshold*hvp_threshold+-3.65555e-02*hvp_threshold+8.31760e-02'
++ sky130_fd_pr__pfet_20v0__wint_diff = '8.04375e-09*pdiff_cd'
 + sky130_fd_pr__pfet_01v8_hvt__a0_diff_10 = '2.52306e-04*lvhp_saturation*lvhp_saturation+-9.42350e-04*lvhp_saturation+1.92370e-03'
 + sky130_fd_pr__pfet_01v8_hvt__a0_diff_11 = '-2.81234e-04*lvhp_saturation*lvhp_saturation+2.32376e-03*lvhp_saturation+3.66080e-03'
 + sky130_fd_pr__pfet_01v8_hvt__a0_diff_12 = '-1.78934e-03*lvhp_saturation*lvhp_saturation+4.56022e-03*lvhp_saturation+4.63140e-03'
@@ -12734,6 +12775,7 @@
 .include "../capacitors/sky130_fd_pr__model__cap_vpp_only_pq.model.spice"
 .include "../../cells/cap_var_lvt/sky130_fd_pr__cap_var_lvt.model.spice"
 .include "../../cells/res_iso_pw/sky130_fd_pr__res_iso_pw.model.spice"
+.include "../capacitors/sky130_fd_pr__model__cap_mim.model.spice"
 .include "../../cells/rf_nfet_g5v0d10v5/sky130_fd_pr__rf_nfet_g5v0d10v5.pm3.spice"
 .include "../../cells/rf_nfet_g5v0d10v5/sky130_fd_pr__rf_nfet_g5v0d10v5_b.pm3.spice"
 .include "../../cells/rf_nfet_01v8_lvt/sky130_fd_pr__rf_nfet_01v8_lvt.pm3.spice"
@@ -12745,3 +12787,9 @@
 .include "../../cells/rf_pfet_01v8/sky130_fd_pr__rf_pfet_01v8.pm3.spice"
 .include "../../cells/rf_pfet_01v8/sky130_fd_pr__rf_pfet_01v8_b.pm3.spice"
 .include "../sky130_fd_pr__model__r+c.model.spice"
+.include "../../cells/nfet_20v0_nvt/sky130_fd_pr__nfet_20v0_nvt__subcircuit.pm3.spice"
+.include "../../cells/nfet_20v0_nvt_iso/sky130_fd_pr__nfet_20v0_nvt_iso__subcircuit.pm3.spice"
+.include "../../cells/nfet_20v0/sky130_fd_pr__nfet_20v0__subcircuit.pm3.spice"
+.include "../../cells/nfet_20v0_iso/sky130_fd_pr__nfet_20v0_iso__subcircuit.pm3.spice"
+.include "../../cells/nfet_20v0_zvt/sky130_fd_pr__nfet_20v0_zvt__subcircuit.pm3.spice"
+.include "../../cells/pfet_20v0/sky130_fd_pr__pfet_20v0__subcircuit.pm3.spice"

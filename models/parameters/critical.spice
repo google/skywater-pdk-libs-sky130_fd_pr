@@ -47,6 +47,16 @@
 .param lvp_threshold = 0.0
 .param lvtox = 0.0
 .param mim = 0.0
+.param hvntvn_threshold = 0.0
+.param sky130_fd_pr__nfet_20v0_nvt = 0.0
+.param sky130_fd_pr__nfet_20v0_nvt_iso = 0.0
+.param sky130_fd_pr__nfet_20v0 = 0.0
+.param sky130_fd_pr__nfet_20v0_iso = 0.0
+.param n20zvtvh1defet = 0.0
+.param sky130_fd_pr__nfet_20v0_zvt = 0.0
+.param ndiff_cd = 0.0
+.param sky130_fd_pr__pfet_20v0 = 0.0
+.param pdiff_cd = 0.0
 .param sky130_fd_pr__nfet_01v8_lvt = 0.0
 .param sky130_fd_pr__special_nfet_pass_lvt = 0.0
 .param sky130_fd_pr__npn_05v5_all = 0.0
@@ -106,6 +116,16 @@
 *     vary lvp_threshold dist=gauss std=1.0
 *     vary lvtox dist=gauss std=1.1
 *     vary mim dist=gauss std=1.0
+*     vary hvntvn_threshold dist=gauss std=1.0
+*     vary sky130_fd_pr__nfet_20v0_nvt dist=gauss std=1.0
+*     vary sky130_fd_pr__nfet_20v0_nvt_iso dist=gauss std=1.0
+*     vary sky130_fd_pr__nfet_20v0 dist=gauss std=1.0
+*     vary sky130_fd_pr__nfet_20v0_iso dist=gauss std=1.0
+*     vary n20zvtvh1defet dist=gauss std=1.0
+*     vary sky130_fd_pr__nfet_20v0_zvt dist=gauss std=1.0
+*     vary ndiff_cd dist=gauss std=1.5
+*     vary sky130_fd_pr__pfet_20v0 dist=gauss std=1.0
+*     vary pdiff_cd dist=gauss std=1.5
 *     vary sky130_fd_pr__nfet_01v8_lvt dist=gauss std=1.0
 *     vary sky130_fd_pr__special_nfet_pass_lvt dist=gauss std=1.0
 *     vary sky130_fd_pr__npn_05v5_all dist=gauss std=1.0

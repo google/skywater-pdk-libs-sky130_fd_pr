@@ -23,5 +23,8 @@
 .include "../../cells/nfet_05v0_nvt/sky130_fd_pr__nfet_05v0_nvt__wafer.corner.spice"
 .include "../../cells/nfet_05v0_nvt/sky130_fd_pr__nfet_05v0_nvt__mismatch.corner.spice"
 .include "wafer/nonfet.spice"
+.include "../../cells/pfet_20v0/sky130_fd_pr__pfet_20v0__sf_discrete.corner.spice"
+.include "../../cells/nfet_20v0/sky130_fd_pr__nfet_20v0__fs_discrete.corner.spice"
+.include "../../cells/nfet_20v0_nvt/sky130_fd_pr__nfet_20v0_nvt__fs_discrete.corner.spice"
 .include "../all.spice"
 .include "wafer/rf.spice"
