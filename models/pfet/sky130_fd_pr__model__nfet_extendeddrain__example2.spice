@@ -16,5 +16,5 @@
 
 
 * Top level circuit sky130_fd_pr__model__nfet_extendeddrain__example2
-X0 SUBS a_0_0# a_n56_26# dw_n144_n352# sky130_fd_pr__pfet_20v0 w=2.5e+06u l=3.42e+06u
+X0 SUBS a_0_0# a_n56_26# dw_n144_n352# sky130_fd_pr__pfet_20v0 w=5e+06u l=920000u
 .end
