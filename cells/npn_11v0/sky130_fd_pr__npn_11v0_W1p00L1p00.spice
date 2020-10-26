@@ -16,5 +16,5 @@
 
 
 .subckt sky130_fd_pr__npn_11v0_W1p00L1p00 B C E
-X0 C E E SUBS sky130_fd_pr__nfet_20v0 w=3e+06u l=3.52e+06u
+X0 C E E SUBS sky130_fd_pr__nfet_20v0 w=5.95e+06u l=130000u
 .ends
