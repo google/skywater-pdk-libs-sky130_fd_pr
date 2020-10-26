@@ -16,6 +16,6 @@
 
 .SUBCKT sky130_fd_pr__rf_pfet_01v8_mvt_aF02W0p84L0p15 BULK DRAIN GATE SOURCE Name= Formula= techLibCellName=-1 nd= ng= ns= nb= mname= w= l= m=
 *.PININFO BULK:? DRAIN:? GATE:? SOURCE:?
-M1 DRAIN GATE BULK model_use_only w=0.84 l=0.15 m=1
-M2 DRAIN GATE BULK model_use_only w=0.84 l=0.15 m=1
+M1 DRAIN GATE SOURCE BULK model_use_only w=0.84 l=0.15 m=1
+M2 DRAIN GATE SOURCE BULK model_use_only w=0.84 l=0.15 m=1
 .ENDS sky130_fd_pr__rf_pfet_01v8_mvt_aF02W0p84L0p15
