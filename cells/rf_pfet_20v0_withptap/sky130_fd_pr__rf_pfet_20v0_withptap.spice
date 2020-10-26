@@ -16,6 +16,6 @@
 
 
 * Top level circuit sky130_fd_pr__rf_pfet_20v0_withptap
-X0 SUBS a_n600_n800# a_750_0# dw_n1298_n1522# sky130_fd_pr__pfet_20v0 w=1.5e+07u l=1.55e+07u
-X1 SUBS a_n600_n800# a_n658_0# dw_n1298_n1522# sky130_fd_pr__pfet_20v0 w=1.5e+07u l=1.55e+07u
+X0 SUBS a_n600_n800# a_750_0# dw_n1298_n1522# sky130_fd_pr__pfet_20v0 w=3e+07u l=500000u
+X1 SUBS a_n600_n800# a_n658_0# dw_n1298_n1522# sky130_fd_pr__pfet_20v0 w=3e+07u l=500000u
 .end
