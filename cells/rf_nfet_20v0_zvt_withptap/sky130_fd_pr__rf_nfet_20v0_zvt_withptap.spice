@@ -16,6 +16,6 @@
 
 
 .subckt sky130_fd_pr__rf_nfet_20v0_zvt_withptap D PSUB S
-X0 D a_n1600_n800# S PSUB sky130_fd_pr__nfet_20v0_nvt w=1.5e+07u l=2.1e+07u
-X1 D a_n1600_n800# S PSUB sky130_fd_pr__nfet_20v0_nvt w=1.5e+07u l=2.1e+07u
+X0 D a_n1600_n800# S PSUB sky130_fd_pr__nfet_20v0_nvt w=3e+07u l=6e+06u
+X1 D a_n1600_n800# S PSUB sky130_fd_pr__nfet_20v0_nvt w=3e+07u l=6e+06u
 .ends
