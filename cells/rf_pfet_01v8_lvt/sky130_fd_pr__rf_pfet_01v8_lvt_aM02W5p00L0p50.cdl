@@ -16,6 +16,6 @@
 
 .SUBCKT sky130_fd_pr__rf_pfet_01v8_lvt_aM02W5p00L0p50 BULK DRAIN GATE SOURCE
 *.PININFO BULK:? DRAIN:? GATE:? SOURCE:?
-M1 DRAIN GATE BULK model_use_only w=5.05 l=0.5 m=1
-M2 DRAIN GATE BULK model_use_only w=5.05 l=0.5 m=1
+M1 DRAIN GATE SOURCE BULK model_use_only w=5.05 l=0.5 m=1
+M2 DRAIN GATE SOURCE BULK model_use_only w=5.05 l=0.5 m=1
 .ENDS sky130_fd_pr__rf_pfet_01v8_lvt_aM02W5p00L0p50
