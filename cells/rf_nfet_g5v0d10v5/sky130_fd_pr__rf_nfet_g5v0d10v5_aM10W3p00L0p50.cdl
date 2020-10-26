@@ -16,14 +16,14 @@
 
 .SUBCKT sky130_fd_pr__rf_nfet_g5v0d10v5_aM10W3p00L0p50 DRAIN GATE SOURCE SUBSTRATE
 *.PININFO DRAIN:? GATE:? SOURCE:? SUBSTRATE:?
-M1 DRAIN GATE SUBSTRATE model_use_only w=3.01 l=0.5 m=1
-M2 DRAIN GATE SUBSTRATE model_use_only w=3.01 l=0.5 m=1
-M3 DRAIN GATE SUBSTRATE model_use_only w=3.01 l=0.5 m=1
-M4 DRAIN GATE SUBSTRATE model_use_only w=3.01 l=0.5 m=1
-M5 DRAIN GATE SUBSTRATE model_use_only w=3.01 l=0.5 m=1
-M6 DRAIN GATE SUBSTRATE model_use_only w=3.01 l=0.5 m=1
-M7 DRAIN GATE SUBSTRATE model_use_only w=3.01 l=0.5 m=1
-M8 DRAIN GATE SUBSTRATE model_use_only w=3.01 l=0.5 m=1
-M9 DRAIN GATE SUBSTRATE model_use_only w=3.01 l=0.5 m=1
-M10 DRAIN GATE SUBSTRATE model_use_only w=3.01 l=0.5 m=1
+M1 DRAIN GATE SOURCE SUBSTRATE model_use_only w=3.01 l=0.5 m=1
+M2 DRAIN GATE SOURCE SUBSTRATE model_use_only w=3.01 l=0.5 m=1
+M3 DRAIN GATE SOURCE SUBSTRATE model_use_only w=3.01 l=0.5 m=1
+M4 DRAIN GATE SOURCE SUBSTRATE model_use_only w=3.01 l=0.5 m=1
+M5 DRAIN GATE SOURCE SUBSTRATE model_use_only w=3.01 l=0.5 m=1
+M6 DRAIN GATE SOURCE SUBSTRATE model_use_only w=3.01 l=0.5 m=1
+M7 DRAIN GATE SOURCE SUBSTRATE model_use_only w=3.01 l=0.5 m=1
+M8 DRAIN GATE SOURCE SUBSTRATE model_use_only w=3.01 l=0.5 m=1
+M9 DRAIN GATE SOURCE SUBSTRATE model_use_only w=3.01 l=0.5 m=1
+M10 DRAIN GATE SOURCE SUBSTRATE model_use_only w=3.01 l=0.5 m=1
 .ENDS sky130_fd_pr__rf_nfet_g5v0d10v5_aM10W3p00L0p50
