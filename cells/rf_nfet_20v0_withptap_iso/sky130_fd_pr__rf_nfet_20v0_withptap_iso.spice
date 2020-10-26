@@ -16,6 +16,6 @@
 
 
 * Top level circuit sky130_fd_pr__rf_nfet_20v0_withptap_iso
-X0 dw_n2476_n1400# a_n700_n800# a_1000_0# SUBS sky130_fd_pr__nfet_20v0 w=1.5e+07u l=1.65e+07u
-X1 dw_n2476_n1400# a_n700_n800# a_n826_0# SUBS sky130_fd_pr__nfet_20v0 w=1.5e+07u l=1.65e+07u
+X0 dw_n2476_n1400# a_n700_n800# a_1000_0# SUBS sky130_fd_pr__nfet_20v0 w=3e+07u l=1.5e+06u
+X1 dw_n2476_n1400# a_n700_n800# a_n826_0# SUBS sky130_fd_pr__nfet_20v0 w=3e+07u l=1.5e+06u
 .end
