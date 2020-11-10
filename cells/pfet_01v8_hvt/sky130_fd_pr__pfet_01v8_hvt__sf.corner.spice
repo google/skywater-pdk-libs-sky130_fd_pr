@@ -1790,4 +1790,4 @@
 + sky130_fd_pr__pfet_01v8_hvt__u0_diff_67 = 0.0001194
 + sky130_fd_pr__pfet_01v8_hvt__nfactor_diff_67 = -1.23311554
 + sky130_fd_pr__pfet_01v8_hvt__vth0_diff_67 = 0.0069218
-.include "sky130_fd_pr__pfet_01v8_hvt.pm3.spice"
+.include "sky130_fd_pr__pfet_01v8_hvt__sf.pm3.spice"
