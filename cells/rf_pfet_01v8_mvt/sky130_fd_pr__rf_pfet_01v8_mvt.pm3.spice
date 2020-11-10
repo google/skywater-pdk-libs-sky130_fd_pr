@@ -24,7 +24,7 @@ xsky130_fd_pr__rf_pfet_01v8_mvt_aF02W1p68L0p15 1 2 3 b sky130_fd_pr__pfet_01v8_m
 cpar_ds 1  3 c = {(0.56f*sky130_fd_pr__rf_pfet_01v8_mvt__aw_cap_mult)}
 cpar_gd 2  1 c = {(0.34f*sky130_fd_pr__rf_pfet_01v8_mvt__aw_cap_mult)}
 cpar_gs 2  3 c = {(0.119f*sky130_fd_pr__rf_pfet_01v8_mvt__aw_cap_mult)}
-rg 2  g r = {(rg_sub_tnom*(1+(temp-tref)*tc1rcgp+(temp-tref)*(temp-tref)*tc2rcgp))+(rg_dist_tnom*(1+(temp-tref)*tc1rsgpu+(temp-tref)*(temp-tref)*tc2rsgpu))}
+rg 2  g r = {(rg_sub_tnom*(1+(temper-tref)*tc1rcgp+(temper-tref)*(temper-tref)*tc2rcgp))+(rg_dist_tnom*(1+(temper-tref)*tc1rsgpu+(temper-tref)*(temper-tref)*tc2rsgpu))}
 rd 1  d r = {(154*sky130_fd_pr__rf_pfet_01v8_mvt__aw_rd_mult)}
 rs 3  s r = {(76*sky130_fd_pr__rf_pfet_01v8_mvt__aw_rs_mult)}
 .ends sky130_fd_pr__rf_pfet_01v8_mvt_aF02W1p68L0p15
@@ -39,7 +39,7 @@ xsky130_fd_pr__rf_pfet_01v8_mvt_aF02W0p84L0p15 1 2 3 b sky130_fd_pr__pfet_01v8_m
 cpar_ds 1  3 c = {(0.17f*sky130_fd_pr__rf_pfet_01v8_mvt__aw_cap_mult)}
 cpar_gd 2  1 c = {(0.300f*sky130_fd_pr__rf_pfet_01v8_mvt__aw_cap_mult)}
 cpar_gs 2  3 c = {(0.100f*sky130_fd_pr__rf_pfet_01v8_mvt__aw_cap_mult)}
-rg 2  g r = {(rg_stub_tnom*(1+(temp-tref)*tc1rcgp+(temp-tref)*(temp-tref)*tc2rcgp))+(rg_dist_tnom*(1+(temp-tref)*tc1rsgpu+(temp-tref)*(temp-tref)*tc2rsgpu))}
+rg 2  g r = {(rg_stub_tnom*(1+(temper-tref)*tc1rcgp+(temper-tref)*(temper-tref)*tc2rcgp))+(rg_dist_tnom*(1+(temper-tref)*tc1rsgpu+(temper-tref)*(temper-tref)*tc2rsgpu))}
 rd 1  d r = {(306*sky130_fd_pr__rf_pfet_01v8_mvt__aw_rd_mult)}
 rs 3  s r = {(152.5*sky130_fd_pr__rf_pfet_01v8_mvt__aw_rs_mult)}
 .ends sky130_fd_pr__rf_pfet_01v8_mvt_aF02W0p84L0p15
@@ -54,7 +54,7 @@ xsky130_fd_pr__rf_pfet_01v8_mvt_aF04W1p68L0p15 1 2 3 b sky130_fd_pr__pfet_01v8_m
 cpar_ds 1  3 c = {(0.82f*sky130_fd_pr__rf_pfet_01v8_mvt__aw_cap_mult)}
 cpar_gd 2  1 c = {(0.984f*sky130_fd_pr__rf_pfet_01v8_mvt__aw_cap_mult)}
 cpar_gs 2  3 c = {(0.354f*sky130_fd_pr__rf_pfet_01v8_mvt__aw_cap_mult)}
-rg 2  g r = {(rg_stub_tnom*(1+(temp-tref)*tc1rcgp+(temp-tref)*(temp-tref)*tc2rcgp))+(rg_dist_tnom*(1+(temp-tref)*tc1rsgpu+(temp-tref)*(temp-tref)*tc2rsgpu))}
+rg 2  g r = {(rg_stub_tnom*(1+(temper-tref)*tc1rcgp+(temper-tref)*(temper-tref)*tc2rcgp))+(rg_dist_tnom*(1+(temper-tref)*tc1rsgpu+(temper-tref)*(temper-tref)*tc2rsgpu))}
 rd 1  d r = {(78*sky130_fd_pr__rf_pfet_01v8_mvt__aw_rd_mult)}
 rs 3  s r = {(50.6*sky130_fd_pr__rf_pfet_01v8_mvt__aw_rs_mult)}
 .ends sky130_fd_pr__rf_pfet_01v8_mvt_aF04W1p68L0p15
