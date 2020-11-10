@@ -42,15 +42,17 @@
 + res_match = {(body_pelgrom/sqrt(w*l*mult))*sky130_fd_pr__res_high_po__slope_spectre}
 + rbody_var = {rtot_var-rend_var}
 + rend = {(rcon+rend_var)*(1+rend_mm/sqrt(mult)*sky130_fd_pr__res_high_po__con_slope_spectre)}
-+ vc1_end = {vc1_raw_end/pwr(l,0.5)*(1+tc1_voltco*(temp-30))}
-+ vc2_end = {vc2_raw_end/pwr(l,0.5)*(1+tc1_voltco*(temp-30))}
-+ vc3_end = {vc3_raw_end/pwr(l,0.5)*(1+tc1_voltco*(temp-30))}
++ vc1_end = {vc1_raw_end/pwr(l,0.5)*(1+tc1_voltco*(temper-30))}
++ vc2_end = {vc2_raw_end/pwr(l,0.5)*(1+tc1_voltco*(temper-30))}
++ vc3_end = {vc3_raw_end/pwr(l,0.5)*(1+tc1_voltco*(temper-30))}
 + rbody = {(l*rsheet+rbody_var)*(1+res_match)/w}
-rbody ra r2 resbody r = {rbody*(1+abs(v(r1,r2))*vc1_body+abs(v(r1,r2))*abs(v(r1,r2))/(l*l)*vc2_body)}
+rbody ra r2 r = {rbody*(1+abs(v(r1,r2))*vc1_body+abs(v(r1,r2))*abs(v(r1,r2))/(l*l)*vc2_body)}
++ tc1 = -1.47e-3
++ tc2 = 2.7e-6
+*+tnom = 30.0
 rend r1 ra  r = {rend*(1+vc1_raw_end*(1-exp(-abs(v(r2,r1))))+
 + vc2_raw_end*(1 - exp(-abs(v(r2,r1)))) * (1 - exp(-abs(v(r2,r1)))) +
 + vc3_raw_end*(1 - exp(-abs(v(r2,r1)))) * (1 - exp(-abs(v(r2,r1)))) * (1 - exp(-abs(v(r2,r1))))       ) }
 c1 r2 b  c = {((l+2*2.08)*w*crpf_precision*1e-12+2*(l+2*2.08+w)*crpfsw_precision_1_1*1e-6)/2}
 c2 r1 b  c = {((l+2*2.08)*w*crpf_precision*1e-12+2*(l+2*2.08+w)*crpfsw_precision_1_1*1e-6)/2}
-.model resbody r tc1 = -1.47e-3 tc2 = 2.7e-6 tnom = 30.0
 .ends sky130_fd_pr__res_xhigh_po__base
