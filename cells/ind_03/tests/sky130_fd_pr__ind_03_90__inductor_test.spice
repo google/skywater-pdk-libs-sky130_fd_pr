@@ -1,5 +1,4 @@
 * Inductor value test
-.param TEMP=27
 
 * Include SkyWater sky130 device models
 .include "../../../models/sky130_fd_pr__model__inductors.model.spice"

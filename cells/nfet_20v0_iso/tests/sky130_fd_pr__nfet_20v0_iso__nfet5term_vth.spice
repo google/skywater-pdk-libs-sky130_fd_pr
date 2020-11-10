@@ -1,5 +1,4 @@
 * Pwell-isolated Transistor Vth and I-V characteristic
-.param TEMP=27
 
 * Include SkyWater sky130 device models
 .include "../../../models/r+c/res_typical__cap_typical__lin.spice"

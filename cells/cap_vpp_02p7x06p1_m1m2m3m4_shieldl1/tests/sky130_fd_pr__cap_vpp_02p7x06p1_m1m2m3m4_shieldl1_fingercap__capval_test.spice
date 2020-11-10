@@ -1,5 +1,4 @@
 * Capacitor value test
-.param TEMP=27
 
 * Include SkyWater sky130 device models
 .lib "../../../models/sky130.lib.spice" tt

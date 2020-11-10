@@ -1,5 +1,4 @@
 * Transistor Vth and I-V characteristic
-.param TEMP=27
 
 * Include SkyWater sky130 device models
 .include "../sky130_fd_pr__rf_pfet_01v8_hcM04W5p00L0p15.spice"

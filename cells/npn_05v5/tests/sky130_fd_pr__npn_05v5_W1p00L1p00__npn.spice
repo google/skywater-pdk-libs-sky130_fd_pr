@@ -1,5 +1,4 @@
 * Bipolar transistor I-V characteristic
-.param TEMP=27
 
 * Include SkyWater sky130 device models
 .include "../../../models/corners/tt/nonfet.spice"

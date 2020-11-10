@@ -1,5 +1,4 @@
 * Transistor Vth and I-V characteristic
-.param TEMP=27
 .option scale=1E-6
 
 * Include SkyWater sky130 device models

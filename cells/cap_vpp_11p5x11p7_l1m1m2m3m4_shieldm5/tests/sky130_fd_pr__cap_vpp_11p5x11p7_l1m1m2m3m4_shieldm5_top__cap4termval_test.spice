@@ -1,5 +1,4 @@
 * Capacitor (4 terminal w/separate shield) value test
-.param TEMP=27
 
 * Include SkyWater sky130 device models
 .include "../sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2m3m4_shieldm5_top.spice"
