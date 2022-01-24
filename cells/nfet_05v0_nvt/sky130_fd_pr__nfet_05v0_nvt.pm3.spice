@@ -13,7 +13,7 @@
 * limitations under the License.
 
 * SKY130 Spice File.
-include "sky130_fd_pr__esd_nfet_05v0_nvt.pm3"
+.include "sky130_fd_pr__esd_nfet_05v0_nvt.pm3.spice"
 * parameters sky130_fd_pr__nfet_05v0_nvt__lint_slope_spectre = 0.0
 * parameters sky130_fd_pr__nfet_05v0_nvt__wint_slope_spectre = 0.0
 .param sky130_fd_pr__nfet_05v0_nvt__toxe_slope_spectre = 0.0
