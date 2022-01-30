@@ -1,0 +1,3 @@
+[submodule "tech/klayout/pcells"]
+	path = tech/klayout/pcells
+	url = https://github.com/mabrains/sky130_klayout_pdk.git
