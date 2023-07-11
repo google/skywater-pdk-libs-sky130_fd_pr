@@ -1,0 +1,24 @@
+Regression test for the simulation models.
+Use
+	./run_spice_tests.py essential.txt
+
+The "essential.txt" is a list of devices that simulate after manually
+removing a number of different devices which are lacking layouts,
+models, paramters, or which are not well understood.
+
+The script runs ngspice on each of the devices in "essential.txt" and
+produces a single value, which is:
+
+	beta for bipolars
+	Vth  for FETs and diodes
+	R    for resistors
+	C    for capacitors
+
+The value measured is placed in "baseline_results.txt" in this directory.
+Output from ngspice is accumulated in "output.log".  The generated
+netlists, results, and graphs in SVG format can be found in the
+results/ directory.
+
+The terminal output of the command is the output from ngspice, followed
+by a summary of which devices failed or passed simulation, followed by
+a total count of failing and passing devices.

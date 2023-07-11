@@ -1,0 +1,28 @@
+* Transistor Vth and I-V characteristic
+.param TEMP=27
+
+* Set random seed for Monte Carlo simulation
+.option SEED=123INDEX
+
+* Include SkyWater sky130 device models
+INCLUDELINES
+* .lib /usr/share/pdk/VARIANT/libs.tech/ngspice/sky130.lib.spice CORNER
+* .lib /home/tim/projects/efabless/sky130_models/ngspice/sky130.lib.spice CORNER
+
+* Gate bias
+Rg 1 2 680
+X1 3 2 0 0 DEVICENAME PARAMS
+Rd 3 4 100
+
+* DC source for current measure
+Vid 5 4 DC 0V
+Vgb 1 0 DC 0V
+Vdd 5 0 DC 3.3V
+
+.control
+op
+echo threshold voltage
+print  @m.x1.mDEVICENAME[vth]
+quit
+.endc
+.end

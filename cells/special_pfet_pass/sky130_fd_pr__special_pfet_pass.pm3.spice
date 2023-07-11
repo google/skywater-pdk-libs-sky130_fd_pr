@@ -180,7 +180,7 @@ msky130_fd_pr__special_pfet_pass d g s b sky130_fd_pr__special_pfet_pass__model 
 + wwc = 0.0
 + wwlc = 0.0
 .model sky130_fd_pr__special_pfet_pass__model.1 pmos
-+ lmin = 0.25e-007 lmax = 0.5e-007 wmin = 1.395e-007 wmax = 1.405e-7
++ lmin = 0.245e-007 lmax = 0.805e-007 wmin = 1.395e-007 wmax = 1.405e-7
 + level = 49.0
 + 
 + tnom = 30.0

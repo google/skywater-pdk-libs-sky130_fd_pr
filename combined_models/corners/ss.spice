@@ -1,0 +1,5 @@
+* SKY130 Spice File.
+.include "all.spice"
+.include "ss/legacy.spice"
+.include "ss/nonfet.spice"
+.include "ss/rf.spice"

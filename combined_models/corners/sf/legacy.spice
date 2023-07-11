@@ -1,0 +1,9 @@
+* SKY130 legacy discrete models
+* Parameters used by res_generic_nd/pd__hv
+.param
++ sky130_fd_pr__pfet_g5v0d10v5__ajunction_mult = 1.0777e+0
++ sky130_fd_pr__pfet_g5v0d10v5__pjunction_mult = 1.0736e+0
++ sky130_fd_pr__nfet_g5v0d10v5__ajunction_mult = 8.1753e-1
++ sky130_fd_pr__nfet_g5v0d10v5__pjunction_mult = 7.7786e-1
+
+.include "../../../../libs.ref/sky130_fd_pr/spice/sky130_fd_pr__esd_nfet_01v8__sf.corner.spice"
