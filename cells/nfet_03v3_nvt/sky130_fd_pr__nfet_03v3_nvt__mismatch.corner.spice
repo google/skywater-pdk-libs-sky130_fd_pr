@@ -14,8 +14,8 @@
 
 * SKY130 Spice File.
 .param sky130_fd_pr__nfet_03v3_nvt__toxe_slope=0.45e-2
-.param sky130_fd_pr__nfet_03v3_nvt__vth0_slope=0.006  $ All devices
+.param sky130_fd_pr__nfet_03v3_nvt__vth0_slope=0.006  ; All devices
 .param sky130_fd_pr__nfet_03v3_nvt__voff_slope=0.0065
 .param sky130_fd_pr__nfet_03v3_nvt__nfactor_slope=0
-.param sky130_fd_pr__nfet_03v3_nvt__lint_slope=0.0e-9  $ All devices
-.param sky130_fd_pr__nfet_03v3_nvt__wint_slope=0.0e-9  $ All devices
+.param sky130_fd_pr__nfet_03v3_nvt__lint_slope=0.0e-9  ; All devices
+.param sky130_fd_pr__nfet_03v3_nvt__wint_slope=0.0e-9  ; All devices

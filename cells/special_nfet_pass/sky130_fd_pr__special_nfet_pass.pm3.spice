@@ -59,12 +59,12 @@ msky130_fd_pr__special_nfet_pass d g s b sky130_fd_pr__special_nfet_pass__model 
 + dwb = 0.0
 * Diode Parameters
 + 
-+ ldif = 0.0
-+ hdif = 0.0
-+ rd = 0.0
-+ rs = 0.0
-+ rsc = 0.0
-+ rdc = 0.0
+* + ldif = 0.0
+* + hdif = 0.0
+* + rd = 0.0
+* + rs = 0.0
+* + rsc = 0.0
+* + rdc = 0.0
 + 
 + rsh = 1.0
 * Threshold Voltage Parameters
@@ -157,7 +157,7 @@ msky130_fd_pr__special_nfet_pass d g s b sky130_fd_pr__special_nfet_pass__model 
 + cgso = {3.2e-010*sky130_fd_pr__special_nfet_pass__overlap_mult}
 + cgbo = 1.0e-13
 + capmod = 3.0
-+ nqsmod = 0.0
+* + nqsmod = 0.0
 + elm = 0.0
 + xpart = 0.0
 + cgsl = {0*sky130_fd_pr__special_nfet_pass__overlap_mult}

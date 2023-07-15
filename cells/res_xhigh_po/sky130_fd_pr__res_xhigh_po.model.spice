@@ -28,12 +28,12 @@
 + rend_mm = {0.0472/sqrt(w)}
 + leff = {l-0.0592}
 + weff = {w-0.056}
-* $  Resistor voltco fitting parameters
+* ;  Resistor voltco fitting parameters
 + bp2 = -0.1228
 + bq2 = 1.304
 + bp22 = -0.2874
 + bp23 = 0.5252
-* $  Substrate voltco fitting parameters
+* ;  Substrate voltco fitting parameters
 + sub1 = 1.2
 + sub2 = 41.26e-3
 + sub3 = 8.697e-3

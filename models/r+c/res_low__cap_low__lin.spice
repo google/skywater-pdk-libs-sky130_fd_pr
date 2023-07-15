@@ -4,8 +4,8 @@
 + sky130_fd_pr__res_high_po__var_mult = -5.0
 + sky130_fd_pr__res_high_po__var = -0.125
 + sky130_fd_pr__res_xhigh_po__var_mult = -0.15
-+ camimc=  1.778e-15  $ Units: farad/micrometer^2
-+ cpmimc = 0.03e-15 $ Units: farad/micrometer
++ camimc=  1.778e-15  ; Units: farad/micrometer^2
++ cpmimc = 0.03e-15 ; Units: farad/micrometer
 + cvpp_cor = 0.862
 + cvpp3_cor = 0.7
 + cvpp4_cor = 0.7

@@ -27,8 +27,8 @@
 * }
 .subckt  sky130_fd_pr__rf_nfet_01v8_bM02 d g s b
 + 
-.param  l = 1 w = 1 ad = 0 as = 0 pd = 0 ps = 0 nrd = 0 nrs = 0 sa = 0 sb = 0 sd = 0 mult = 1 nf = 1.0
-msky130_fd_pr__rf_nfet_01v8_bM02 d g s b sky130_fd_pr__rf_nfet_01v8_bM02__model l = {l} w = {w} ad = {ad} as = {as} pd = {pd} ps = {ps} nrd = {nrd} nrs = {nrs} sa = {sa} sb = {sb} sd = {sd} nf = {nf}
+.param  l = 1 w = 1 nf = 1.0 ad = 0 as = 0 pd = 0 ps = 0 nrd = 0 nrs = 0 sa = 0 sb = 0 sd = 0 mult = 1
+msky130_fd_pr__rf_nfet_01v8_bM02 d g s b sky130_fd_pr__rf_nfet_01v8_bM02__model l = {l} w = {w} nf = {nf} ad = {ad} as = {as} pd = {pd} ps = {ps} nrd = {nrd} nrs = {nrs} sa = {sa} sb = {sb} sd = {sd}
 .model sky130_fd_pr__rf_nfet_01v8_bM02__model.0 nmos
 * DC IV MOS Parameters
 + lmin = 1.45e-07 lmax = 1.55e-07 wmin = 1.645e-06 wmax = 1.655e-6
@@ -785,8 +785,8 @@ msky130_fd_pr__rf_nfet_01v8_bM02 d g s b sky130_fd_pr__rf_nfet_01v8_bM02__model 
 .ends sky130_fd_pr__rf_nfet_01v8_bM02
 .subckt  sky130_fd_pr__rf_nfet_01v8_bM02W3p00 d g s b
 + 
-.param  l = 1 w = 3.01 ad = 0 as = 0 pd = 0 ps = 0 nrd = 0 nrs = 0 sa = 0 sb = 0 sd = 0 mult = 1 nf = 1.0
-msky130_fd_pr__rf_nfet_01v8_bM02W3p00 d g s b sky130_fd_pr__rf_nfet_01v8_bM02__model l = {l} w = 3.01 ad = {ad} as = {as} pd = {pd} ps = {ps} nrd = {nrd} nrs = {nrs} sa = {sa} sb = {sb} sd = {sd} nf = {nf}
+.param  l = 1 w = 3.01 nf = 1.0 ad = 0 as = 0 pd = 0 ps = 0 nrd = 0 nrs = 0 sa = 0 sb = 0 sd = 0 mult = 1
+msky130_fd_pr__rf_nfet_01v8_bM02W3p00 d g s b sky130_fd_pr__rf_nfet_01v8_bM02__model l = {l} w = 3.01 nf = {nf} ad = {ad} as = {as} pd = {pd} ps = {ps} nrd = {nrd} nrs = {nrs} sa = {sa} sb = {sb} sd = {sd}
 .model sky130_fd_pr__rf_nfet_01v8_bM02__model.3 nmos
 * DC IV MOS Parameters
 + lmin = 1.45e-07 lmax = 1.55e-07 wmin = 3.005e-06 wmax = 3.015e-6
@@ -1543,8 +1543,8 @@ msky130_fd_pr__rf_nfet_01v8_bM02W3p00 d g s b sky130_fd_pr__rf_nfet_01v8_bM02__m
 .ends sky130_fd_pr__rf_nfet_01v8_bM02W3p00
 .subckt  sky130_fd_pr__rf_nfet_01v8_bM02W5p00 d g s b
 + 
-.param  l = 1 w = 5.05 ad = 0 as = 0 pd = 0 ps = 0 nrd = 0 nrs = 0 sa = 0 sb = 0 sd = 0 mult = 1 nf = 1.0
-msky130_fd_pr__rf_nfet_01v8_bM02W5p00 d g s b sky130_fd_pr__rf_nfet_01v8_bM02__model l = {l} w = 5.05 ad = {ad} as = {as} pd = {pd} ps = {ps} nrd = {nrd} nrs = {nrs} sa = {sa} sb = {sb} sd = {sd} nf = {nf}
+.param  l = 1 w = 5.05 nf = 1.0 ad = 0 as = 0 pd = 0 ps = 0 nrd = 0 nrs = 0 sa = 0 sb = 0 sd = 0 mult = 1
+msky130_fd_pr__rf_nfet_01v8_bM02W5p00 d g s b sky130_fd_pr__rf_nfet_01v8_bM02__model l = {l} w = 5.05 nf = {nf} ad = {ad} as = {as} pd = {pd} ps = {ps} nrd = {nrd} nrs = {nrs} sa = {sa} sb = {sb} sd = {sd}
 .model sky130_fd_pr__rf_nfet_01v8_bM02__model.6 nmos
 * DC IV MOS Parameters
 + lmin = 1.45e-07 lmax = 1.55e-07 wmin = 5.045e-06 wmax = 5.055e-6
@@ -2301,8 +2301,8 @@ msky130_fd_pr__rf_nfet_01v8_bM02W5p00 d g s b sky130_fd_pr__rf_nfet_01v8_bM02__m
 .ends sky130_fd_pr__rf_nfet_01v8_bM02W5p00
 .subckt  sky130_fd_pr__rf_nfet_01v8_bM04 d g s b
 + 
-.param  l = 1 w = 1 ad = 0 as = 0 pd = 0 ps = 0 nrd = 0 nrs = 0 sa = 0 sb = 0 sd = 0 mult = 1 nf = 1.0
-msky130_fd_pr__rf_nfet_01v8_bM04 d g s b sky130_fd_pr__rf_nfet_01v8_bM04__model l = {l} w = {w} ad = {ad} as = {as} pd = {pd} ps = {ps} nrd = {nrd} nrs = {nrs} sa = {sa} sb = {sb} sd = {sd} nf = {nf}
+.param  l = 1 w = 1 nf = 1.0 ad = 0 as = 0 pd = 0 ps = 0 nrd = 0 nrs = 0 sa = 0 sb = 0 sd = 0 mult = 1
+msky130_fd_pr__rf_nfet_01v8_bM04 d g s b sky130_fd_pr__rf_nfet_01v8_bM04__model l = {l} w = {w} nf = {nf} ad = {ad} as = {as} pd = {pd} ps = {ps} nrd = {nrd} nrs = {nrs} sa = {sa} sb = {sb} sd = {sd}
 .model sky130_fd_pr__rf_nfet_01v8_bM04__model.0 nmos
 * DC IV MOS Parameters
 + lmin = 1.45e-07 lmax = 1.55E-07 wmin = 1.645E-06 wmax = 1.655e-6
@@ -3059,8 +3059,8 @@ msky130_fd_pr__rf_nfet_01v8_bM04 d g s b sky130_fd_pr__rf_nfet_01v8_bM04__model 
 .ends sky130_fd_pr__rf_nfet_01v8_bM04
 .subckt  sky130_fd_pr__rf_nfet_01v8_bM04W3p00 d g s b
 + 
-.param  l = 1 w = 3.01 ad = 0 as = 0 pd = 0 ps = 0 nrd = 0 nrs = 0 sa = 0 sb = 0 sd = 0 mult = 1 nf = 1.0
-msky130_fd_pr__rf_nfet_01v8_bM04W3p00 d g s b sky130_fd_pr__rf_nfet_01v8_bM04__model l = {l} w = 3.01 ad = {ad} as = {as} pd = {pd} ps = {ps} nrd = {nrd} nrs = {nrs} sa = {sa} sb = {sb} sd = {sd} nf = {nf}
+.param  l = 1 w = 3.01 nf = 1.0 ad = 0 as = 0 pd = 0 ps = 0 nrd = 0 nrs = 0 sa = 0 sb = 0 sd = 0 mult = 1
+msky130_fd_pr__rf_nfet_01v8_bM04W3p00 d g s b sky130_fd_pr__rf_nfet_01v8_bM04__model l = {l} w = 3.01 nf = {nf} ad = {ad} as = {as} pd = {pd} ps = {ps} nrd = {nrd} nrs = {nrs} sa = {sa} sb = {sb} sd = {sd}
 .model sky130_fd_pr__rf_nfet_01v8_bM04__model.3 nmos
 * DC IV MOS Parameters
 + lmin = 1.45e-07 lmax = 1.55e-07 wmin = 3.005e-06 wmax = 3.015e-6
@@ -3817,8 +3817,8 @@ msky130_fd_pr__rf_nfet_01v8_bM04W3p00 d g s b sky130_fd_pr__rf_nfet_01v8_bM04__m
 .ends sky130_fd_pr__rf_nfet_01v8_bM04W3p00
 .subckt  sky130_fd_pr__rf_nfet_01v8_bM04W5p00 d g s b
 + 
-.param  l = 1 w = 5.05 ad = 0 as = 0 pd = 0 ps = 0 nrd = 0 nrs = 0 sa = 0 sb = 0 sd = 0 mult = 1 nf = 1.0
-msky130_fd_pr__rf_nfet_01v8_bM04W5p00 d g s b sky130_fd_pr__rf_nfet_01v8_bM04__model l = {l} w = 5.05 ad = {ad} as = {as} pd = {pd} ps = {ps} nrd = {nrd} nrs = {nrs} sa = {sa} sb = {sb} sd = {sd} nf = {nf}
+.param  l = 1 w = 5.05 nf = 1.0 ad = 0 as = 0 pd = 0 ps = 0 nrd = 0 nrs = 0 sa = 0 sb = 0 sd = 0 mult = 1
+msky130_fd_pr__rf_nfet_01v8_bM04W5p00 d g s b sky130_fd_pr__rf_nfet_01v8_bM04__model l = {l} w = 5.05 nf = {nf} ad = {ad} as = {as} pd = {pd} ps = {ps} nrd = {nrd} nrs = {nrs} sa = {sa} sb = {sb} sd = {sd}
 .model sky130_fd_pr__rf_nfet_01v8_bM04__model.6 nmos
 * DC IV MOS Parameters
 + lmin = 1.45e-07 lmax = 1.55E-07 wmin = 5.045E-06 wmax = 5.055e-6
