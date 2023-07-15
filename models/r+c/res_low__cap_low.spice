@@ -37,11 +37,11 @@
 + rspwres=3512
 * P+ Poly Preres Parameters
 .param
-+ crpf_precision=  8.84e-5   $ Units: farad/meter^2
-+ crpfsw_precision_1_1 = 4.67e-11 $ Units: farad/meter
-+ crpfsw_precision_2_1 = 5.02e-11 $ Units: farad/meter
-+ crpfsw_precision_4_1 = 5.45e-11 $ Units: farad/meter
-+ crpfsw_precision_8_2 = 5.96e-11 $ Units: farad/meter
-+ crpfsw_precision_16_2 = 6.54e-11 $ Units: farad/meter
++ crpf_precision=  8.84e-5   ; Units: farad/meter^2
++ crpfsw_precision_1_1 = 4.67e-11 ; Units: farad/meter
++ crpfsw_precision_2_1 = 5.02e-11 ; Units: farad/meter
++ crpfsw_precision_4_1 = 5.45e-11 ; Units: farad/meter
++ crpfsw_precision_8_2 = 5.96e-11 ; Units: farad/meter
++ crpfsw_precision_16_2 = 6.54e-11 ; Units: farad/meter
 .include "../sky130_fd_pr__model__r+c.model.spice"
 .include "../parameters/fast_70p.spice"

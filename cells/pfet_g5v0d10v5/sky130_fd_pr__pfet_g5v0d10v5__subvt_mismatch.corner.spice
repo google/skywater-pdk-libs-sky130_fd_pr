@@ -17,8 +17,8 @@
 .param sky130_fd_pr__pfet_g5v0d10v5__toxe_slope1= 2.50e-2
 .param sky130_fd_pr__pfet_g5v0d10v5__toxe_slope2= 2.80e-2
 .param sky130_fd_pr__pfet_g5v0d10v5__toxe_slope3= 1.90e-2
-.param sky130_fd_pr__pfet_g5v0d10v5__vth0_slope=0.04e-2  $ All devices
-.param sky130_fd_pr__pfet_g5v0d10v5__voff_slope=0.020  $ All devices
-.param sky130_fd_pr__pfet_g5v0d10v5__nfactor_slope=0.29  $ All devices
-.param sky130_fd_pr__pfet_g5v0d10v5__lint_slope=0.0  $ All devices
-.param sky130_fd_pr__pfet_g5v0d10v5__wint_slope=0.0  $ All devices
+.param sky130_fd_pr__pfet_g5v0d10v5__vth0_slope=0.04e-2  ; All devices
+.param sky130_fd_pr__pfet_g5v0d10v5__voff_slope=0.020  ; All devices
+.param sky130_fd_pr__pfet_g5v0d10v5__nfactor_slope=0.29  ; All devices
+.param sky130_fd_pr__pfet_g5v0d10v5__lint_slope=0.0  ; All devices
+.param sky130_fd_pr__pfet_g5v0d10v5__wint_slope=0.0  ; All devices
