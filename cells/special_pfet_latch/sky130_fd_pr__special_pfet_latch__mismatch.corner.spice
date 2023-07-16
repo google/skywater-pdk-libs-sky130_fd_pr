@@ -13,9 +13,9 @@
 * limitations under the License.
 
 * SKY130 Spice File.
-.param sky130_fd_pr__special_pfet_pass__tox_slope=5.567e-03
-.param sky130_fd_pr__special_pfet_pass__vth0_slope=5.567e-03
-.param sky130_fd_pr__special_pfet_pass__nfactor_slope=0.0
-.param sky130_fd_pr__special_pfet_pass__voff_slope=0.0
-.param sky130_fd_pr__special_pfet_pass__lint_slope=0.0
-.param sky130_fd_pr__special_pfet_pass__wint_slope=0.0
+.param sky130_fd_pr__special_pfet_latch__tox_slope=5.567e-03
+.param sky130_fd_pr__special_pfet_latch__vth0_slope=5.567e-03
+.param sky130_fd_pr__special_pfet_latch__nfactor_slope=0.0
+.param sky130_fd_pr__special_pfet_latch__voff_slope=0.0
+.param sky130_fd_pr__special_pfet_latch__lint_slope=0.0
+.param sky130_fd_pr__special_pfet_latch__wint_slope=0.0

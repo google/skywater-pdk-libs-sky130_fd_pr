@@ -232,7 +232,7 @@ def genspice(scriptname, devicename, variant, corner):
         params = 'W=1.68 L=0.15 M=1'
     elif 'sky130_fd_pr__esd_' in devicename: 
         params = 'W=20.35 L=0.165 M=1'
-    elif 'sky130_fd_pr__special_pfet_pass' in devicename:
+    elif 'sky130_fd_pr__special_pfet_latch' in devicename:
         params = 'W=0.14 L=0.15 M=1'
     elif 'sky130_fd_pr__special_nfet_pass_flash' in devicename:
         params = 'W=0.45 L=0.15 M=1'
