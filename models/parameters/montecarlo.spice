@@ -12102,11 +12102,11 @@
 + sky130_fd_pr__pfet_01v8_mvt__vth0_diff_0 = '-1.50000e-05*lvp_threshold*lvp_threshold+-2.82625e-02*lvp_threshold'
 + sky130_fd_pr__pfet_01v8_mvt__vth0_diff_1 = '2.57469e-03*lvp_threshold*lvp_threshold+-4.77988e-02*lvp_threshold'
 + sky130_fd_pr__pfet_01v8_mvt__wint_diff = '8.04375e-09*diff_cd'
-+ sky130_fd_pr__special_pfet_pass__ajunction_mult = '2.33750e-04*lvp_diode*lvp_diode+-1.38778e-17*lvp_diode+9.96260e-01'
-+ sky130_fd_pr__special_pfet_pass__overlap_mult = '2.85312e-03*lvtox*lvtox+9.54350e-01'
-+ sky130_fd_pr__special_pfet_pass__pjunction_mult = '-5.62500e-05*lvp_diode*lvp_diode+1.00090e+00'
-+ sky130_fd_pr__special_pfet_pass__u0_diff_0 = '-9.11563e-07*lvp_mobility*lvp_mobility+-2.98259e-04*lvp_mobility+-4.44680e-04'
-+ sky130_fd_pr__special_pfet_pass__vth0_diff_0 = '8.09813e-05*lvp_threshold*lvp_threshold+-4.19525e-02*lvp_threshold+8.19430e-03'
++ sky130_fd_pr__special_pfet_latch__ajunction_mult = '2.33750e-04*lvp_diode*lvp_diode+-1.38778e-17*lvp_diode+9.96260e-01'
++ sky130_fd_pr__special_pfet_latch__overlap_mult = '2.85312e-03*lvtox*lvtox+9.54350e-01'
++ sky130_fd_pr__special_pfet_latch__pjunction_mult = '-5.62500e-05*lvp_diode*lvp_diode+1.00090e+00'
++ sky130_fd_pr__special_pfet_latch__u0_diff_0 = '-9.11563e-07*lvp_mobility*lvp_mobility+-2.98259e-04*lvp_mobility+-4.44680e-04'
++ sky130_fd_pr__special_pfet_latch__vth0_diff_0 = '8.09813e-05*lvp_threshold*lvp_threshold+-4.19525e-02*lvp_threshold+8.19430e-03'
 + sky130_fd_pr__pfet_01v8__a0_diff_11 = '3.15701e-03*lvp_saturation*lvp_saturation+1.06738e-02*lvp_saturation+-8.73550e-02'
 + sky130_fd_pr__pfet_01v8__a0_diff_12 = '2.62199e-03*lvp_saturation*lvp_saturation+7.72522e-03*lvp_saturation+-7.20230e-02'
 + sky130_fd_pr__pfet_01v8__a0_diff_13 = '1.62044e-03*lvp_saturation*lvp_saturation+1.99900e-03*lvp_saturation+-4.10370e-02'
@@ -12766,7 +12766,7 @@
 .include "../../cells/pfet_01v8_lvt/sky130_fd_pr__pfet_01v8_lvt.pm3.spice"
 .include "../../cells/pnp_05v5/sky130_fd_pr__pnp_05v5_W0p68L0p68.model.spice"
 .include "../../cells/pnp_05v5/sky130_fd_pr__pnp_05v5_W3p40L3p40.model.spice"
-.include "../../cells/special_pfet_pass/sky130_fd_pr__special_pfet_pass.pm3.spice"
+.include "../../cells/special_pfet_latch/sky130_fd_pr__special_pfet_latch.pm3.spice"
 .include "../../cells/pfet_01v8/sky130_fd_pr__pfet_01v8.pm3.spice"
 .include "../../cells/pfet_g5v0d16v0/sky130_fd_pr__pfet_g5v0d16v0.pm3.spice"
 .include "../../cells/pfet_g5v0d16v0/sky130_fd_pr__pfet_g5v0d16v0__subcircuit.pm3.spice"

@@ -1271,7 +1271,7 @@ z
      <use x="1443.464844" xlink:href="#DejaVuSans-46"/>
      <use x="1475.251953" xlink:href="#DejaVuSans-49"/>
     </g>
-    <!-- sky130_fd_pr__special_pfet_pass -->
+    <!-- sky130_fd_pr__special_pfet_latch -->
     <defs>
      <path d="M 50.984375 -16.609375 
 L 50.984375 -23.578125 

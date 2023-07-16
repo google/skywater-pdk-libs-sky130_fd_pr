@@ -488,7 +488,7 @@
 .include "../../../libs.ref/sky130_fd_pr/spice/sky130_fd_pr__special_nfet_pass_lvt.pm3.spice"
 .include "../../../libs.ref/sky130_fd_pr/spice/sky130_fd_pr__special_nfet_pass.pm3.spice"
 .include "../../../libs.ref/sky130_fd_pr/spice/sky130_fd_pr__special_nfet_latch.pm3.spice"
-.include "../../../libs.ref/sky130_fd_pr/spice/sky130_fd_pr__special_pfet_pass.pm3.spice"
+.include "../../../libs.ref/sky130_fd_pr/spice/sky130_fd_pr__special_pfet_latch.pm3.spice"
 *----------------------------------------------------------
 * SONOS
 *----------------------------------------------------------

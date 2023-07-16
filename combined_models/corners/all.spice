@@ -38,8 +38,8 @@
 + sky130_fd_pr__special_nfet_pass_flash__dlc_rotweak = hv_dlc_rotweak
 + sky130_fd_pr__special_nfet_latch__dlc_rotweak = lv_dlc_rotweak
 + sky130_fd_pr__special_nfet_latch_lowleakage__dlc_rotweak = lv_dlc_rotweak
-+ sky130_fd_pr__special_pfet_pass__dlc_rotweak = lv_dlc_rotweak
-+ sky130_fd_pr__special_pfet_pass_lowleakage__dlc_rotweak = lv_dlc_rotweak
++ sky130_fd_pr__special_pfet_latch__dlc_rotweak = lv_dlc_rotweak
++ sky130_fd_pr__special_pfet_latch_lowleakage__dlc_rotweak = lv_dlc_rotweak
 + sky130_fd_bs_flash__special_sonosfet_star__dlc_rotweak = hv_dlc_rotweak
 + sky130_fd_bs_flash__special_sonosfet_original__dlc_rotweak = hv_dlc_rotweak
 + sonos_eeol_dlc_rotweak = hv_dlc_rotweak
@@ -73,7 +73,7 @@
 *----------------------------------------------------------
 .include "../../../libs.ref/sky130_fd_pr/spice/sky130_fd_pr__special_nfet_pass.pm3.spice"
 .include "../../../libs.ref/sky130_fd_pr/spice/sky130_fd_pr__special_nfet_latch.pm3.spice"
-.include "../../../libs.ref/sky130_fd_pr/spice/sky130_fd_pr__special_pfet_pass.pm3.spice"
+.include "../../../libs.ref/sky130_fd_pr/spice/sky130_fd_pr__special_pfet_latch.pm3.spice"
 .include "../../../libs.ref/sky130_fd_pr/spice/sky130_fd_pr__special_nfet_pass_flash.pm3.spice"
 *----------------------------------------------------------
 * RF models
