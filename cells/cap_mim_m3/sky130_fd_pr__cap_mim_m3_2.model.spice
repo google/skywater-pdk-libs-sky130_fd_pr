@@ -22,7 +22,7 @@
 .param r2 = 'rcvia4/num_contacts'
 .param carea = 'camimc*(wc)*(lc)'
 .param cperim = 'cpmimc*((wc)+(lc))*2'
-.param czero = 'carea + cperim' dev/gauss='0.01*2.8*(carea + cperim)/sqrt(wc*lc*mf)'
+.param czero = 'carea + cperim+MC_MM_SWITCH*AGAUSS(0,1.0,1)*0.01*2.8*(carea + cperim)/sqrt(wc*lc*mf)'
 c1 c0       a 'czero' tc1 = 0 tc2 = 0.0
 rs1 a        b1 'r1' tc1 = {tc1rm4} tc2 = {tc2rm4}
 rs2 b1        c1 'r2' tc1 = {tc1rvia4} tc2 = {tc2rvia4}

@@ -22,7 +22,8 @@
 .param  mult = 1 presim_flag = 0.0
 + 
 + lvpp = 5.1 wm1 = 0.14 wm2 = 0.14
-+ ctot_a = {74.6e-15*sky130_fd_pr__cap_vpp_04p4x04p6_m1m2m3_shieldl1__cor+0.0283/sqrt(11.5*11.7*2*mult)*74.6e-15*sky130_fd_pr__cap_vpp_04p4x04p6_m1m2m3_shieldl1__cor*sky130_fd_pr__cap_vpp_08p6x07p8_l1m1m2_noshield_o1__generic_slope}
+*(mismatch parameter sky130_fd_pr__cap_vpp_08p6x07p8_l1m1m2_noshield_o1__generic_slope)
++ ctot_a = {74.6e-15*sky130_fd_pr__cap_vpp_04p4x04p6_m1m2m3_shieldl1__cor+0.0283/sqrt(11.5*11.7*2*mult)*74.6e-15*sky130_fd_pr__cap_vpp_04p4x04p6_m1m2m3_shieldl1__cor*MC_MM_SWITCH*AGAUSS(0,1.0,1)}
 + rat_m2 = 0.5767
 + rat_m1 = 0.4233
 + cap_m2 = {rat_m2*ctot_a}

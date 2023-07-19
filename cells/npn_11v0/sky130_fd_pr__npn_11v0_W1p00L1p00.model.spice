@@ -40,9 +40,11 @@ d1 s b sky130_fd_pr__model__parasitic__diode_ps2dn area = 1.34
 * Noise Parameters
 + af = 1.9 kf = 5.0e-10
 * DC Parameters
-+ is = '1.1082e-017*dkisnpnpolyhv + 1.1082e-017*dkisnpnpolyhv*0.003/sqrt(mult)*npnpolyhv_is_slope_spectre' rb = 1400.0
+*(mismatch parameter npnpolyhv_is_slope_spectre)
++ is = '1.1082e-017*dkisnpnpolyhv + 1.1082e-017*dkisnpnpolyhv*0.003/sqrt(mult)*MC_MM_SWITCH*AGAUSS(0,1.0,1)' rb = 1400.0
 + re = 85 irb = 4.424e-005 rc = 1.0 rbm = 400.07
-+ bf = '141.286*dkbfnpnpolyhv + 141.286*dkbfnpnpolyhv*0.05/sqrt(mult)*npnpolyhv_bf_slope_spectre' nf = 1.0262306 vaf = 100 ikf = 0.00046731
+*(mismatch parameter npnpolyhv_bf_slope_spectre)
++ bf = '141.286*dkbfnpnpolyhv + 141.286*dkbfnpnpolyhv*0.05/sqrt(mult)*MC_MM_SWITCH*AGAUSS(0,1.0,1)' nf = 1.0262306 vaf = 100 ikf = 0.00046731
 + ise = 5.3935e-016 ne = 1.7527 ns = 1 br = 100.0
 + iss = 0 nr = 1.0262306
 + var = 0 ikr = 0.00046731 nkf = 0.31875 isc = 0.0
@@ -78,9 +80,11 @@ d1 s b sky130_fd_pr__model__parasitic__diode_ps2dn area = 1.34
 * Noise Parameters
 + af = 1.9 kf = 5.0e-9
 * DC Parameters
-+ is = '1.2252871e-016*dkisnpnpolyhv + 1.2252871e-016*dkisnpnpolyhv*0.003/sqrt(mult)*npnpolyhv_is_slope_spectre' rb = 1922.4
+*(mismatch parameter npnpolyhv_is_slope_spectre)
++ is = '1.2252871e-016*dkisnpnpolyhv + 1.2252871e-016*dkisnpnpolyhv*0.003/sqrt(mult)*MC_MM_SWITCH*AGAUSS(0,1.0,1)' rb = 1922.4
 + re = 6000 irb = 0 rc = 1 rbm = 46.144
-+ bf = '25*dkbfnpnpolyhv + 25*dkbfnpnpolyhv*0.05/sqrt(mult)*npnpolyhv_bf_slope_spectre' nf = 1.0161516 vaf = 0 ikf = 100.0
+*(mismatch parameter npnpolyhv_bf_slope_spectre)
++ bf = '25*dkbfnpnpolyhv + 25*dkbfnpnpolyhv*0.05/sqrt(mult)*MC_MM_SWITCH*AGAUSS(0,1.0,1)' nf = 1.0161516 vaf = 0 ikf = 100.0
 + ise = 1e-016 ne = 2 ns = 1 br = 1.0
 + ibc = 0 iss = 0 nr = 1.0
 + var = 0 ikr = 1e-10 nkf = 0.41826 isc = 0.0

@@ -43,8 +43,10 @@
 + rtot_var = {sky130_fd_pr__res_high_po__var_mult*sqrt(2*pow(r0_var,2)+pow((r1_var*l),2))}
 + rend_var = {sky130_fd_pr__res_high_po__var_mult*sqrt(2)*r0_var}
 + rbody_var = {rtot_var-rend_var}
-+ res_match = {(body_pelgrom/sqrt(w*l*mult))*sky130_fd_pr__res_high_po__slope_spectre}
-+ rend = {(rcon+rend_var)*(1+rend_mm/sqrt(mult)*sky130_fd_pr__res_high_po__con_slope_spectre)}
+*(mismatch parameter sky130_fd_pr__res_high_po__slope_spectre)
++ res_match = {(body_pelgrom/sqrt(w*l*mult))*MC_MM_SWITCH*AGAUSS(0,1.0,1)}
+*(mismatch parameter sky130_fd_pr__res_high_po__con_slope_spectre)
++ rend = {(rcon+rend_var)*(1+rend_mm/sqrt(mult)*MC_MM_SWITCH*AGAUSS(0,1.0,1))}
 + rbody = {(l*rsheet+rbody_var)*(1+res_match)}
 rend r0 ra r = {rend*(1+min((abs(v(r0,r1))-1.4),0.6)*vc1_end+pow(min(abs(v(r0,r1))-1.4,0.6),2)*vc2_end+pow(min(abs(v(r0,r1))-1.4,0.6),3)*vc3_end)}
 rhrpoly_1p41 ra r1 r = {rbody*(1+abs(v(r0,r1))*vc1_body+pow(abs(v(r0,r1)),2)*vc2_body)}

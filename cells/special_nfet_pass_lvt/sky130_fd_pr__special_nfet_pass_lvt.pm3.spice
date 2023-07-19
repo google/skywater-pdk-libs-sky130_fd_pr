@@ -47,7 +47,8 @@ msky130_fd_pr__special_nfet_pass_lvt d g s b sky130_fd_pr__special_nfet_pass_lvt
 + tnoimod = 1.0
 + tempmod = 0.0
 * Process Parameters
-+ toxe = {4.148e-009*sky130_fd_pr__special_nfet_pass_lvt__toxe_mult+sky130_fd_pr__special_nfet_pass_lvt__tox_slope_spectre*4.148e-09*2.443e-3*sky130_fd_pr__special_nfet_pass_lvt__toxe_mult/sqrt(l*w*mult)}
+*(mismatch parameter sky130_fd_pr__special_nfet_pass_lvt__tox_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__special_nfet_pass_lvt__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*4.148e-09*2.443e-3*sky130_fd_pr__special_nfet_pass_lvt__toxe_mult/sqrt(l*w*mult)}
 + toxm = 4.148e-9
 + epsrox = 3.9
 + xj = 1.5e-7
@@ -59,7 +60,8 @@ msky130_fd_pr__special_nfet_pass_lvt d g s b sky130_fd_pr__special_nfet_pass_lvt
 * Basic Model Parameters
 + wint = {2.6e-008+sky130_fd_pr__special_nfet_pass_lvt__wint_diff}
 + lint = {1.2025e-008+sky130_fd_pr__special_nfet_pass_lvt__lint_diff}
-+ vth0 = {0.41207609+sky130_fd_pr__special_nfet_pass_lvt__vth0_diff_0+sky130_fd_pr__special_nfet_pass_lvt__vth0_slope_spectre*5.456e-03/sqrt(l*w*mult)}
+*(mismatch parameter sky130_fd_pr__special_nfet_pass_lvt__vth0_slope_spectre)
++ vth0 = {0.41207609+sky130_fd_pr__special_nfet_pass_lvt__vth0_diff_0+MC_MM_SWITCH*AGAUSS(0,1.0,1)*5.456e-03/sqrt(l*w*mult)}
 + k1 = 0.5273401
 + k2 = {-0.019324124+sky130_fd_pr__special_nfet_pass_lvt__k2_diff_0}
 + k3 = 1.65
