@@ -40,10 +40,12 @@
 + sub4 = 24.0
 + sub5 = 39.86
 + body_pelgrom = 0.0347
-+ res_match = {(body_pelgrom/sqrt(w*l*mult))*sky130_fd_pr__res_high_po__slope_spectre}
+*(mismatch parameter sky130_fd_pr__res_high_po__slope_spectre)
++ res_match = {(body_pelgrom/sqrt(w*l*mult))*MC_MM_SWITCH*AGAUSS(0,1.0,1)}
 + rhead0 = {188.2/(weff-0.0672*max(0.69-w,0)+1.41)}
 + rbody0 = {rsheet*leff/(weff-0.0672*max(0.69-w,0))}
-+ rhead = {rhead0*(1+sky130_fd_pr__res_xhigh_po__var_mult)*(1+rend_mm/sqrt(mult)*sky130_fd_pr__res_high_po__con_slope_spectre)}
+*(mismatch parameter sky130_fd_pr__res_high_po__con_slope_spectre)
++ rhead = {rhead0*(1+sky130_fd_pr__res_xhigh_po__var_mult)*(1+rend_mm/sqrt(mult)*MC_MM_SWITCH*AGAUSS(0,1.0,1))}
 + rbody = {rbody0*(1+sky130_fd_pr__res_xhigh_po__var_mult)*(1+res_match)}
 + Efac = {1/leff*(1+bp22/w+bp23*min(0.2,leff-0.5)*log(leff/w))}
 rend1 r0 t1 reshead r = {rhead}

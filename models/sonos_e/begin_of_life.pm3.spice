@@ -33,7 +33,8 @@ Msky130_fd_bs_flash__special_sonosfet_star d g s b sky130_fd_bs_flash__special_s
 + 
 + tnom = 30.0
 + version = 3.2
-+ tox = {1.54e-008*sky130_fd_bs_flash__special_sonosfet_star__tox_mult+sky130_fd_bs_flash__special_sonosfet_star__tox_slope_spectre*(1.54e-008*sky130_fd_bs_flash__special_sonosfet_star__tox_mult*(sky130_fd_bs_flash__special_sonosfet_star__tox_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_bs_flash__special_sonosfet_star__tox_slope_spectre)
++ tox = {1.54e-008*sky130_fd_bs_flash__special_sonosfet_star__tox_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(1.54e-008*sky130_fd_bs_flash__special_sonosfet_star__tox_mult*(sky130_fd_bs_flash__special_sonosfet_star__tox_slope/sqrt(l*w*mult)))}
 + toxm = 1.54e-8
 + xj = 1.5000001e-7
 + nch = 1.3069232e+17
@@ -64,7 +65,8 @@ Msky130_fd_bs_flash__special_sonosfet_star d g s b sky130_fd_bs_flash__special_s
 + 
 + rsh = 1.0
 * Threshold Voltage Parameters
-+ vth0 = {-1.15+sky130_fd_bs_flash__special_sonosfet_star__vth0_diff_0+sky130_fd_bs_flash__special_sonosfet_star__vth0_slope_spectre*(sky130_fd_bs_flash__special_sonosfet_star__vth0_slope/sqrt(w*l*mult))}
+*(mismatch parameter sky130_fd_bs_flash__special_sonosfet_star__vth0_slope_spectre)
++ vth0 = {-1.15+sky130_fd_bs_flash__special_sonosfet_star__vth0_diff_0+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_bs_flash__special_sonosfet_star__vth0_slope/sqrt(w*l*mult))}
 + k1 = 0.83177
 + k2 = {-0.10077+sky130_fd_bs_flash__special_sonosfet_star__k2_diff_0}
 + k3 = 0.0
@@ -181,7 +183,8 @@ Msky130_fd_bs_flash__special_sonosfet_star d g s b sky130_fd_bs_flash__special_s
 + 
 + tnom = 30.0
 + version = 3.2
-+ tox = {1.54e-008*sky130_fd_bs_flash__special_sonosfet_star__tox_mult+sky130_fd_bs_flash__special_sonosfet_star__tox_slope_spectre*(1.54e-008*sky130_fd_bs_flash__special_sonosfet_star__tox_mult*(sky130_fd_bs_flash__special_sonosfet_star__tox_slope1/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_bs_flash__special_sonosfet_star__tox_slope_spectre)
++ tox = {1.54e-008*sky130_fd_bs_flash__special_sonosfet_star__tox_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(1.54e-008*sky130_fd_bs_flash__special_sonosfet_star__tox_mult*(sky130_fd_bs_flash__special_sonosfet_star__tox_slope1/sqrt(l*w*mult)))}
 + toxm = 1.54e-8
 + xj = 1.5000001e-7
 + nch = 1.3069232e+17
@@ -212,7 +215,8 @@ Msky130_fd_bs_flash__special_sonosfet_star d g s b sky130_fd_bs_flash__special_s
 + 
 + rsh = 1.0
 * Threshold Voltage Parameters
-+ vth0 = {-2.48+sky130_fd_bs_flash__special_sonosfet_star__vth0_diff_1+sky130_fd_bs_flash__special_sonosfet_star__vth0_slope_spectre*(sky130_fd_bs_flash__special_sonosfet_star__vth0_slope1/sqrt(w*l*mult))}
+*(mismatch parameter sky130_fd_bs_flash__special_sonosfet_star__vth0_slope_spectre)
++ vth0 = {-2.48+sky130_fd_bs_flash__special_sonosfet_star__vth0_diff_1+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_bs_flash__special_sonosfet_star__vth0_slope1/sqrt(w*l*mult))}
 + k1 = 0.98149
 + k2 = {0+sky130_fd_bs_flash__special_sonosfet_star__k2_diff_1}
 + k3 = 0.0
@@ -329,7 +333,8 @@ Msky130_fd_bs_flash__special_sonosfet_star d g s b sky130_fd_bs_flash__special_s
 + 
 + tnom = 30.0
 + version = 3.2
-+ tox = {1.54e-008*sky130_fd_bs_flash__special_sonosfet_star__tox_mult+sky130_fd_bs_flash__special_sonosfet_star__tox_slope_spectre*(1.54e-008*sky130_fd_bs_flash__special_sonosfet_star__tox_mult*(sky130_fd_bs_flash__special_sonosfet_star__tox_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_bs_flash__special_sonosfet_star__tox_slope_spectre)
++ tox = {1.54e-008*sky130_fd_bs_flash__special_sonosfet_star__tox_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(1.54e-008*sky130_fd_bs_flash__special_sonosfet_star__tox_mult*(sky130_fd_bs_flash__special_sonosfet_star__tox_slope/sqrt(l*w*mult)))}
 + toxm = 1.54e-8
 + xj = 1.5000001e-7
 + nch = 1.3069232e+17
@@ -360,7 +365,8 @@ Msky130_fd_bs_flash__special_sonosfet_star d g s b sky130_fd_bs_flash__special_s
 + 
 + rsh = 1.0
 * Threshold Voltage Parameters
-+ vth0 = {-0.88124+sky130_fd_bs_flash__special_sonosfet_star__vth0_diff_2+sky130_fd_bs_flash__special_sonosfet_star__vth0_slope_spectre*(sky130_fd_bs_flash__special_sonosfet_star__vth0_slope/sqrt(w*l*mult))}
+*(mismatch parameter sky130_fd_bs_flash__special_sonosfet_star__vth0_slope_spectre)
++ vth0 = {-0.88124+sky130_fd_bs_flash__special_sonosfet_star__vth0_diff_2+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_bs_flash__special_sonosfet_star__vth0_slope/sqrt(w*l*mult))}
 + k1 = 0.83177
 + k2 = {-0.06346+sky130_fd_bs_flash__special_sonosfet_star__k2_diff_2}
 + k3 = 0.0
