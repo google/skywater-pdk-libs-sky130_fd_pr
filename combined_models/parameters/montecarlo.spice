@@ -35,6 +35,10 @@
 * Derivative Parameters:
 *----------------------------------------------------------
 .param
++ lv_dlc_rotweak = .00e-9
++ lvhvt_dlc_rotweak = .00e-9
++ lvt_dlc_rotweak = .00e-9
++ hv_dlc_rotweak = .00e-9
 + cnwvc2_cdepmult = '-1.25000e-02*cnwvc+1.00000e+00'
 + cnwvc2_cintmult = '-1.25000e-02*cnwvc+1.00000e+00'
 + cnwvc2_dlc = '-2.50000e-03*cnwvc'
