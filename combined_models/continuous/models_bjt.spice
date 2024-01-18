@@ -28,8 +28,8 @@
 + 
 .param  dkisnpn1x1 = 8.7913e-01
 + dkbfnpn1x1 = 9.8501e-01
-+ var_is = {1/sw_func_rdn**2*(1+1.58*sw_mm_npn_is*mismatch_factor*MC_MM_SWITCH*AGAUSS(0,1.0,1)/sqrt(m))}
-+ var_bf = {(sw_func_pw_rs*sw_pw_rs_mc)**2.2*(1+1.05*sw_mm_npn_bf*mismatch_factor*MC_MM_SWITCH*AGAUSS(0,1.0,1)/sqrt(m))}
++ var_is = {1/sw_func_rdn**2*(1+1.58*sw_mm_npn_is*mismatch_factor*MC_MM_SWITCH*AGAUSS(0,1.0,1)/sqrt(mult))}
++ var_bf = {(sw_func_pw_rs*sw_pw_rs_mc)**2.2*(1+1.05*sw_mm_npn_bf*mismatch_factor*MC_MM_SWITCH*AGAUSS(0,1.0,1)/sqrt(mult))}
 
 
 Qsky130_fd_pr__npn_05v5_W1p00L1p00 c b e s sky130_fd_pr__npn_05v5_W1p00L1p00_model 
@@ -61,7 +61,7 @@ Qsky130_fd_pr__npn_05v5_W1p00L1p00 c b e s sky130_fd_pr__npn_05v5_W1p00L1p00_mod
 **************************************************************
 + is = '4.5584e-018*dkisnpn1x1*var_is'
 + bf = '39.28*dkbfnpn1x1*var_bf'
-+ ise = '3.2947e-016*(1-sw_mm_npn_bf*mismatch_factor*MC_MM_SWITCH*AGAUSS(0,1.0,1)/sqrt(m))'
++ ise = '3.2947e-016*(1-sw_mm_npn_bf*mismatch_factor*MC_MM_SWITCH*AGAUSS(0,1.0,1)/sqrt(mult))'
 + vaf = '100 / var_bf'
 + subs = 1 rb = 602.54 re = 30
 + irb = 7.4e+020 rc = 320.4 rbm = 0
@@ -109,8 +109,8 @@ Qsky130_fd_pr__npn_05v5_W1p00L1p00 c b e s sky130_fd_pr__npn_05v5_W1p00L1p00_mod
 
 +
 + 
-.param  var_is = {1/sw_func_rdn**2*(1+sw_mm_npn_is*mismatch_factor*MC_MM_SWITCH*AGAUSS(0,1.0,1)/sqrt(m))}
-+ var_bf = {(sw_func_pw_rs*sw_pw_rs_mc)**2.6*(1+sw_mm_npn_bf*mismatch_factor*MC_MM_SWITCH*AGAUSS(0,1.0,1)/sqrt(m))}
+.param  var_is = {1/sw_func_rdn**2*(1+sw_mm_npn_is*mismatch_factor*MC_MM_SWITCH*AGAUSS(0,1.0,1)/sqrt(mult))}
++ var_bf = {(sw_func_pw_rs*sw_pw_rs_mc)**2.6*(1+sw_mm_npn_bf*mismatch_factor*MC_MM_SWITCH*AGAUSS(0,1.0,1)/sqrt(mult))}
 
 rc c c1 r = 440 tc1 = -4e-3
 q2 s c1 b s sky130_fd_pr__pnp_05v5_W0p68L0p68_polyhv 
@@ -143,7 +143,7 @@ Qsky130_fd_pr__npn_11v0_W1p00L1p00 c1 b e s sky130_fd_pr__npn_11v0_W1p00L1p00_ba
 **************************************************************
 + is = '1.1082e-017*var_is'
 + bf = '141.286*var_bf'
-+ ise = '5.3935e-016*(1-sw_mm_npn_bf*mismatch_factor*MC_MM_SWITCH*AGAUSS(0,1.0,1)/sqrt(m))'
++ ise = '5.3935e-016*(1-sw_mm_npn_bf*mismatch_factor*MC_MM_SWITCH*AGAUSS(0,1.0,1)/sqrt(mult))'
 + vaf = '100 / var_bf'
 + ikf = 0.00046731
 + nf = 1.0262306
@@ -250,8 +250,8 @@ Qsky130_fd_pr__npn_11v0_W1p00L1p00 c1 b e s sky130_fd_pr__npn_11v0_W1p00L1p00_ba
 + 
 .param  dkisnpn1x2 = 9.0950e-01
 + dkbfnpn1x2 = 9.6759e-01
-+ var_is = {1/sw_func_rdn**2*(1+1.2*sw_mm_npn_is*mismatch_factor*MC_MM_SWITCH*AGAUSS(0,1.0,1)/sqrt(m))}
-+ var_bf = {(sw_func_pw_rs*sw_pw_rs_mc)**2.2*(1+0.93*sw_mm_npn_bf*mismatch_factor*MC_MM_SWITCH*AGAUSS(0,1.0,1)/sqrt(m))}
++ var_is = {1/sw_func_rdn**2*(1+1.2*sw_mm_npn_is*mismatch_factor*MC_MM_SWITCH*AGAUSS(0,1.0,1)/sqrt(mult))}
++ var_bf = {(sw_func_pw_rs*sw_pw_rs_mc)**2.2*(1+0.93*sw_mm_npn_bf*mismatch_factor*MC_MM_SWITCH*AGAUSS(0,1.0,1)/sqrt(mult))}
 
 
 Qsky130_fd_pr__npn_05v5_W1p00L2p00 c b e s nsky130_fd_pr__pnp_05v5_W0p68L0p68ar1x2_model 
@@ -285,7 +285,7 @@ Qsky130_fd_pr__npn_05v5_W1p00L2p00 c b e s nsky130_fd_pr__pnp_05v5_W0p68L0p68ar1
 + is = '7.98e-018*dkisnpn1x2*var_is'
 + bf = '37.54*dkbfnpn1x2*var_bf'
 + vaf = '100 / var_bf'
-+ ise = '5.77e-016*(1-sw_mm_npn_bf*mismatch_factor*MC_MM_SWITCH*AGAUSS(0,1.0,1)/sqrt(m))'
++ ise = '5.77e-016*(1-sw_mm_npn_bf*mismatch_factor*MC_MM_SWITCH*AGAUSS(0,1.0,1)/sqrt(mult))'
 + nf = 1.0405 ikf = 0.0011462
 + subs = 1 rb = 885.61
 + re = 15.0 irb = 4.424e-005 rc = 61.677 rbm = 256.08
@@ -335,8 +335,8 @@ Qsky130_fd_pr__npn_05v5_W1p00L2p00 c b e s nsky130_fd_pr__pnp_05v5_W0p68L0p68ar1
 + dkbfpp5x = 1.1288e+00
 + dknfpp5x = 1.0009e+00
 + dkisepp5x = 0.745
-+ mm_bf = {0.45*sw_mm_sky130_fd_pr__pnp_05v5_W0p68L0p68_bf*mismatch_factor*MC_MM_SWITCH*AGAUSS(0,1.0,1)/sqrt(m)}
-+ mm_is = {0.13*sw_mm_sky130_fd_pr__pnp_05v5_W0p68L0p68_is*mismatch_factor*MC_MM_SWITCH*AGAUSS(0,1.0,1)/sqrt(m)}
++ mm_bf = {0.45*sw_mm_sky130_fd_pr__pnp_05v5_W0p68L0p68_bf*mismatch_factor*MC_MM_SWITCH*AGAUSS(0,1.0,1)/sqrt(mult)}
++ mm_is = {0.13*sw_mm_sky130_fd_pr__pnp_05v5_W0p68L0p68_is*mismatch_factor*MC_MM_SWITCH*AGAUSS(0,1.0,1)/sqrt(mult)}
 
 
 Qsky130_fd_pr__pnp_05v5_W3p40L3p40 c b e s sky130_fd_pr__pnp_05v5_W0p68L0p68par5x_model 
@@ -403,8 +403,8 @@ Qsky130_fd_pr__pnp_05v5_W3p40L3p40 c b e s sky130_fd_pr__pnp_05v5_W0p68L0p68par5
 + 
 .param  dkbfpp = 9.5154e-01
 + dkispp = 9.2840e-01
-+ mm_bf = {sw_mm_sky130_fd_pr__pnp_05v5_W0p68L0p68_bf*mismatch_factor*MC_MM_SWITCH*AGAUSS(0,1.0,1)/sqrt(m)}
-+ mm_is = {sw_mm_sky130_fd_pr__pnp_05v5_W0p68L0p68_is*mismatch_factor*MC_MM_SWITCH*AGAUSS(0,1.0,1)/sqrt(m)}
++ mm_bf = {sw_mm_sky130_fd_pr__pnp_05v5_W0p68L0p68_bf*mismatch_factor*MC_MM_SWITCH*AGAUSS(0,1.0,1)/sqrt(mult)}
++ mm_is = {sw_mm_sky130_fd_pr__pnp_05v5_W0p68L0p68_is*mismatch_factor*MC_MM_SWITCH*AGAUSS(0,1.0,1)/sqrt(mult)}
 
 Qsky130_fd_pr__pnp_05v5_W0p68L0p68 c b e s sky130_fd_pr__pnp_05v5_W0p68L0p68_model 
 
