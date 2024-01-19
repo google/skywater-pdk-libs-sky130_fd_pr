@@ -292,7 +292,7 @@ Rsky130_fd_pr__res_generic_po r0 r1 r = {r_tot*(1+sw_mm_sky130_fd_pr__res_generi
 xdnw1 r0 b sky130_fd_pr__model__parasitic__diode_pw2dn area = {(l+dl)*w*0.5} perim = {(l+dl+w)}
 xdnw2 r1 b sky130_fd_pr__model__parasitic__diode_pw2dn area = {(l+dl)*w*0.5} perim = {(l+dl+w)}
 Rsky130_fd_pr__res_iso_pw r0 r1
-+ r = {rtot*sw_pw_rs_mc*((l+dl)/w)*(1-av*(max(v(r0),v(r1))-min(v(r0),v(r1))))*(1+bv*(v(b)-min(v(r0),v(r1))))*(1+vvt*(temp-tref)+ut*(temp-tref)*(temp-tref))}
++ r = {rtot*sw_pw_rs_mc*((l+dl)/w)*(1-av*(max(v(r0),v(r1))-min(v(r0),v(r1))))*(1+bv*(v(b)-min(v(r0),v(r1))))*(1+vvt*(temper-tref)+ut*(temper-tref)*(temper-tref))}
 
 
 
