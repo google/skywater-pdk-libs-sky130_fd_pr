@@ -6,4 +6,4 @@
 + sky130_fd_pr__nfet_g5v0d10v5__ajunction_mult = 1.1726e+0
 + sky130_fd_pr__nfet_g5v0d10v5__pjunction_mult = 1.2510e+0
 
-.include "../../../../libs.ref/sky130_fd_pr/spice/sky130_fd_pr__esd_nfet_01v8__fs.corner.spice"
+.include "../../../cells/esd_nfet_01v8/sky130_fd_pr__esd_nfet_01v8__fs.corner.spice"

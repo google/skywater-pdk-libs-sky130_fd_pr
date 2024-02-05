@@ -488,11 +488,11 @@
 *----------------------------------------------------------
 * SRAM MOSFETs
 *----------------------------------------------------------
-.include "../../../libs.ref/sky130_fd_pr/spice/sky130_fd_pr__special_nfet_pass_flash.pm3.spice"
-.include "../../../libs.ref/sky130_fd_pr/spice/sky130_fd_pr__special_nfet_pass_lvt.pm3.spice"
-.include "../../../libs.ref/sky130_fd_pr/spice/sky130_fd_pr__special_nfet_pass.pm3.spice"
-.include "../../../libs.ref/sky130_fd_pr/spice/sky130_fd_pr__special_nfet_latch.pm3.spice"
-.include "../../../libs.ref/sky130_fd_pr/spice/sky130_fd_pr__special_pfet_latch.pm3.spice"
+.include "../../cells/special_nfet_pass_flash/sky130_fd_pr__special_nfet_pass_flash.pm3.spice"
+.include "../../cells/special_nfet_pass_lvt/sky130_fd_pr__special_nfet_pass_lvt.pm3.spice"
+.include "../../cells/special_nfet_pass/sky130_fd_pr__special_nfet_pass.pm3.spice"
+.include "../../cells/special_nfet_latch/sky130_fd_pr__special_nfet_latch.pm3.spice"
+.include "../../cells/special_pfet_latch/sky130_fd_pr__special_pfet_latch.pm3.spice"
 *----------------------------------------------------------
 * SONOS
 *----------------------------------------------------------
@@ -507,19 +507,19 @@
 *----------------------------------------------------------
 * RF MOSFET models
 *----------------------------------------------------------
-.include "../../../libs.ref/sky130_fd_pr/spice/sky130_fd_pr__rf_nfet_g5v0d10v5.pm3.spice"
-.include "../../../libs.ref/sky130_fd_pr/spice/sky130_fd_pr__rf_nfet_g5v0d10v5_b.pm3.spice"
-.include "../../../libs.ref/sky130_fd_pr/spice/sky130_fd_pr__rf_nfet_01v8_lvt.pm3.spice"
-.include "../../../libs.ref/sky130_fd_pr/spice/sky130_fd_pr__rf_nfet_01v8_lvt_b.pm3.spice"
-.include "../../../libs.ref/sky130_fd_pr/spice/sky130_fd_pr__rf_nfet_01v8.pm3.spice"
-.include "../../../libs.ref/sky130_fd_pr/spice/sky130_fd_pr__rf_nfet_01v8_b.pm3.spice"
-.include "../../../libs.ref/sky130_fd_pr/spice/sky130_fd_pr__rf_pfet_01v8_mvt.pm3.spice"
-.include "../../../libs.ref/sky130_fd_pr/spice/sky130_fd_pr__rf_pfet_01v8.pm3.spice"
-.include "../../../libs.ref/sky130_fd_pr/spice/sky130_fd_pr__rf_pfet_01v8_b.pm3.spice"
+.include "../../cells/rf_nfet_g5v0d10v5/sky130_fd_pr__rf_nfet_g5v0d10v5.pm3.spice"
+.include "../../cells/rf_nfet_g5v0d10v5/sky130_fd_pr__rf_nfet_g5v0d10v5_b.pm3.spice"
+.include "../../cells/rf_nfet_01v8_lvt/sky130_fd_pr__rf_nfet_01v8_lvt.pm3.spice"
+.include "../../cells/rf_nfet_01v8_lvt/sky130_fd_pr__rf_nfet_01v8_lvt_b.pm3.spice"
+.include "../../cells/rf_nfet_01v8/sky130_fd_pr__rf_nfet_01v8.pm3.spice"
+.include "../../cells/rf_nfet_01v8/sky130_fd_pr__rf_nfet_01v8_b.pm3.spice"
+.include "../../cells/rf_pfet_01v8_mvt/sky130_fd_pr__rf_pfet_01v8_mvt.pm3.spice"
+.include "../../cells/rf_pfet_01v8/sky130_fd_pr__rf_pfet_01v8.pm3.spice"
+.include "../../cells/rf_pfet_01v8/sky130_fd_pr__rf_pfet_01v8_b.pm3.spice"
 *----------------------------------------------------------
 * Medium-Vt pFET model
 *----------------------------------------------------------
-.include "../../../libs.ref/sky130_fd_pr/spice/sky130_fd_pr__pfet_01v8_mvt.pm3.spice"
+.include "../../cells/pfet_01v8_mvt/sky130_fd_pr__pfet_01v8_mvt.pm3.spice"
 *----------------------------------------------------------
 * Additional resistor models
 *----------------------------------------------------------
