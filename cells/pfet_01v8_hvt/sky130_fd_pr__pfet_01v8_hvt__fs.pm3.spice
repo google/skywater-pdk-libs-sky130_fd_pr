@@ -27,6 +27,13 @@
 *     vary sky130_fd_pr__pfet_01v8_hvt__nfactor_slope_spectre dist=gauss std = 1.0
 *   }
 * }
+* "special" standard cell HVT pFET (w < 0.42um) is defined as a regular HVT pFET because its model bins exist there.
+.subckt  sky130_fd_pr__special_pfet_01v8_hvt d g s b
++
+.param  l = 1 w = 1 nf = 1.0 ad = 0 as = 0 pd = 0 ps = 0 nrd = 0 nrs = 0 sa = 0 sb = 0 sd = 0 mult = 1
+xsky130_fd_pr__pfet_01v8_hvt d g s b sky130_fd_pr__pfet_01v8_hvt l = {l} w = {w} nf = {nf} ad = {ad} as = {as} pd = {pd} ps = {ps} nrd = {nrd} nrs = {nrs} sa = {sa} sb = {sb} sd = {sd}
+.ends
+
 .subckt  sky130_fd_pr__pfet_01v8_hvt d g s b
 + 
 .param  l = 1 w = 1 nf = 1.0 ad = 0 as = 0 pd = 0 ps = 0 nrd = 0 nrs = 0 sa = 0 sb = 0 sd = 0 mult = 1

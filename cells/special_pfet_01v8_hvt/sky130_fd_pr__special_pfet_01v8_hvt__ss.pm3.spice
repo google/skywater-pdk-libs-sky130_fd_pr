@@ -1,0 +1,306 @@
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+
+* SKY130 Spice File.
+.param sky130_fd_pr__special_pfet_01v8_hvt__toxe_slope_spectre = 0.0
+.param sky130_fd_pr__special_pfet_01v8_hvt__vth0_slope_spectre = 0.0
+.param sky130_fd_pr__special_pfet_01v8_hvt__voff_slope_spectre = 0.0
+.param sky130_fd_pr__special_pfet_01v8_hvt__nfactor_slope_spectre = 0.0
+* statistics {
+*   process {
+*   }
+*   mismatch {
+*     vary sky130_fd_pr__special_pfet_01v8_hvt__toxe_slope_spectre dist=gauss std = 1.0
+*     vary sky130_fd_pr__special_pfet_01v8_hvt__vth0_slope_spectre dist=gauss std = 1.0
+*     vary sky130_fd_pr__special_pfet_01v8_hvt__voff_slope_spectre dist=gauss std = 1.0
+*     vary sky130_fd_pr__special_pfet_01v8_hvt__nfactor_slope_spectre dist=gauss std = 1.0
+*   }
+* }
+.subckt  sky130_fd_pr__special_pfet_01v8_hvt d g s b
++ 
+.param  l = 1 w = 1 nf = 1.0 ad = 0 as = 0 pd = 0 ps = 0 nrd = 0 nrs = 0 sa = 0 sb = 0 sd = 0 mult = 1
+msky130_fd_pr__special_pfet_01v8_hvt d g s b sky130_fd_pr__special_pfet_01v8_hvt__model l = {l} w = {w} nf = {nf} ad = {ad} as = {as} pd = {pd} ps = {ps} nrd = {nrd} nrs = {nrs} sa = {sa} sb = {sb} sd = {sd}
+.model sky130_fd_pr__special_pfet_01v8_hvt__model.0 pmos
+* Model Flag Parameters
++ lmin = 1.5e-07 lmax = 1.8e-07 wmin = 3.6e-07 wmax = 4.2e-7
++ level = 54.0
++ version = 4.5
++ binunit = 2.0
++ mobmod = 0.0
++ capmod = 2.0
++ igcmod = 0.0
++ igbmod = 0.0
++ geomod = 0.0
++ diomod = 1.0
++ rdsmod = 0.0
++ rbodymod = 1.0
++ rgatemod = 0.0
++ permod = 1.0
++ acnqsmod = 0.0
++ trnqsmod = 0.0
++ fnoimod = 1.0
++ tnoimod = 1.0
++ tempmod = 0.0
+* Process Parameters
+*(mismatch parameter sky130_fd_pr__special_pfet_01v8_hvt__toxe_slope_spectre)
++ toxe = {4.384395e-09+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.23e-9*1.0365*(sky130_fd_pr__special_pfet_01v8_hvt__toxe_slope/sqrt(l*w*mult)))}
++ toxm = 4.23e-9
++ dtox = 0.0
++ epsrox = 3.9
++ xj = 1.5e-7
++ ngate = 1.0e+23
++ ndep = 1.7e+17
++ nsd = 1.0e+20
++ rsh = 1.0
++ rshg = 0.1
+* Basic Model Parameters
++ wint = 3.1884e-8
++ lint = -3.23875e-8
+*(mismatch parameter sky130_fd_pr__special_pfet_01v8_hvt__vth0_slope_spectre)
++ vth0 = {-1.590239467e+00+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__special_pfet_01v8_hvt__vth0_slope/sqrt(l*w*mult))} lvth0 = 1.330962758e-07 wvth0 = 3.079070308e-07 pvth0 = -7.536794346e-14
++ k1 = -1.996351050e+00 lk1 = 6.971179541e-07 wk1 = 7.075692627e-07 pk1 = -1.731952663e-13
++ k2 = -2.704070119e-01 lk2 = 3.527014180e-08 wk2 = 2.357592592e-07 pk2 = -5.770797268e-14
++ k3 = -13.778
++ k3b = 2.0
++ w0 = 0.0
++ dvt0 = 4.05
++ dvt1 = 0.3
++ dvt2 = 0.03
++ dvt0w = -4.254
++ dvt1w = 1147200.0
++ dvt2w = -0.00896
++ dsub = 7.046964934e+00 ldsub = -1.562846578e-06 wdsub = -1.827541316e-06 pdsub = 4.473364257e-13
++ minv = 0.0
++ voffl = 0.0
++ lpe0 = 0.0
++ lpeb = 0.0
++ vbm = -3.0
++ dvtp0 = 0.0
++ dvtp1 = 0.0
++ phin = 0.0
++ cdsc = 0.0
++ cdscb = 0.0
++ cdscd = 0.0
++ cit = 1.0e-5
+*(mismatch parameter sky130_fd_pr__special_pfet_01v8_hvt__voff_slope_spectre)
++ voff = {-2.108998367e+00+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__special_pfet_01v8_hvt__voff_slope/sqrt(l*w*mult))} lvoff = 4.799823320e-07 wvoff = 8.014086043e-07 pvoff = -1.961647911e-13
+*(mismatch parameter sky130_fd_pr__special_pfet_01v8_hvt__nfactor_slope_spectre)
++ nfactor = {4.301268408e+01+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__special_pfet_01v8_hvt__nfactor_slope/sqrt(l*w*mult))} lnfactor = -1.009054626e-05 wnfactor = -1.492524072e-05 pnfactor = 3.653325797e-12
++ eta0 = 8.230920372e+00 leta0 = -1.894783784e-06 weta0 = -2.757563546e-06 peta0 = 6.749826169e-13
++ etab = 4.497324014e-01 letab = -1.100847784e-07 wetab = -1.586332861e-07 petab = 3.882946261e-14
++ u0 = 2.685845234e-02 lu0 = -6.211325302e-09 wu0 = -1.256791649e-08 pu0 = 3.076311759e-15
++ ua = -1.029761455e-08 lua = 1.852707249e-15 wua = 7.021962449e-16 pua = -1.718800859e-22
++ ub = 2.045204657e-17 lub = -4.443703525e-24 wub = -4.348982753e-24 pub = 1.064522253e-30
++ uc = -3.478207221e-10 luc = 8.520097923e-17 wuc = 1.735219870e-16 puc = -4.247384438e-23
++ ud = 0.0
++ up = 0.0
++ lp = 1.0
++ eu = 1.67
++ vtl = 0.0
++ xn = 3.0
++ vsat = 9.884931225e+05 lvsat = -2.054536397e-01 wvsat = -1.779330477e-01 pvsat = 4.355356176e-8
++ a0 = 2.112539359e+00 la0 = -2.316120674e-07 wa0 = 7.438728946e-08 pa0 = -1.820814878e-14
++ ags = 1.249999985e+00 lags = 3.619858191e-15 wags = 5.268141479e-15 pags = -1.289509388e-21
++ a1 = 0.0
++ a2 = -9.040480416e+00 la2 = 2.323643290e-06 wa2 = 2.918491330e-06 pa2 = -7.143737154e-13
++ b0 = 0.0
++ b1 = 0.0
++ keta = -1.586701126e+00 lketa = 3.814775263e-07 wketa = 5.271743253e-07 pketa = -1.290390955e-13
++ dwg = -5.722e-9
++ dwb = -1.7864e-8
++ pclm = 2.341101211e+00 lpclm = -3.706975139e-07 wpclm = -2.410278567e-08 ppclm = 5.899759362e-15
++ pdiblc1 = 1.411659737e-01 lpdiblc1 = 1.140702322e-08 wpdiblc1 = 7.914155401e-08 ppdiblc1 = -1.937187388e-14
++ pdiblc2 = 6.842249906e-02 lpdiblc2 = -1.510949337e-08 wpdiblc2 = -1.436765013e-08 ppdiblc2 = 3.516841560e-15
++ pdiblcb = -9.163561431e+00 lpdiblcb = 2.187936374e-06 wpdiblcb = 3.901480314e-06 ppdiblcb = -9.549848438e-13
++ drout = 9.845326527e-01 ldrout = 3.321999964e-09 wdrout = 5.355953903e-15 pdrout = -1.311003750e-21
++ pscbe1 = 1.288436647e+09 lpscbe1 = -1.195647786e+02 wpscbe1 = -1.740870784e+02 ppscbe1 = 4.261216461e-5
++ pscbe2 = 1.551291865e-08 lpscbe2 = -1.516487932e-15 wpscbe2 = -2.600309662e-15 ppscbe2 = 6.364907976e-22
++ pvag = 0.0
++ delta = 0.01
++ fprout = 0.0
++ pdits = 0.0
++ pditsl = 0.0
++ pditsd = 0.0
++ lambda = 0.0
++ lc = 5.0e-9
+* Parameters FOR Asymmetric AND Bias-Dependent RDS Model
++ rdsw = 531.92
++ rsw = 0.0
++ rdw = 0.0
++ rdswmin = 0.0
++ rdwmin = 0.0
++ rswmin = 0.0
++ prwb = -0.32348
++ prwg = 0.02
++ wr = 1.0
+* Impact Ionization Current Model Parameters
++ alpha0 = 1.0e-10
++ alpha1 = 1.0e-10
++ beta0 = 2.401315341e+01 lbeta0 = -3.653986246e-06 wbeta0 = -3.524254723e-06 pbeta0 = 8.626494497e-13
+* Gidl Induced Drain Leakage Model Parameters
++ agidl = -1.520812651e-07 lagidl = 3.794197034e-14 wagidl = 5.212415942e-14 pagidl = -1.275869112e-20
++ bgidl = 1.000000010e+09 lbgidl = -2.519254684e-06 wbgidl = -3.666381836e-06 pbgidl = 8.974385262e-13
++ cgidl = 300.0
++ egidl = 0.1
+* Gate Dielectric Tunneling Current Model Parameters
++ toxref = 4.23e-9
++ dlcig = 0.0
++ aigbacc = 0.43
++ bigbacc = 0.054
++ cigbacc = 0.075
++ nigbacc = 1.0
++ aigbinv = 0.35
++ bigbinv = 0.03
++ cigbinv = 0.006
++ eigbinv = 1.1
++ nigbinv = 3.0
++ aigc = 0.43
++ bigc = 0.054
++ cigc = 0.075
++ aigsd = 0.43
++ bigsd = 0.054
++ cigsd = 0.075
++ nigc = 1.0
++ poxedge = 1.0
++ pigcd = 1.0
++ ntox = 1.0
++ vfbsdoff = 0.0
+* Charge AND Capacitance Model Parameters
++ dlc = -2.31875e-8
++ dwc = 2.252e-8
++ xpart = 0.0
++ cgso = 6.9684e-11
++ cgdo = 6.9684e-11
++ cgbo = 0.0
++ cgdl = 8.82664e-12
++ cgsl = 8.82664e-12
++ clc = 1.0e-7
++ cle = 0.6
++ cf = 1.2e-11
++ ckappas = 0.6
++ vfbcv = -0.1446893
++ acde = 0.552
++ moin = 14.504
++ noff = 4.0
++ voffcv = -0.1375
+* High-Speed/RF Model Parameters
++ xrcrg1 = 12.0
++ xrcrg2 = 1.0
++ rbpb = 50.0
++ rbpd = 50.0
++ rbps = 50.0
++ rbdb = 50.0
++ rbsb = 50.0
++ gbmin = 1.0e-12
+* Flicker AND Thermal Noise Model Parameters
++ ef = 0.88
++ noia = 1.2e+41
++ noib = 2.0e+25
++ noic = 0.0
++ em = 41000000.0
++ ntnoi = 1.0
++ lintnoi = -6.0e-8
++ af = 1.0
++ kf = 0.0
++ tnoia = 1.5
++ tnoib = 3.5
++ rnoia = 0.577
++ rnoib = 0.37
+* Layout-Dependent Parasitics Model Parameters
++ xl = 0.0
++ xw = 0.0
++ dmcg = 0.0
++ dmdg = 0.0
++ dmcgt = 0.0
++ xgw = 0.0
++ xgl = 0.0
++ ngcon = 1.0
+* Asymmetric Source/Drain Junction Diode Model Parameters
++ jss = 2.17e-5
++ jsws = 8.2e-10
++ ijthsfwd = 0.1
++ ijthsrev = 0.1
++ bvs = 12.8
++ xjbvs = 1.0
++ pbs = 0.6587
++ cjs = 0.000792710451
++ mjs = 0.34629
++ pbsws = 0.7418
++ cjsws = 1.01401195e-10
++ mjsws = 0.26859
++ pbswgs = 1.3925
++ cjswgs = 2.7096997e-10
++ mjswgs = 0.70393
+* Temperature Dependence Parameters
++ tnom = 30.0
++ kt1 = 5.950906407e-01 lkt1 = -2.781159596e-07 wkt1 = -4.531597434e-07 pkt1 = 1.109221762e-13
++ kt2 = 1.131083619e+00 lkt2 = -2.872230530e-07 wkt2 = -4.015742596e-07 pkt2 = 9.829533938e-14
++ at = 1.185891568e+05 lat = -3.316250091e-03 wat = 1.683177773e-01 pat = -4.119998395e-8
++ ute = -2.299514599e+00 lute = 4.588269676e-07 wute = -3.451785524e-15 pute = 8.449108080e-22
++ ua1 = -1.102559745e-09 lua1 = 3.416789124e-16 wua1 = -9.065908965e-16 pua1 = 2.219107867e-22
++ ub1 = 5.406746700e-18 lub1 = -1.310078073e-24 wub1 = -1.620301706e-25 pub1 = 3.966093500e-32
++ uc1 = -9.345371040e-10 luc1 = 2.144723700e-16 wuc1 = 3.744968574e-16 puc1 = -9.166746826e-23
++ kt1l = 0.0
++ prt = 0.0
++ tvoff = 0.0
++ njs = 1.2556
++ tpb = 0.0019551
++ tcj = 0.0012407
++ tpbsw = 0.00014242
++ tcjsw = 0.0
++ tpbswg = 0.0
++ tcjswg = 2.0e-12
++ xtis = 2.0
++ tvfbsdoff = 0.0
+* DW AND DL Parameters
++ ll = 0.0
++ wl = 0.0
++ lln = 1.0
++ wln = 1.0
++ lw = 0.0
++ ww = 0.0
++ lwn = 1.0
++ wwn = 1.0
++ lwl = 0.0
++ wwl = 0.0
++ llc = 0.0
++ wlc = 0.0
++ lwc = 0.0
++ wwc = 0.0
++ lwlc = 0.0
++ wwlc = 0.0
+* Stress Parameters
++ saref = 1.04e-6
++ sbref = 1.04e-6
++ kvth0 = 2.65e-8
++ lkvth0 = 0.0
++ wkvth0 = 2.5e-7
++ pkvth0 = 0.0
++ llodvth = 0.0
++ wlodvth = 1.0
++ wlod = 0.0
++ stk2 = 0.0
++ lodk2 = 1.0
++ lodeta0 = 1.0
++ ku0 = 4.5e-8
++ lku0 = 0.0
++ wku0 = 2.5e-7
++ pku0 = 0.0
++ tku0 = 0.0
++ llodku0 = 0.0
++ wlodku0 = 1.0
++ kvsat = 0.4
++ steta0 = 0.0
+* Well Proximity Effect Parameters
+.ends sky130_fd_pr__special_pfet_01v8_hvt
