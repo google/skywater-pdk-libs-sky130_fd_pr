@@ -16,8 +16,8 @@
 .param sky130_fd_pr__nfet_05v0_nvt__toxe_slope=0.105e-2
 .param sky130_fd_pr__nfet_05v0_nvt__toxe_slope1=1.205e-2
 .param sky130_fd_pr__nfet_05v0_nvt__toxe_slope2=2.525e-2
-.param sky130_fd_pr__nfet_05v0_nvt__vth0_slope=0.0012  $ All devices
+.param sky130_fd_pr__nfet_05v0_nvt__vth0_slope=0.0012  ; All devices
 .param sky130_fd_pr__nfet_05v0_nvt__voff_slope=0.0035
 .param sky130_fd_pr__nfet_05v0_nvt__nfactor_slope=0.02
-.param sky130_fd_pr__nfet_05v0_nvt__lint_slope=0.0e-9  $ All devices
-.param sky130_fd_pr__nfet_05v0_nvt__wint_slope=0.0e-9  $ All devices
+.param sky130_fd_pr__nfet_05v0_nvt__lint_slope=0.0e-9  ; All devices
+.param sky130_fd_pr__nfet_05v0_nvt__wint_slope=0.0e-9  ; All devices

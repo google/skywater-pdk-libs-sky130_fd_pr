@@ -31,11 +31,14 @@
 + body_pelgrom = 0.03552
 + head_pelgrom = 0.0761
 + num_con_row = {max(floor(0.5+(w-0.33)/0.36),1)}
-+ rbody_match = {body_pelgrom/sqrt(w*l*mult)*sky130_fd_pr__res_high_po__slope_spectre}
-+ rend_match = {head_pelgrom/sqrt((w+0.525)*num_con_row*mult)*sky130_fd_pr__res_high_po__con_slope_spectre}
+*(mismatch parameter sky130_fd_pr__res_high_po__slope_spectre)
++ rbody_match = {body_pelgrom/sqrt(w*l*mult)*MC_MM_SWITCH*AGAUSS(0,1.0,1)}
+*(mismatch parameter sky130_fd_pr__res_high_po__con_slope_spectre)
++ rend_match = {head_pelgrom/sqrt((w+0.525)*num_con_row*mult)*MC_MM_SWITCH*AGAUSS(0,1.0,1)}
 + weff = {w+rbody_dw-0.0672*max(0.69-w,0)}
 + leff = {l+0.247}
-+ res_match = {(body_pelgrom/sqrt(w*l*mult))*sky130_fd_pr__res_high_po__slope_spectre}
+*(mismatch parameter sky130_fd_pr__res_high_po__slope_spectre)
++ res_match = {(body_pelgrom/sqrt(w*l*mult))*MC_MM_SWITCH*AGAUSS(0,1.0,1)}
 rhead r0 rb rhead_model w = {weff+0.1558} l = 1.0
 rbody rb r1 rbody_model w = {weff} l = {leff}
 xc0 r0 r1 b sky130_fd_pr__model__parasitic__res_po w = {w} l = {l}

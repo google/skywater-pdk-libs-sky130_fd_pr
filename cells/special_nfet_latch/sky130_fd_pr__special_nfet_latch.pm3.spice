@@ -37,7 +37,8 @@ msky130_fd_pr__special_nfet_latch d g s b sky130_fd_pr__special_nfet_latch__mode
 + 
 + tnom = 30.0
 + version = 3.2
-+ tox = {4.148e-009*sky130_fd_pr__special_nfet_latch__tox_mult+sky130_fd_pr__special_nfet_latch__tox_slope_spectre*(4.148e-009*sky130_fd_pr__special_nfet_latch__tox_mult*(sky130_fd_pr__special_nfet_latch__tox_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__special_nfet_latch__tox_slope_spectre)
++ tox = {4.148e-009*sky130_fd_pr__special_nfet_latch__tox_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-009*sky130_fd_pr__special_nfet_latch__tox_mult*(sky130_fd_pr__special_nfet_latch__tox_slope/sqrt(l*w*mult)))}
 + toxm = 4.148e-9
 + xj = 1.2e-7
 + nch = 1.12471e+18
@@ -59,16 +60,17 @@ msky130_fd_pr__special_nfet_latch d g s b sky130_fd_pr__special_nfet_latch__mode
 + dwb = 0.0
 * Diode Parameters
 + 
-+ ldif = 0.0
-+ hdif = 0.0
-+ rd = 0.0
-+ rs = 0.0
-+ rsc = 0.0
-+ rdc = 0.0
+* + ldif = 0.0
+* + hdif = 0.0
+* + rd = 0.0
+* + rs = 0.0
+* + rsc = 0.0
+* + rdc = 0.0
 + 
 + rsh = 1.0
 * Threshold Voltage Parameters
-+ vth0 = {0.71908+sky130_fd_pr__special_nfet_latch__vth0_diff_0+sky130_fd_pr__special_nfet_latch__vth0_slope_spectre*(sky130_fd_pr__special_nfet_latch__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__special_nfet_latch__vth0_slope_spectre)
++ vth0 = {0.71908+sky130_fd_pr__special_nfet_latch__vth0_diff_0+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__special_nfet_latch__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.498
 + k2 = {-0.1068+sky130_fd_pr__special_nfet_latch__k2_diff_0}
 + k3 = {0+sky130_fd_pr__special_nfet_latch__k3_diff}
@@ -101,8 +103,10 @@ msky130_fd_pr__special_nfet_latch d g s b sky130_fd_pr__special_nfet_latch__mode
 + b0 = 0.0
 + b1 = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.139+sky130_fd_pr__special_nfet_latch__voff_diff_0+sky130_fd_pr__special_nfet_latch__voff_slope_spectre*(sky130_fd_pr__special_nfet_latch__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {1.078+sky130_fd_pr__special_nfet_latch__nfactor_diff_0+sky130_fd_pr__special_nfet_latch__nfactor_slope_spectre*(sky130_fd_pr__special_nfet_latch__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__special_nfet_latch__voff_slope_spectre)
++ voff = {-0.139+sky130_fd_pr__special_nfet_latch__voff_diff_0+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__special_nfet_latch__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__special_nfet_latch__nfactor_slope_spectre)
++ nfactor = {1.078+sky130_fd_pr__special_nfet_latch__nfactor_diff_0+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__special_nfet_latch__nfactor_slope/sqrt(l*w*mult))}
 + cit = {0+sky130_fd_pr__special_nfet_latch__cit_diff}
 + cdsc = {0+sky130_fd_pr__special_nfet_latch__cdsc_diff}
 + cdscb = {0+sky130_fd_pr__special_nfet_latch__cdscb_diff}
@@ -157,7 +161,7 @@ msky130_fd_pr__special_nfet_latch d g s b sky130_fd_pr__special_nfet_latch__mode
 + cgso = {3.2e-010*sky130_fd_pr__special_nfet_latch__overlap_mult}
 + cgbo = 1.0e-13
 + capmod = 3.0
-+ nqsmod = 0.0
+* + nqsmod = 0.0
 + elm = 0.0
 + xpart = 0.0
 + cgsl = {0*sky130_fd_pr__special_nfet_latch__overlap_mult}

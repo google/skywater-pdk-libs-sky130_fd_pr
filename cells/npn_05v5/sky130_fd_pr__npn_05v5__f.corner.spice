@@ -18,6 +18,3 @@
 + dkisnpn1x1=1.2882e+00  dkbfnpn1x1=1.5018e-00
 + dkisnpn1x2=1.3275e+00 dkbfnpn1x2=1.4758e+00
 + dkisnpnpolyhv=1.69 dkbfnpnpolyhv=1.525
-.include "sky130_fd_pr__npn_05v5_W1p00L1p00.model.spice"
-.include "sky130_fd_pr__npn_05v5_W1p00L2p00.model.spice"
-.include "../npn_11v0/sky130_fd_pr__npn_11v0_W1p00L1p00.model.spice"

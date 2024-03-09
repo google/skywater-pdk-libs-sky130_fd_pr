@@ -24,8 +24,8 @@
 + sky130_fd_pr__special_nfet_pass_flash__dlc_rotweak = hv_dlc_rotweak
 + sky130_fd_pr__special_nfet_latch__dlc_rotweak = lv_dlc_rotweak
 + sky130_fd_pr__special_nfet_latch_lowleakage__dlc_rotweak = lv_dlc_rotweak
-+ sky130_fd_pr__special_pfet_pass__dlc_rotweak = lv_dlc_rotweak
-+ sky130_fd_pr__special_pfet_pass_lowleakage__dlc_rotweak = lv_dlc_rotweak
++ sky130_fd_pr__special_pfet_latch__dlc_rotweak = lv_dlc_rotweak
++ sky130_fd_pr__special_pfet_latch_lowleakage__dlc_rotweak = lv_dlc_rotweak
 + sky130_fd_bs_flash__special_sonosfet_star__dlc_rotweak = hv_dlc_rotweak
 + sky130_fd_bs_flash__special_sonosfet_original__dlc_rotweak = hv_dlc_rotweak
 + sonos_eeol_dlc_rotweak = hv_dlc_rotweak
@@ -45,9 +45,14 @@
 .include "../cells/pfet_g5v0d16v0/sky130_fd_pr__pfet_g5v0d16v0__parasitic__diode_pw2dn.model.spice"
 * call models applicable to any corner
 .include "../cells/pnp_05v5/sky130_fd_pr__pnp_05v5_W0p68L0p68.model.spice"
+.include "../cells/pnp_05v5/sky130_fd_pr__pnp_05v5_W3p40L3p40.model.spice"
+.include "../cells/npn_05v5/sky130_fd_pr__npn_05v5_W1p00L1p00.model.spice"
+.include "../cells/npn_05v5/sky130_fd_pr__npn_05v5_W1p00L2p00.model.spice"
+.include "../cells/npn_11v0/sky130_fd_pr__npn_11v0_W1p00L1p00.model.spice"
 .include "../cells/pfet_g5v0d16v0/sky130_fd_pr__pfet_g5v0d16v0.pm3.spice"
 .include "../cells/pfet_g5v0d16v0/sky130_fd_pr__pfet_g5v0d16v0__subcircuit.pm3.spice"
 .include "../cells/cap_var_lvt/sky130_fd_pr__cap_var_lvt.model.spice"
+.include "../cells/cap_var_hvt/sky130_fd_pr__cap_var_hvt.model.spice"
 .include "../cells/res_iso_pw/sky130_fd_pr__res_iso_pw.model.spice"
 .include "../cells/cap_vpp_08p6x07p8_l1m1m2_noshield/sky130_fd_pr__cap_vpp_08p6x07p8_l1m1m2_noshield_o1.model.spice"
 .include "capacitors/sky130_fd_pr__model__cap_mim.model.spice"
@@ -58,7 +63,7 @@
 .include "head.spice"
 .include "../cells/special_nfet_pass/sky130_fd_pr__special_nfet_pass.pm3.spice"
 .include "../cells/special_nfet_latch/sky130_fd_pr__special_nfet_latch.pm3.spice"
-.include "../cells/special_pfet_pass/sky130_fd_pr__special_pfet_pass.pm3.spice"
+.include "../cells/special_pfet_latch/sky130_fd_pr__special_pfet_latch.pm3.spice"
 .include "../cells/special_nfet_pass_flash/sky130_fd_pr__special_nfet_pass_flash.pm3.spice"
 .include "capacitors/sky130_fd_pr__model__cap_vpp_only_pq.model.spice"
 .include "capacitors/sky130_fd_pr__model__cap_vpp_only_p.model.spice"

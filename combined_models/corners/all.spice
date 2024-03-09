@@ -1,0 +1,89 @@
+* Copyright 2022 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SKY130 Device models
+*----------------------------------------------------------
+* This file includes all legacy discrete models from the
+* original skywater-pdk that are not included in the set
+* of continuous models.
+*
+* This file is used for corner and mismatch simulations.
+* For monte carlo process simulations, use "montecarlo.spice".
+*----------------------------------------------------------
+* The scale option forces all netlists to provide distance
+* units in microns (e.g., 1 micron width is W=1, not W=1u).
+* The first scale option is used by ngspice, the second by
+* Xyce.  Each tool ignores the other's syntax.
+*----------------------------------------------------------
+.option scale=1.0u
+.options parser scale=1.0u
+
+.param
++ lv_dlc_rotweak = .00e-9
++ hv_dlc_rotweak = .00e-9
++ sky130_fd_pr__esd_nfet_01v8__dlc_rotweak = lv_dlc_rotweak
++ sky130_fd_pr__special_nfet_pass__dlc_rotweak = lv_dlc_rotweak
++ sky130_fd_pr__special_nfet_pass_lowleakage__dlc_rotweak = lv_dlc_rotweak
++ sky130_fd_pr__special_nfet_pass_flash__dlc_rotweak = hv_dlc_rotweak
++ sky130_fd_pr__special_nfet_latch__dlc_rotweak = lv_dlc_rotweak
++ sky130_fd_pr__special_nfet_latch_lowleakage__dlc_rotweak = lv_dlc_rotweak
++ sky130_fd_pr__special_pfet_latch__dlc_rotweak = lv_dlc_rotweak
++ sky130_fd_pr__special_pfet_latch_lowleakage__dlc_rotweak = lv_dlc_rotweak
++ sky130_fd_bs_flash__special_sonosfet_star__dlc_rotweak = hv_dlc_rotweak
++ sky130_fd_bs_flash__special_sonosfet_original__dlc_rotweak = hv_dlc_rotweak
++ sonos_eeol_dlc_rotweak = hv_dlc_rotweak
++ sonos_peol_dlc_rotweak = hv_dlc_rotweak
+
+*----------------------------------------------------------
+* Call models applicable to any corner
+*----------------------------------------------------------
+* SONOS models
+*----------------------------------------------------------
+.include "../sonos_p/begin_of_life/mm.spice"
+.include "../sonos_e/begin_of_life/mm.spice"
+* Simple diode models used by some legacy devices0
+.include "../../cells/diode_pd2nw_11v0/sky130_fd_pr__diode_pd2nw_11v0.model.spice"
+.include "../../cells/diode_pd2nw_11v0/sky130_fd_pr__diode_pd2nw_11v0_no_rs.model.spice"
+.include "../../cells/esd_rf_diode_pd2nw_11v0/sky130_fd_pr__esd_rf_diode_pd2nw_11v0_100.model.spice"
+.include "../../cells/esd_rf_diode_pd2nw_11v0/sky130_fd_pr__esd_rf_diode_pd2nw_11v0_200.model.spice"
+.include "../../cells/esd_rf_diode_pd2nw_11v0/sky130_fd_pr__esd_rf_diode_pd2nw_11v0_300.model.spice"
+.include "../../cells/diode_pw2nd_11v0/sky130_fd_pr__diode_pw2nd_11v0.model.spice"
+.include "../../cells/diode_pw2nd_11v0/sky130_fd_pr__diode_pw2nd_11v0_no_rs.model.spice"
+.include "../../cells/esd_rf_diode_pw2nd_11v0/sky130_fd_pr__esd_rf_diode_pw2nd_11v0_100.model.spice"
+.include "../../cells/esd_rf_diode_pw2nd_11v0/sky130_fd_pr__esd_rf_diode_pw2nd_11v0_200.model.spice"
+.include "../../cells/esd_rf_diode_pw2nd_11v0/sky130_fd_pr__esd_rf_diode_pw2nd_11v0_300.model.spice"
+*----------------------------------------------------------
+* Varactor models
+*----------------------------------------------------------
+.include "../../cells/cap_var_hvt/sky130_fd_pr__cap_var_hvt.model.spice"
+.include "../../cells/cap_var_lvt/sky130_fd_pr__cap_var_lvt.model.spice"
+*----------------------------------------------------------
+* SRAM device models
+*----------------------------------------------------------
+.include "../../cells/special_nfet_pass/sky130_fd_pr__special_nfet_pass.pm3.spice"
+.include "../../cells/special_nfet_latch/sky130_fd_pr__special_nfet_latch.pm3.spice"
+.include "../../cells/special_pfet_latch/sky130_fd_pr__special_pfet_latch.pm3.spice"
+.include "../../cells/special_nfet_pass_flash/sky130_fd_pr__special_nfet_pass_flash.pm3.spice"
+*----------------------------------------------------------
+* RF models
+*----------------------------------------------------------
+.param sky130_fd_pr__rf_nfet_01v8_lvt__base__dlc_rotweak=0
+.param sky130_fd_pr__rf_nfet_01v8__base__dlc_rotweak=0
+.param sky130_fd_pr__rf_pfet_01v8__base__dlc_rotweak=0
+.param sky130_fd_pr__rf_nfet_g5v0d10v5__base__dlc_rotweak=0
+.include "../../cells/rf_nfet_g5v0d10v5/sky130_fd_pr__rf_nfet_g5v0d10v5.pm3.spice"
+.include "../../cells/rf_nfet_01v8_lvt/sky130_fd_pr__rf_nfet_01v8_lvt.pm3.spice"
+.include "../../cells/rf_nfet_01v8/sky130_fd_pr__rf_nfet_01v8.pm3.spice"
+.include "../../cells/rf_pfet_01v8/sky130_fd_pr__rf_pfet_01v8.pm3.spice"
+.include "../../cells/rf_pfet_01v8_mvt/sky130_fd_pr__rf_pfet_01v8_mvt.pm3.spice"

@@ -21,14 +21,14 @@
 + cnwvc2_dld=0.0
 * sky130_fd_pr__model__parasitic__diode_ps2nw Parameters
 .param
-+ sky130_fd_pr__model__parasitic__diode_ps2nw__ajunction_mult = 1.000    $ Units: farad/meter^2
-+ sky130_fd_pr__model__parasitic__diode_ps2nw__pjunction_mult = 1.000    $ Units: farad/meter^2
++ sky130_fd_pr__model__parasitic__diode_ps2nw__ajunction_mult = 1.000    ; Units: farad/meter^2
++ sky130_fd_pr__model__parasitic__diode_ps2nw__pjunction_mult = 1.000    ; Units: farad/meter^2
 * sky130_fd_pr__model__parasitic__diode_ps2dn Parameters
-+ sky130_fd_pr__model__parasitic__diode_ps2dn__ajunction_mult = 1.000       $ Units: farad/meter
-+ sky130_fd_pr__model__parasitic__diode_ps2dn__pjunction_mult = 1.000       $ Units: farad/meter
++ sky130_fd_pr__model__parasitic__diode_ps2dn__ajunction_mult = 1.000       ; Units: farad/meter
++ sky130_fd_pr__model__parasitic__diode_ps2dn__pjunction_mult = 1.000       ; Units: farad/meter
 * sky130_fd_pr__model__parasitic__diode_pw2dn Parameters
-+ sky130_fd_pr__model__parasitic__diode_pw2dn__ajunction_mult = 1.0       $ Units: farad/meter
-+ sky130_fd_pr__model__parasitic__diode_pw2dn__pjunction_mult = 1.0       $ Units: farad/meter
++ sky130_fd_pr__model__parasitic__diode_pw2dn__ajunction_mult = 1.0       ; Units: farad/meter
++ sky130_fd_pr__model__parasitic__diode_pw2dn__pjunction_mult = 1.0       ; Units: farad/meter
 * sky130_fd_pr__diode_pw2nd_05v5  Parameters
 + sky130_fd_pr__nfet_01v8__ajunction_mult = 1.0
 + sky130_fd_pr__nfet_01v8__pjunction_mult = 1.0

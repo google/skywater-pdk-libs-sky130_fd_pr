@@ -27,10 +27,17 @@
 *     vary sky130_fd_pr__nfet_01v8__nfactor_slope_spectre dist=gauss std = 1.0
 *   }
 * }
+* "special" standard cell nFET (w < 0.42um) is defined as a regular nFET because its model bins exist there.
+.subckt  sky130_fd_pr__special_nfet_01v8 d g s b
++
+.param  l = 1 w = 1 nf = 1.0 ad = 0 as = 0 pd = 0 ps = 0 nrd = 0 nrs = 0 sa = 0 sb = 0 sd = 0 mult = 1
+xsky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8 l = {l} w = {w} nf = {nf} ad = {ad} as = {as} pd = {pd} ps = {ps} nrd = {nrd} nrs = {nrs} sa = {sa} sb = {sb} sd = {sd}
+.ends
+
 .subckt  sky130_fd_pr__nfet_01v8 d g s b
 + 
-.param  l = 1 w = 1 ad = 0 as = 0 pd = 0 ps = 0 nrd = 0 nrs = 0 sa = 0 sb = 0 sd = 0 mult = 1 nf = 1.0
-msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} ad = {ad} as = {as} pd = {pd} ps = {ps} nrd = {nrd} nrs = {nrs} sa = {sa} sb = {sb} sd = {sd} nf = {nf}
+.param  l = 1 w = 1 nf = 1.0 ad = 0 as = 0 pd = 0 ps = 0 nrd = 0 nrs = 0 sa = 0 sb = 0 sd = 0 mult = 1
+msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} nf = {nf} ad = {ad} as = {as} pd = {pd} ps = {ps} nrd = {nrd} nrs = {nrs} sa = {sa} sb = {sb} sd = {sd}
 .model sky130_fd_pr__nfet_01v8__model.0 nmos
 * DC IV MOS Parameters
 + lmin = 1.45e-07 lmax = 1.55e-07 wmin = 1.255e-06 wmax = 1.265e-6
@@ -82,14 +89,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.49439+sky130_fd_pr__nfet_01v8__vth0_diff_0+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.49439+sky130_fd_pr__nfet_01v8__vth0_diff_0+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.90707349
 + k2 = {-0.12949+sky130_fd_pr__nfet_01v8__k2_diff_0}
 + k3 = 2.0
@@ -133,8 +142,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.20753+sky130_fd_pr__nfet_01v8__voff_diff_0+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {2.015+sky130_fd_pr__nfet_01v8__nfactor_diff_0+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.20753+sky130_fd_pr__nfet_01v8__voff_diff_0+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {2.015+sky130_fd_pr__nfet_01v8__nfactor_diff_0+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -356,14 +367,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.45777+sky130_fd_pr__nfet_01v8__vth0_diff_1+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.45777+sky130_fd_pr__nfet_01v8__vth0_diff_1+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.90707349
 + k2 = {-0.13489+sky130_fd_pr__nfet_01v8__k2_diff_1}
 + k3 = 2.0
@@ -407,8 +420,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.20753+sky130_fd_pr__nfet_01v8__voff_diff_1+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {2.015+sky130_fd_pr__nfet_01v8__nfactor_diff_1+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.20753+sky130_fd_pr__nfet_01v8__voff_diff_1+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {2.015+sky130_fd_pr__nfet_01v8__nfactor_diff_1+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -630,14 +645,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.57666+sky130_fd_pr__nfet_01v8__vth0_diff_2+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.57666+sky130_fd_pr__nfet_01v8__vth0_diff_2+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.47926744
 + k2 = {-0.00734+sky130_fd_pr__nfet_01v8__k2_diff_2}
 + k3 = 2.0
@@ -681,8 +698,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.15134+sky130_fd_pr__nfet_01v8__voff_diff_2+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {0.84726+sky130_fd_pr__nfet_01v8__nfactor_diff_2+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.15134+sky130_fd_pr__nfet_01v8__voff_diff_2+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {0.84726+sky130_fd_pr__nfet_01v8__nfactor_diff_2+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -904,14 +923,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.55639+sky130_fd_pr__nfet_01v8__vth0_diff_3+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.55639+sky130_fd_pr__nfet_01v8__vth0_diff_3+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.53942222
 + k2 = {-0.02714132+sky130_fd_pr__nfet_01v8__k2_diff_3}
 + k3 = 2.0
@@ -955,8 +976,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.12584821+sky130_fd_pr__nfet_01v8__voff_diff_3+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {1.5798554+sky130_fd_pr__nfet_01v8__nfactor_diff_3+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.12584821+sky130_fd_pr__nfet_01v8__voff_diff_3+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {1.5798554+sky130_fd_pr__nfet_01v8__nfactor_diff_3+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -1178,14 +1201,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.54021+sky130_fd_pr__nfet_01v8__vth0_diff_4+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.54021+sky130_fd_pr__nfet_01v8__vth0_diff_4+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.49025322
 + k2 = {-0.012213166+sky130_fd_pr__nfet_01v8__k2_diff_4}
 + k3 = 2.0
@@ -1229,8 +1254,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.1060102+sky130_fd_pr__nfet_01v8__voff_diff_4+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {1.8+sky130_fd_pr__nfet_01v8__nfactor_diff_4+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.1060102+sky130_fd_pr__nfet_01v8__voff_diff_4+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {1.8+sky130_fd_pr__nfet_01v8__nfactor_diff_4+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -1452,14 +1479,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.53654+sky130_fd_pr__nfet_01v8__vth0_diff_5+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.53654+sky130_fd_pr__nfet_01v8__vth0_diff_5+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.47351598
 + k2 = {-0.0058110531+sky130_fd_pr__nfet_01v8__k2_diff_5}
 + k3 = 2.0
@@ -1503,8 +1532,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.11141737+sky130_fd_pr__nfet_01v8__voff_diff_5+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {1.8+sky130_fd_pr__nfet_01v8__nfactor_diff_5+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.11141737+sky130_fd_pr__nfet_01v8__voff_diff_5+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {1.8+sky130_fd_pr__nfet_01v8__nfactor_diff_5+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -1726,14 +1757,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.47461+sky130_fd_pr__nfet_01v8__vth0_diff_6+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.47461+sky130_fd_pr__nfet_01v8__vth0_diff_6+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.90707349
 + k2 = {-0.12949+sky130_fd_pr__nfet_01v8__k2_diff_6}
 + k3 = 2.0
@@ -1777,8 +1810,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.20753+sky130_fd_pr__nfet_01v8__voff_diff_6+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {2.015+sky130_fd_pr__nfet_01v8__nfactor_diff_6+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.20753+sky130_fd_pr__nfet_01v8__voff_diff_6+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {2.015+sky130_fd_pr__nfet_01v8__nfactor_diff_6+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -2000,14 +2035,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.50758+sky130_fd_pr__nfet_01v8__vth0_diff_7+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.50758+sky130_fd_pr__nfet_01v8__vth0_diff_7+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.90707349
 + k2 = {-0.13467+sky130_fd_pr__nfet_01v8__k2_diff_7}
 + k3 = 2.0
@@ -2051,8 +2088,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.20753+sky130_fd_pr__nfet_01v8__voff_diff_7+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {1.209+sky130_fd_pr__nfet_01v8__nfactor_diff_7+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.20753+sky130_fd_pr__nfet_01v8__voff_diff_7+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {1.209+sky130_fd_pr__nfet_01v8__nfactor_diff_7+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -2274,14 +2313,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.54308+sky130_fd_pr__nfet_01v8__vth0_diff_8+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.54308+sky130_fd_pr__nfet_01v8__vth0_diff_8+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.90707349
 + k2 = {-0.14006+sky130_fd_pr__nfet_01v8__k2_diff_8}
 + k3 = 2.0
@@ -2325,8 +2366,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.17848+sky130_fd_pr__nfet_01v8__voff_diff_8+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {1.209+sky130_fd_pr__nfet_01v8__nfactor_diff_8+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.17848+sky130_fd_pr__nfet_01v8__voff_diff_8+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {1.209+sky130_fd_pr__nfet_01v8__nfactor_diff_8+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -2548,14 +2591,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.57726635+sky130_fd_pr__nfet_01v8__vth0_diff_9+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.57726635+sky130_fd_pr__nfet_01v8__vth0_diff_9+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.56348836
 + k2 = {-0.040381304+sky130_fd_pr__nfet_01v8__k2_diff_9}
 + k3 = 2.0
@@ -2599,8 +2644,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.14543985+sky130_fd_pr__nfet_01v8__voff_diff_9+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {1.7093856+sky130_fd_pr__nfet_01v8__nfactor_diff_9+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.14543985+sky130_fd_pr__nfet_01v8__voff_diff_9+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {1.7093856+sky130_fd_pr__nfet_01v8__nfactor_diff_9+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -2822,14 +2869,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.45777+sky130_fd_pr__nfet_01v8__vth0_diff_10+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.45777+sky130_fd_pr__nfet_01v8__vth0_diff_10+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.90707349
 + k2 = {-0.13489+sky130_fd_pr__nfet_01v8__k2_diff_10}
 + k3 = 2.0
@@ -2873,8 +2922,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.20753+sky130_fd_pr__nfet_01v8__voff_diff_10+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {2.015+sky130_fd_pr__nfet_01v8__nfactor_diff_10+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.20753+sky130_fd_pr__nfet_01v8__voff_diff_10+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {2.015+sky130_fd_pr__nfet_01v8__nfactor_diff_10+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -3096,14 +3147,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.56797+sky130_fd_pr__nfet_01v8__vth0_diff_11+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.56797+sky130_fd_pr__nfet_01v8__vth0_diff_11+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.50655102
 + k2 = {-0.017147679+sky130_fd_pr__nfet_01v8__k2_diff_11}
 + k3 = 2.0
@@ -3147,8 +3200,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.13377387+sky130_fd_pr__nfet_01v8__voff_diff_11+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {1.3879762+sky130_fd_pr__nfet_01v8__nfactor_diff_11+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.13377387+sky130_fd_pr__nfet_01v8__voff_diff_11+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {1.3879762+sky130_fd_pr__nfet_01v8__nfactor_diff_11+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -3370,14 +3425,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.54406+sky130_fd_pr__nfet_01v8__vth0_diff_12+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.54406+sky130_fd_pr__nfet_01v8__vth0_diff_12+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.56914885
 + k2 = {-0.043416987+sky130_fd_pr__nfet_01v8__k2_diff_12}
 + k3 = 2.0
@@ -3421,8 +3478,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.10092566+sky130_fd_pr__nfet_01v8__voff_diff_12+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {1.8+sky130_fd_pr__nfet_01v8__nfactor_diff_12+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.10092566+sky130_fd_pr__nfet_01v8__voff_diff_12+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {1.8+sky130_fd_pr__nfet_01v8__nfactor_diff_12+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -3644,14 +3703,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.53706+sky130_fd_pr__nfet_01v8__vth0_diff_13+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.53706+sky130_fd_pr__nfet_01v8__vth0_diff_13+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.55462267
 + k2 = {-0.037104101+sky130_fd_pr__nfet_01v8__k2_diff_13}
 + k3 = 2.0
@@ -3695,8 +3756,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.10370521+sky130_fd_pr__nfet_01v8__voff_diff_13+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {1.8+sky130_fd_pr__nfet_01v8__nfactor_diff_13+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.10370521+sky130_fd_pr__nfet_01v8__voff_diff_13+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {1.8+sky130_fd_pr__nfet_01v8__nfactor_diff_13+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -3918,14 +3981,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.52903+sky130_fd_pr__nfet_01v8__vth0_diff_14+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.52903+sky130_fd_pr__nfet_01v8__vth0_diff_14+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.55146741
 + k2 = {-0.034414452+sky130_fd_pr__nfet_01v8__k2_diff_14}
 + k3 = 2.0
@@ -3969,8 +4034,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.10574827+sky130_fd_pr__nfet_01v8__voff_diff_14+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {1.8+sky130_fd_pr__nfet_01v8__nfactor_diff_14+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.10574827+sky130_fd_pr__nfet_01v8__voff_diff_14+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {1.8+sky130_fd_pr__nfet_01v8__nfactor_diff_14+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -4192,14 +4259,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.45777+sky130_fd_pr__nfet_01v8__vth0_diff_15+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.45777+sky130_fd_pr__nfet_01v8__vth0_diff_15+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.90707349
 + k2 = {-0.14051+sky130_fd_pr__nfet_01v8__k2_diff_15}
 + k3 = 2.0
@@ -4243,8 +4312,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.18204+sky130_fd_pr__nfet_01v8__voff_diff_15+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {2.2389+sky130_fd_pr__nfet_01v8__nfactor_diff_15+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.18204+sky130_fd_pr__nfet_01v8__voff_diff_15+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {2.2389+sky130_fd_pr__nfet_01v8__nfactor_diff_15+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -4466,14 +4537,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.49439+sky130_fd_pr__nfet_01v8__vth0_diff_16+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.49439+sky130_fd_pr__nfet_01v8__vth0_diff_16+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.90707349
 + k2 = {-0.14051+sky130_fd_pr__nfet_01v8__k2_diff_16}
 + k3 = 2.0
@@ -4517,8 +4590,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.18204+sky130_fd_pr__nfet_01v8__voff_diff_16+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {1.7911+sky130_fd_pr__nfet_01v8__nfactor_diff_16+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.18204+sky130_fd_pr__nfet_01v8__voff_diff_16+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {1.7911+sky130_fd_pr__nfet_01v8__nfactor_diff_16+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -4740,14 +4815,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.54854+sky130_fd_pr__nfet_01v8__vth0_diff_17+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.54854+sky130_fd_pr__nfet_01v8__vth0_diff_17+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.77890192
 + k2 = {-0.09820953+sky130_fd_pr__nfet_01v8__k2_diff_17}
 + k3 = 2.0
@@ -4791,8 +4868,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.1450501+sky130_fd_pr__nfet_01v8__voff_diff_17+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {1.6674737+sky130_fd_pr__nfet_01v8__nfactor_diff_17+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.1450501+sky130_fd_pr__nfet_01v8__voff_diff_17+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {1.6674737+sky130_fd_pr__nfet_01v8__nfactor_diff_17+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -5014,14 +5093,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.58344+sky130_fd_pr__nfet_01v8__vth0_diff_18+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.58344+sky130_fd_pr__nfet_01v8__vth0_diff_18+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.57718752
 + k2 = {-0.044213929+sky130_fd_pr__nfet_01v8__k2_diff_18}
 + k3 = 2.0
@@ -5065,8 +5146,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.1394277+sky130_fd_pr__nfet_01v8__voff_diff_18+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {1.8160129+sky130_fd_pr__nfet_01v8__nfactor_diff_18+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.1394277+sky130_fd_pr__nfet_01v8__voff_diff_18+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {1.8160129+sky130_fd_pr__nfet_01v8__nfactor_diff_18+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -5288,14 +5371,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.5565+sky130_fd_pr__nfet_01v8__vth0_diff_19+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.5565+sky130_fd_pr__nfet_01v8__vth0_diff_19+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.57126962
 + k2 = {-0.046981026+sky130_fd_pr__nfet_01v8__k2_diff_19}
 + k3 = 2.0
@@ -5339,8 +5424,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.12341816+sky130_fd_pr__nfet_01v8__voff_diff_19+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {1.6787831+sky130_fd_pr__nfet_01v8__nfactor_diff_19+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.12341816+sky130_fd_pr__nfet_01v8__voff_diff_19+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {1.6787831+sky130_fd_pr__nfet_01v8__nfactor_diff_19+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -5562,14 +5649,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.54545+sky130_fd_pr__nfet_01v8__vth0_diff_20+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.54545+sky130_fd_pr__nfet_01v8__vth0_diff_20+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.56069487
 + k2 = {-0.041367273+sky130_fd_pr__nfet_01v8__k2_diff_20}
 + k3 = 2.0
@@ -5613,8 +5702,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.0991204+sky130_fd_pr__nfet_01v8__voff_diff_20+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {1.8+sky130_fd_pr__nfet_01v8__nfactor_diff_20+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.0991204+sky130_fd_pr__nfet_01v8__voff_diff_20+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {1.8+sky130_fd_pr__nfet_01v8__nfactor_diff_20+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -5836,14 +5927,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.53656+sky130_fd_pr__nfet_01v8__vth0_diff_21+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.53656+sky130_fd_pr__nfet_01v8__vth0_diff_21+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.55023127
 + k2 = {-0.035260333+sky130_fd_pr__nfet_01v8__k2_diff_21}
 + k3 = 2.0
@@ -5887,8 +5980,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.10282899+sky130_fd_pr__nfet_01v8__voff_diff_21+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {1.8+sky130_fd_pr__nfet_01v8__nfactor_diff_21+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.10282899+sky130_fd_pr__nfet_01v8__voff_diff_21+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {1.8+sky130_fd_pr__nfet_01v8__nfactor_diff_21+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -6110,14 +6205,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.52276+sky130_fd_pr__nfet_01v8__vth0_diff_22+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.52276+sky130_fd_pr__nfet_01v8__vth0_diff_22+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.54240333
 + k2 = {-0.031837301+sky130_fd_pr__nfet_01v8__k2_diff_22}
 + k3 = 2.0
@@ -6161,8 +6258,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.10408056+sky130_fd_pr__nfet_01v8__voff_diff_22+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {1.8+sky130_fd_pr__nfet_01v8__nfactor_diff_22+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.10408056+sky130_fd_pr__nfet_01v8__voff_diff_22+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {1.8+sky130_fd_pr__nfet_01v8__nfactor_diff_22+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -6384,14 +6483,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.42361+sky130_fd_pr__nfet_01v8__vth0_diff_23+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.42361+sky130_fd_pr__nfet_01v8__vth0_diff_23+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.90167256
 + k2 = {-0.12414+sky130_fd_pr__nfet_01v8__k2_diff_23}
 + k3 = 2.0
@@ -6435,8 +6536,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.16464+sky130_fd_pr__nfet_01v8__voff_diff_23+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {1.9738+sky130_fd_pr__nfet_01v8__nfactor_diff_23+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.16464+sky130_fd_pr__nfet_01v8__voff_diff_23+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {1.9738+sky130_fd_pr__nfet_01v8__nfactor_diff_23+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -6658,14 +6761,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.48265+sky130_fd_pr__nfet_01v8__vth0_diff_24+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.48265+sky130_fd_pr__nfet_01v8__vth0_diff_24+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.88719062
 + k2 = {-0.12944+sky130_fd_pr__nfet_01v8__k2_diff_24}
 + k3 = 2.0
@@ -6709,8 +6814,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.14634+sky130_fd_pr__nfet_01v8__voff_diff_24+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {1.7368+sky130_fd_pr__nfet_01v8__nfactor_diff_24+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.14634+sky130_fd_pr__nfet_01v8__voff_diff_24+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {1.7368+sky130_fd_pr__nfet_01v8__nfactor_diff_24+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -6932,14 +7039,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.53379+sky130_fd_pr__nfet_01v8__vth0_diff_25+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.53379+sky130_fd_pr__nfet_01v8__vth0_diff_25+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.7651852
 + k2 = {-0.093246775+sky130_fd_pr__nfet_01v8__k2_diff_25}
 + k3 = 2.0
@@ -6983,8 +7092,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.14315115+sky130_fd_pr__nfet_01v8__voff_diff_25+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {1.7329074+sky130_fd_pr__nfet_01v8__nfactor_diff_25+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.14315115+sky130_fd_pr__nfet_01v8__voff_diff_25+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {1.7329074+sky130_fd_pr__nfet_01v8__nfactor_diff_25+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -7206,14 +7317,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.58492159+sky130_fd_pr__nfet_01v8__vth0_diff_26+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.58492159+sky130_fd_pr__nfet_01v8__vth0_diff_26+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.47758412
 + k2 = {-0.0092134864+sky130_fd_pr__nfet_01v8__k2_diff_26}
 + k3 = 2.0
@@ -7257,8 +7370,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.13972753+sky130_fd_pr__nfet_01v8__voff_diff_26+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {1.5922074+sky130_fd_pr__nfet_01v8__nfactor_diff_26+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.13972753+sky130_fd_pr__nfet_01v8__voff_diff_26+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {1.5922074+sky130_fd_pr__nfet_01v8__nfactor_diff_26+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -7480,14 +7595,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.56984+sky130_fd_pr__nfet_01v8__vth0_diff_27+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.56984+sky130_fd_pr__nfet_01v8__vth0_diff_27+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.58363587
 + k2 = {-0.050449684+sky130_fd_pr__nfet_01v8__k2_diff_27}
 + k3 = 2.0
@@ -7531,8 +7648,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.12063615+sky130_fd_pr__nfet_01v8__voff_diff_27+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {1.6637647+sky130_fd_pr__nfet_01v8__nfactor_diff_27+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.12063615+sky130_fd_pr__nfet_01v8__voff_diff_27+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {1.6637647+sky130_fd_pr__nfet_01v8__nfactor_diff_27+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -7754,14 +7873,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.53889+sky130_fd_pr__nfet_01v8__vth0_diff_28+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.53889+sky130_fd_pr__nfet_01v8__vth0_diff_28+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.5498852
 + k2 = {-0.038377686+sky130_fd_pr__nfet_01v8__k2_diff_28}
 + k3 = 2.0
@@ -7805,8 +7926,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.10191764+sky130_fd_pr__nfet_01v8__voff_diff_28+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {1.8+sky130_fd_pr__nfet_01v8__nfactor_diff_28+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.10191764+sky130_fd_pr__nfet_01v8__voff_diff_28+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {1.8+sky130_fd_pr__nfet_01v8__nfactor_diff_28+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -8028,14 +8151,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.53475+sky130_fd_pr__nfet_01v8__vth0_diff_29+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope1/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.53475+sky130_fd_pr__nfet_01v8__vth0_diff_29+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope1/sqrt(l*w*mult))}
 + k1 = 0.55001325
 + k2 = {-0.035329605+sky130_fd_pr__nfet_01v8__k2_diff_29}
 + k3 = 2.0
@@ -8079,8 +8204,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.10164906+sky130_fd_pr__nfet_01v8__voff_diff_29+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {1.8+sky130_fd_pr__nfet_01v8__nfactor_diff_29+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.10164906+sky130_fd_pr__nfet_01v8__voff_diff_29+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {1.8+sky130_fd_pr__nfet_01v8__nfactor_diff_29+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -8302,14 +8429,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.5214+sky130_fd_pr__nfet_01v8__vth0_diff_30+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.5214+sky130_fd_pr__nfet_01v8__vth0_diff_30+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.54086565
 + k2 = {-0.031031091+sky130_fd_pr__nfet_01v8__k2_diff_30}
 + k3 = 2.0
@@ -8353,8 +8482,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.1052686+sky130_fd_pr__nfet_01v8__voff_diff_30+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {1.8+sky130_fd_pr__nfet_01v8__nfactor_diff_30+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.1052686+sky130_fd_pr__nfet_01v8__voff_diff_30+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {1.8+sky130_fd_pr__nfet_01v8__nfactor_diff_30+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -8576,14 +8707,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.43529+sky130_fd_pr__nfet_01v8__vth0_diff_31+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope1/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.43529+sky130_fd_pr__nfet_01v8__vth0_diff_31+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope1/sqrt(l*w*mult))}
 + k1 = 0.90272985
 + k2 = {-0.12855+sky130_fd_pr__nfet_01v8__k2_diff_31}
 + k3 = 2.0
@@ -8627,8 +8760,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.21786+sky130_fd_pr__nfet_01v8__voff_diff_31+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {1.9783+sky130_fd_pr__nfet_01v8__nfactor_diff_31+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.21786+sky130_fd_pr__nfet_01v8__voff_diff_31+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {1.9783+sky130_fd_pr__nfet_01v8__nfactor_diff_31+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -8850,14 +8985,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.48847+sky130_fd_pr__nfet_01v8__vth0_diff_32+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.48847+sky130_fd_pr__nfet_01v8__vth0_diff_32+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.88672771
 + k2 = {-0.13044547+sky130_fd_pr__nfet_01v8__k2_diff_32}
 + k3 = 2.0
@@ -8901,8 +9038,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.15486+sky130_fd_pr__nfet_01v8__voff_diff_32+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {1.6549+sky130_fd_pr__nfet_01v8__nfactor_diff_32+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.15486+sky130_fd_pr__nfet_01v8__voff_diff_32+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {1.6549+sky130_fd_pr__nfet_01v8__nfactor_diff_32+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -9124,14 +9263,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.53303+sky130_fd_pr__nfet_01v8__vth0_diff_33+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.53303+sky130_fd_pr__nfet_01v8__vth0_diff_33+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.76175334
 + k2 = {-0.092823426+sky130_fd_pr__nfet_01v8__k2_diff_33}
 + k3 = 2.0
@@ -9175,8 +9316,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.1423314+sky130_fd_pr__nfet_01v8__voff_diff_33+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {1.8066026+sky130_fd_pr__nfet_01v8__nfactor_diff_33+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.1423314+sky130_fd_pr__nfet_01v8__voff_diff_33+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {1.8066026+sky130_fd_pr__nfet_01v8__nfactor_diff_33+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -9398,14 +9541,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.58177+sky130_fd_pr__nfet_01v8__vth0_diff_34+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.58177+sky130_fd_pr__nfet_01v8__vth0_diff_34+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.48574418
 + k2 = {-0.010465693+sky130_fd_pr__nfet_01v8__k2_diff_34}
 + k3 = 2.0
@@ -9449,8 +9594,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.13427734+sky130_fd_pr__nfet_01v8__voff_diff_34+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {1.7157106+sky130_fd_pr__nfet_01v8__nfactor_diff_34+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.13427734+sky130_fd_pr__nfet_01v8__voff_diff_34+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {1.7157106+sky130_fd_pr__nfet_01v8__nfactor_diff_34+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -9672,14 +9819,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.53913942+sky130_fd_pr__nfet_01v8__vth0_diff_35+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.53913942+sky130_fd_pr__nfet_01v8__vth0_diff_35+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.58562329
 + k2 = {-0.056895912+sky130_fd_pr__nfet_01v8__k2_diff_35}
 + k3 = 2.0
@@ -9723,8 +9872,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.11956669+sky130_fd_pr__nfet_01v8__voff_diff_35+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {1.5286687+sky130_fd_pr__nfet_01v8__nfactor_diff_35+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.11956669+sky130_fd_pr__nfet_01v8__voff_diff_35+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {1.5286687+sky130_fd_pr__nfet_01v8__nfactor_diff_35+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -9946,14 +10097,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.49711+sky130_fd_pr__nfet_01v8__vth0_diff_36+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.49711+sky130_fd_pr__nfet_01v8__vth0_diff_36+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.56800772
 + k2 = {-0.041590846+sky130_fd_pr__nfet_01v8__k2_diff_36}
 + k3 = 2.0
@@ -9997,8 +10150,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.10827784+sky130_fd_pr__nfet_01v8__voff_diff_36+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {1.8+sky130_fd_pr__nfet_01v8__nfactor_diff_36+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.10827784+sky130_fd_pr__nfet_01v8__voff_diff_36+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {1.8+sky130_fd_pr__nfet_01v8__nfactor_diff_36+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -10220,14 +10375,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.55051256+sky130_fd_pr__nfet_01v8__vth0_diff_37+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.55051256+sky130_fd_pr__nfet_01v8__vth0_diff_37+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.6038851
 + k2 = {-0.063708056+sky130_fd_pr__nfet_01v8__k2_diff_37}
 + k3 = 2.0
@@ -10271,8 +10428,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.10864023+sky130_fd_pr__nfet_01v8__voff_diff_37+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {1.8+sky130_fd_pr__nfet_01v8__nfactor_diff_37+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.10864023+sky130_fd_pr__nfet_01v8__voff_diff_37+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {1.8+sky130_fd_pr__nfet_01v8__nfactor_diff_37+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -10494,14 +10653,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.53566+sky130_fd_pr__nfet_01v8__vth0_diff_38+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope1/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.53566+sky130_fd_pr__nfet_01v8__vth0_diff_38+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope1/sqrt(l*w*mult))}
 + k1 = 0.56269175
 + k2 = {-0.049175583+sky130_fd_pr__nfet_01v8__k2_diff_38}
 + k3 = 2.0
@@ -10545,8 +10706,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.1101223+sky130_fd_pr__nfet_01v8__voff_diff_38+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {1.8+sky130_fd_pr__nfet_01v8__nfactor_diff_38+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.1101223+sky130_fd_pr__nfet_01v8__voff_diff_38+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {1.8+sky130_fd_pr__nfet_01v8__nfactor_diff_38+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -10768,14 +10931,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.51412+sky130_fd_pr__nfet_01v8__vth0_diff_39+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.51412+sky130_fd_pr__nfet_01v8__vth0_diff_39+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.585057
 + k2 = {-0.049134061+sky130_fd_pr__nfet_01v8__k2_diff_39}
 + k3 = 2.0
@@ -10819,8 +10984,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.11808229+sky130_fd_pr__nfet_01v8__voff_diff_39+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {1.8+sky130_fd_pr__nfet_01v8__nfactor_diff_39+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.11808229+sky130_fd_pr__nfet_01v8__voff_diff_39+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {1.8+sky130_fd_pr__nfet_01v8__nfactor_diff_39+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -11042,14 +11209,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.42664+sky130_fd_pr__nfet_01v8__vth0_diff_40+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.42664+sky130_fd_pr__nfet_01v8__vth0_diff_40+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.90707349
 + k2 = {-0.14006+sky130_fd_pr__nfet_01v8__k2_diff_40}
 + k3 = 2.0
@@ -11093,8 +11262,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.20753+sky130_fd_pr__nfet_01v8__voff_diff_40+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {1.612+sky130_fd_pr__nfet_01v8__nfactor_diff_40+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.20753+sky130_fd_pr__nfet_01v8__voff_diff_40+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {1.612+sky130_fd_pr__nfet_01v8__nfactor_diff_40+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -11316,14 +11487,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.48404+sky130_fd_pr__nfet_01v8__vth0_diff_41+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.48404+sky130_fd_pr__nfet_01v8__vth0_diff_41+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.90707349
 + k2 = {-0.14006+sky130_fd_pr__nfet_01v8__k2_diff_41}
 + k3 = 2.0
@@ -11367,8 +11540,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.20753+sky130_fd_pr__nfet_01v8__voff_diff_41+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {0.87048+sky130_fd_pr__nfet_01v8__nfactor_diff_41+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.20753+sky130_fd_pr__nfet_01v8__voff_diff_41+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {0.87048+sky130_fd_pr__nfet_01v8__nfactor_diff_41+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -11590,14 +11765,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.55302+sky130_fd_pr__nfet_01v8__vth0_diff_42+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.55302+sky130_fd_pr__nfet_01v8__vth0_diff_42+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.57549796
 + k2 = {-0.056325504+sky130_fd_pr__nfet_01v8__k2_diff_42}
 + k3 = 2.0
@@ -11641,8 +11818,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.1331126+sky130_fd_pr__nfet_01v8__voff_diff_42+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {1.7358334+sky130_fd_pr__nfet_01v8__nfactor_diff_42+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.1331126+sky130_fd_pr__nfet_01v8__voff_diff_42+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {1.7358334+sky130_fd_pr__nfet_01v8__nfactor_diff_42+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -11864,14 +12043,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.54988+sky130_fd_pr__nfet_01v8__vth0_diff_43+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.54988+sky130_fd_pr__nfet_01v8__vth0_diff_43+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.55418882
 + k2 = {-0.045978853+sky130_fd_pr__nfet_01v8__k2_diff_43}
 + k3 = 2.0
@@ -11915,8 +12096,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.1346663+sky130_fd_pr__nfet_01v8__voff_diff_43+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {1.3985224+sky130_fd_pr__nfet_01v8__nfactor_diff_43+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.1346663+sky130_fd_pr__nfet_01v8__voff_diff_43+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {1.3985224+sky130_fd_pr__nfet_01v8__nfactor_diff_43+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -12138,14 +12321,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.54039+sky130_fd_pr__nfet_01v8__vth0_diff_44+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.54039+sky130_fd_pr__nfet_01v8__vth0_diff_44+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.57309884
 + k2 = {-0.05049203+sky130_fd_pr__nfet_01v8__k2_diff_44}
 + k3 = 2.0
@@ -12189,8 +12374,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.09931841+sky130_fd_pr__nfet_01v8__voff_diff_44+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {1.8+sky130_fd_pr__nfet_01v8__nfactor_diff_44+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.09931841+sky130_fd_pr__nfet_01v8__voff_diff_44+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {1.8+sky130_fd_pr__nfet_01v8__nfactor_diff_44+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -12412,14 +12599,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.5364+sky130_fd_pr__nfet_01v8__vth0_diff_45+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.5364+sky130_fd_pr__nfet_01v8__vth0_diff_45+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.56608288
 + k2 = {-0.045363238+sky130_fd_pr__nfet_01v8__k2_diff_45}
 + k3 = 2.0
@@ -12463,8 +12652,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.11839262+sky130_fd_pr__nfet_01v8__voff_diff_45+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {1.7745196+sky130_fd_pr__nfet_01v8__nfactor_diff_45+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.11839262+sky130_fd_pr__nfet_01v8__voff_diff_45+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {1.7745196+sky130_fd_pr__nfet_01v8__nfactor_diff_45+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -12686,14 +12877,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.52187+sky130_fd_pr__nfet_01v8__vth0_diff_46+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.52187+sky130_fd_pr__nfet_01v8__vth0_diff_46+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.50132234
 + k2 = {-0.017423723+sky130_fd_pr__nfet_01v8__k2_diff_46}
 + k3 = 2.0
@@ -12737,8 +12930,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.11819485+sky130_fd_pr__nfet_01v8__voff_diff_46+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {1.8+sky130_fd_pr__nfet_01v8__nfactor_diff_46+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.11819485+sky130_fd_pr__nfet_01v8__voff_diff_46+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {1.8+sky130_fd_pr__nfet_01v8__nfactor_diff_46+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -12960,14 +13155,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.46461+sky130_fd_pr__nfet_01v8__vth0_diff_47+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.46461+sky130_fd_pr__nfet_01v8__vth0_diff_47+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.90707349
 + k2 = {-0.13467+sky130_fd_pr__nfet_01v8__k2_diff_47}
 + k3 = 2.0
@@ -13011,8 +13208,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.20753+sky130_fd_pr__nfet_01v8__voff_diff_47+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {2.015+sky130_fd_pr__nfet_01v8__nfactor_diff_47+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.20753+sky130_fd_pr__nfet_01v8__voff_diff_47+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {2.015+sky130_fd_pr__nfet_01v8__nfactor_diff_47+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -13234,14 +13433,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.57828+sky130_fd_pr__nfet_01v8__vth0_diff_48+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.57828+sky130_fd_pr__nfet_01v8__vth0_diff_48+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.47498405
 + k2 = {-0.011809992+sky130_fd_pr__nfet_01v8__k2_diff_48}
 + k3 = 2.0
@@ -13285,8 +13486,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.14363643+sky130_fd_pr__nfet_01v8__voff_diff_48+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {1.3263601+sky130_fd_pr__nfet_01v8__nfactor_diff_48+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.14363643+sky130_fd_pr__nfet_01v8__voff_diff_48+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {1.3263601+sky130_fd_pr__nfet_01v8__nfactor_diff_48+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -13508,14 +13711,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.45263+sky130_fd_pr__nfet_01v8__vth0_diff_49+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.45263+sky130_fd_pr__nfet_01v8__vth0_diff_49+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.90707349
 + k2 = {-0.13467+sky130_fd_pr__nfet_01v8__k2_diff_49}
 + k3 = 2.0
@@ -13559,8 +13764,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.20753+sky130_fd_pr__nfet_01v8__voff_diff_49+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {2.015+sky130_fd_pr__nfet_01v8__nfactor_diff_49+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.20753+sky130_fd_pr__nfet_01v8__voff_diff_49+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {2.015+sky130_fd_pr__nfet_01v8__nfactor_diff_49+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -13782,14 +13989,16 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoib = 9.9e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-009*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_01v8__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.48208+sky130_fd_pr__nfet_01v8__vth0_diff_50+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.48208+sky130_fd_pr__nfet_01v8__vth0_diff_50+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.90707349
 + k2 = {-0.12659+sky130_fd_pr__nfet_01v8__k2_diff_50}
 + k3 = 2.0
@@ -13833,8 +14042,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {-0.20753+sky130_fd_pr__nfet_01v8__voff_diff_50+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {2.015+sky130_fd_pr__nfet_01v8__nfactor_diff_50+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.20753+sky130_fd_pr__nfet_01v8__voff_diff_50+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {2.015+sky130_fd_pr__nfet_01v8__nfactor_diff_50+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0
@@ -14027,7 +14238,8 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoimod = 1.0
 + tempmod = 0.0
 * Process Parameters
-+ toxe = {4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-9*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-9*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + toxm = 4.148e-9
 + dtox = 0.0
 + epsrox = 3.9
@@ -14040,7 +14252,8 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 * Basic Model Parameters
 + wint = {2.1859e-08+sky130_fd_pr__nfet_01v8__wint_diff}
 + lint = {1.1932e-08+sky130_fd_pr__nfet_01v8__lint_diff}
-+ vth0 = {0.464338660470898+sky130_fd_pr__nfet_01v8__vth0_diff_51+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.464338660470898+sky130_fd_pr__nfet_01v8__vth0_diff_51+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.90707349
 + k2 = {-0.127858968273573+sky130_fd_pr__nfet_01v8__k2_diff_51}
 + k3 = 2.0
@@ -14065,8 +14278,10 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + cdscb = 0.0
 + cdscd = 0.002052000000013
 + cit = 0.0
-+ voff = {-0.20753+sky130_fd_pr__nfet_01v8__voff_diff_51+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {2.39756756778143+sky130_fd_pr__nfet_01v8__nfactor_diff_51+sky130_fd_pr__nfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.20753+sky130_fd_pr__nfet_01v8__voff_diff_51+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__nfactor_slope_spectre)
++ nfactor = {2.39756756778143+sky130_fd_pr__nfet_01v8__nfactor_diff_51+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__nfactor_slope/sqrt(l*w*mult))}
 + eta0 = {3.01616370768087e-14+sky130_fd_pr__nfet_01v8__eta0_diff_51}
 + etab = -0.043998
 + u0 = {0.026727469834636+sky130_fd_pr__nfet_01v8__u0_diff_51}
@@ -14295,7 +14510,8 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoimod = 1.0
 + tempmod = 0.0
 * Process Parameters
-+ toxe = {4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-9*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-9*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + toxm = 4.148e-9
 + dtox = 0.0
 + epsrox = 3.9
@@ -14308,7 +14524,8 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 * Basic Model Parameters
 + wint = {2.1859e-08+sky130_fd_pr__nfet_01v8__wint_diff}
 + lint = {1.1932e-08+sky130_fd_pr__nfet_01v8__lint_diff}
-+ vth0 = {0.294216+sky130_fd_pr__nfet_01v8__vth0_diff_52+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.294216+sky130_fd_pr__nfet_01v8__vth0_diff_52+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.90707349
 + k2 = {-0.164979+sky130_fd_pr__nfet_01v8__k2_diff_52}
 + k3 = 2.0
@@ -14333,7 +14550,8 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + cdscb = 0.0
 + cdscd = 0.002052
 + cit = 0.0
-+ voff = {-0.20753+sky130_fd_pr__nfet_01v8__voff_diff_52+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.20753+sky130_fd_pr__nfet_01v8__voff_diff_52+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
 + nfactor = {2.11251750684601+sky130_fd_pr__nfet_01v8__nfactor_diff_52}
 + eta0 = {0.0+sky130_fd_pr__nfet_01v8__eta0_diff_52}
 + etab = -0.043998
@@ -14563,7 +14781,8 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoimod = 1.0
 + tempmod = 0.0
 * Process Parameters
-+ toxe = {4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-9*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-9*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + toxm = 4.148e-9
 + dtox = 0.0
 + epsrox = 3.9
@@ -14576,7 +14795,8 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 * Basic Model Parameters
 + wint = {2.1859e-08+sky130_fd_pr__nfet_01v8__wint_diff}
 + lint = {1.1932e-08+sky130_fd_pr__nfet_01v8__lint_diff}
-+ vth0 = {0.3288413+sky130_fd_pr__nfet_01v8__vth0_diff_53+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.3288413+sky130_fd_pr__nfet_01v8__vth0_diff_53+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.90707349
 + k2 = {-0.157868+sky130_fd_pr__nfet_01v8__k2_diff_53}
 + k3 = 2.0
@@ -14601,7 +14821,8 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + cdscb = 0.0
 + cdscd = 0.002052
 + cit = 0.0
-+ voff = {-0.20753+sky130_fd_pr__nfet_01v8__voff_diff_53+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.20753+sky130_fd_pr__nfet_01v8__voff_diff_53+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
 + nfactor = {2.23668316177219+sky130_fd_pr__nfet_01v8__nfactor_diff_53}
 + eta0 = {0.0+sky130_fd_pr__nfet_01v8__eta0_diff_53}
 + etab = -0.043998
@@ -14831,7 +15052,8 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoimod = 1.0
 + tempmod = 0.0
 * Process Parameters
-+ toxe = {4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-9*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-9*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + toxm = 4.148e-9
 + dtox = 0.0
 + epsrox = 3.9
@@ -14844,7 +15066,8 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 * Basic Model Parameters
 + wint = {2.1859e-08+sky130_fd_pr__nfet_01v8__wint_diff}
 + lint = {1.1932e-08+sky130_fd_pr__nfet_01v8__lint_diff}
-+ vth0 = {0.418842762400781+sky130_fd_pr__nfet_01v8__vth0_diff_54+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.418842762400781+sky130_fd_pr__nfet_01v8__vth0_diff_54+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.90707349
 + k2 = {-0.134449331650343+sky130_fd_pr__nfet_01v8__k2_diff_54}
 + k3 = 2.0
@@ -14869,7 +15092,8 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + cdscb = 0.0
 + cdscd = 0.002052
 + cit = 0.0
-+ voff = {-0.20753+sky130_fd_pr__nfet_01v8__voff_diff_54+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.20753+sky130_fd_pr__nfet_01v8__voff_diff_54+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
 + nfactor = {2.59398387978356+sky130_fd_pr__nfet_01v8__nfactor_diff_54}
 + eta0 = {0.000567585745965331+sky130_fd_pr__nfet_01v8__eta0_diff_54}
 + etab = -0.043998
@@ -15099,7 +15323,8 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoimod = 1.0
 + tempmod = 0.0
 * Process Parameters
-+ toxe = {4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-9*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-9*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + toxm = 4.148e-9
 + dtox = 0.0
 + epsrox = 3.9
@@ -15112,7 +15337,8 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 * Basic Model Parameters
 + wint = {2.1859e-08+sky130_fd_pr__nfet_01v8__wint_diff}
 + lint = {1.1932e-08+sky130_fd_pr__nfet_01v8__lint_diff}
-+ vth0 = {0.423940356524315+sky130_fd_pr__nfet_01v8__vth0_diff_55+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.423940356524315+sky130_fd_pr__nfet_01v8__vth0_diff_55+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.90707349
 + k2 = {-0.133949697045732+sky130_fd_pr__nfet_01v8__k2_diff_55}
 + k3 = 2.0
@@ -15137,7 +15363,8 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + cdscb = 0.0
 + cdscd = 0.002052
 + cit = 0.0
-+ voff = {-0.20753+sky130_fd_pr__nfet_01v8__voff_diff_55+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.20753+sky130_fd_pr__nfet_01v8__voff_diff_55+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
 + nfactor = {2.63233887436463+sky130_fd_pr__nfet_01v8__nfactor_diff_55}
 + eta0 = {0.000653654633574984+sky130_fd_pr__nfet_01v8__eta0_diff_55}
 + etab = -0.043998
@@ -15367,7 +15594,8 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoimod = 1.0
 + tempmod = 0.0
 * Process Parameters
-+ toxe = {4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-9*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-9*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + toxm = 4.148e-9
 + dtox = 0.0
 + epsrox = 3.9
@@ -15380,7 +15608,8 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 * Basic Model Parameters
 + wint = {2.1859e-08+sky130_fd_pr__nfet_01v8__wint_diff}
 + lint = {1.1932e-08+sky130_fd_pr__nfet_01v8__lint_diff}
-+ vth0 = {0.432023091850352+sky130_fd_pr__nfet_01v8__vth0_diff_56+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.432023091850352+sky130_fd_pr__nfet_01v8__vth0_diff_56+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.90707349
 + k2 = {-0.133259025374029+sky130_fd_pr__nfet_01v8__k2_diff_56}
 + k3 = 2.0
@@ -15405,7 +15634,8 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + cdscb = 0.0
 + cdscd = 0.002052
 + cit = 0.0
-+ voff = {-0.20753+sky130_fd_pr__nfet_01v8__voff_diff_56+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.20753+sky130_fd_pr__nfet_01v8__voff_diff_56+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
 + nfactor = {2.58898931986882+sky130_fd_pr__nfet_01v8__nfactor_diff_56}
 + eta0 = {0.000436872496185469+sky130_fd_pr__nfet_01v8__eta0_diff_56}
 + etab = -0.043998
@@ -15635,7 +15865,8 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoimod = 1.0
 + tempmod = 0.0
 * Process Parameters
-+ toxe = {4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-9*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-9*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + toxm = 4.148e-9
 + dtox = 0.0
 + epsrox = 3.9
@@ -15648,7 +15879,8 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 * Basic Model Parameters
 + wint = {2.1859e-08+sky130_fd_pr__nfet_01v8__wint_diff}
 + lint = {1.1932e-08+sky130_fd_pr__nfet_01v8__lint_diff}
-+ vth0 = {0.435490647052556+sky130_fd_pr__nfet_01v8__vth0_diff_57+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.435490647052556+sky130_fd_pr__nfet_01v8__vth0_diff_57+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.90707349
 + k2 = {-0.130695574634116+sky130_fd_pr__nfet_01v8__k2_diff_57}
 + k3 = 2.0
@@ -15673,7 +15905,8 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + cdscb = 0.0
 + cdscd = 0.002052
 + cit = 0.0
-+ voff = {-0.20753+sky130_fd_pr__nfet_01v8__voff_diff_57+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.20753+sky130_fd_pr__nfet_01v8__voff_diff_57+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
 + nfactor = {2.55174083029451+sky130_fd_pr__nfet_01v8__nfactor_diff_57}
 + eta0 = {0.000280777222630493+sky130_fd_pr__nfet_01v8__eta0_diff_57}
 + etab = -0.043998
@@ -15903,7 +16136,8 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoimod = 1.0
 + tempmod = 0.0
 * Process Parameters
-+ toxe = {4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-9*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-9*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + toxm = 4.148e-9
 + dtox = 0.0
 + epsrox = 3.9
@@ -15916,7 +16150,8 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 * Basic Model Parameters
 + wint = {2.1859e-08+sky130_fd_pr__nfet_01v8__wint_diff}
 + lint = {1.1932e-08+sky130_fd_pr__nfet_01v8__lint_diff}
-+ vth0 = {0.437287493363183+sky130_fd_pr__nfet_01v8__vth0_diff_58+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.437287493363183+sky130_fd_pr__nfet_01v8__vth0_diff_58+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.90707349
 + k2 = {-0.130764442614343+sky130_fd_pr__nfet_01v8__k2_diff_58}
 + k3 = 2.0
@@ -15941,7 +16176,8 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + cdscb = 0.0
 + cdscd = 0.002052
 + cit = 0.0
-+ voff = {-0.20753+sky130_fd_pr__nfet_01v8__voff_diff_58+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.20753+sky130_fd_pr__nfet_01v8__voff_diff_58+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
 + nfactor = {2.53410324470474+sky130_fd_pr__nfet_01v8__nfactor_diff_58}
 + eta0 = {0.000206864326323874+sky130_fd_pr__nfet_01v8__eta0_diff_58}
 + etab = -0.043998
@@ -16171,7 +16407,8 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoimod = 1.0
 + tempmod = 0.0
 * Process Parameters
-+ toxe = {4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-9*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-9*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + toxm = 4.148e-9
 + dtox = 0.0
 + epsrox = 3.9
@@ -16184,7 +16421,8 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 * Basic Model Parameters
 + wint = {2.1859e-08+sky130_fd_pr__nfet_01v8__wint_diff}
 + lint = {1.1932e-08+sky130_fd_pr__nfet_01v8__lint_diff}
-+ vth0 = {0.446590926940662+sky130_fd_pr__nfet_01v8__vth0_diff_59+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.446590926940662+sky130_fd_pr__nfet_01v8__vth0_diff_59+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.90707349
 + k2 = {-0.130025900818021+sky130_fd_pr__nfet_01v8__k2_diff_59}
 + k3 = 2.0
@@ -16209,7 +16447,8 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + cdscb = 0.0
 + cdscd = 0.00205199999991097
 + cit = 0.0
-+ voff = {-0.20753+sky130_fd_pr__nfet_01v8__voff_diff_59+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.20753+sky130_fd_pr__nfet_01v8__voff_diff_59+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
 + nfactor = {2.47472871840281+sky130_fd_pr__nfet_01v8__nfactor_diff_59}
 + eta0 = {3.46392141840565e-15+sky130_fd_pr__nfet_01v8__eta0_diff_59}
 + etab = -0.043998
@@ -16439,7 +16678,8 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoimod = 1.0
 + tempmod = 0.0
 * Process Parameters
-+ toxe = {4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-9*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-9*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + toxm = 4.148e-9
 + dtox = 0.0
 + epsrox = 3.9
@@ -16452,7 +16692,8 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 * Basic Model Parameters
 + wint = {2.1859e-08+sky130_fd_pr__nfet_01v8__wint_diff}
 + lint = {1.1932e-08+sky130_fd_pr__nfet_01v8__lint_diff}
-+ vth0 = {0.489087926896515+sky130_fd_pr__nfet_01v8__vth0_diff_60+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.489087926896515+sky130_fd_pr__nfet_01v8__vth0_diff_60+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.90707349
 + k2 = {-0.134006560853344+sky130_fd_pr__nfet_01v8__k2_diff_60}
 + k3 = 2.0
@@ -16477,7 +16718,8 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + cdscb = 0.0
 + cdscd = 0.00205200000020338
 + cit = 0.0
-+ voff = {-0.207530000026643+sky130_fd_pr__nfet_01v8__voff_diff_60+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.207530000026643+sky130_fd_pr__nfet_01v8__voff_diff_60+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
 + nfactor = {2.47472871858988+sky130_fd_pr__nfet_01v8__nfactor_diff_60}
 + eta0 = {2.24339747224379e-10+sky130_fd_pr__nfet_01v8__eta0_diff_60}
 + etab = -0.043998
@@ -16707,7 +16949,8 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoimod = 1.0
 + tempmod = 0.0
 * Process Parameters
-+ toxe = {4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-9*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-9*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + toxm = 4.148e-9
 + dtox = 0.0
 + epsrox = 3.9
@@ -16720,7 +16963,8 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 * Basic Model Parameters
 + wint = {2.1859e-08+sky130_fd_pr__nfet_01v8__wint_diff}
 + lint = {1.1932e-08+sky130_fd_pr__nfet_01v8__lint_diff}
-+ vth0 = {0.516828999955843+sky130_fd_pr__nfet_01v8__vth0_diff_61+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.516828999955843+sky130_fd_pr__nfet_01v8__vth0_diff_61+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.907073489864784
 + k2 = {-0.141056690055146+sky130_fd_pr__nfet_01v8__k2_diff_61}
 + k3 = 2.0
@@ -16745,7 +16989,8 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + cdscb = 0.0
 + cdscd = 0.00205199999877256
 + cit = 0.0
-+ voff = {-0.178479999962592+sky130_fd_pr__nfet_01v8__voff_diff_61+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.178479999962592+sky130_fd_pr__nfet_01v8__voff_diff_61+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
 + nfactor = {2.31430000029416+sky130_fd_pr__nfet_01v8__nfactor_diff_61}
 + eta0 = {0.000694140054006476+sky130_fd_pr__nfet_01v8__eta0_diff_61}
 + etab = -0.0439980000058383
@@ -16975,7 +17220,8 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + tnoimod = 1.0
 + tempmod = 0.0
 * Process Parameters
-+ toxe = {4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult+sky130_fd_pr__nfet_01v8__toxe_slope_spectre*(4.148e-9*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__toxe_slope_spectre)
++ toxe = {4.148e-09*sky130_fd_pr__nfet_01v8__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(4.148e-9*sky130_fd_pr__nfet_01v8__toxe_mult*(sky130_fd_pr__nfet_01v8__toxe_slope/sqrt(l*w*mult)))}
 + toxm = 4.148e-9
 + dtox = 0.0
 + epsrox = 3.9
@@ -16988,7 +17234,8 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 * Basic Model Parameters
 + wint = {2.1859e-08+sky130_fd_pr__nfet_01v8__wint_diff}
 + lint = {1.1932e-08+sky130_fd_pr__nfet_01v8__lint_diff}
-+ vth0 = {0.565450899957471+sky130_fd_pr__nfet_01v8__vth0_diff_62+sky130_fd_pr__nfet_01v8__vth0_slope_spectre*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__vth0_slope_spectre)
++ vth0 = {0.565450899957471+sky130_fd_pr__nfet_01v8__vth0_diff_62+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.474984049970259
 + k2 = {-0.011133391990376+sky130_fd_pr__nfet_01v8__k2_diff_62}
 + k3 = 2.0
@@ -17013,7 +17260,8 @@ msky130_fd_pr__nfet_01v8 d g s b sky130_fd_pr__nfet_01v8__model l = {l} w = {w} 
 + cdscb = 0.0
 + cdscd = 0.0054
 + cit = 0.0
-+ voff = {-0.143636430036188+sky130_fd_pr__nfet_01v8__voff_diff_62+sky130_fd_pr__nfet_01v8__voff_slope_spectre*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_01v8__voff_slope_spectre)
++ voff = {-0.143636430036188+sky130_fd_pr__nfet_01v8__voff_diff_62+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_01v8__voff_slope/sqrt(l*w*mult))}
 + nfactor = {2.98326009964839+sky130_fd_pr__nfet_01v8__nfactor_diff_62}
 + eta0 = {0.49000000002007+sky130_fd_pr__nfet_01v8__eta0_diff_62}
 + etab = -0.000624999995967518

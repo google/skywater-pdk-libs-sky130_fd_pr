@@ -20,7 +20,7 @@
 * 4-terminal Vertical Parallel Plate Capacitor /w LI-M4 fingers and M5 Shield
 .subckt  sky130_fd_pr__cap_vpp_11p3x11p8_l1m1m2m3m4_shieldm5_nhv__base d g s b
 + 
-.param  l = 4 w = 10 ad = 0 as = 0 pd = 0 ps = 0 nrd = 0 nrs = 0 sa = 0 sb = 0 sd = 0 mult = 1 nf = 1.0
+.param  l = 4 w = 10 nf = 1.0 ad = 0 as = 0 pd = 0 ps = 0 nrd = 0 nrs = 0 sa = 0 sb = 0 sd = 0 mult = 1
 Msky130_fd_pr__cap_vpp_11p3x11p8_l1m1m2m3m4_shieldm5_nhv__base d g s b sky130_fd_pr__cap_vpp_11p3x11p8_l1m1m2m3m4_shieldm5_nhv__base__model l = {l} w = {w} ad = {ad} as = {as} pd = {pd} ps = {ps} nrd = {nrd} nrs = {nrs} sa = {sa} sb = {sb} sd = {sd} nf = {nf}
 .model sky130_fd_pr__cap_vpp_11p3x11p8_l1m1m2m3m4_shieldm5_nhv__base__model.0 nmos
 * DC IV MOS Parameters
@@ -73,14 +73,16 @@ Msky130_fd_pr__cap_vpp_11p3x11p8_l1m1m2m3m4_shieldm5_nhv__base d g s b sky130_fd
 + tnoib = 7.2e+6
 * BSIM4 - Process Parameters
 + epsrox = 3.9
-+ toxe = {1.061*1.16e-008*sky130_fd_pr__nfet_05v0_nvt__toxe_mult+sky130_fd_pr__nfet_05v0_nvt__toxe_slope_spectre*(20*1.16e-008*sky130_fd_pr__nfet_05v0_nvt__toxe_mult*(sky130_fd_pr__nfet_05v0_nvt__toxe_slope/sqrt(l*w*mult)))}
+*(mismatch parameter sky130_fd_pr__nfet_05v0_nvt__toxe_slope_spectre)
++ toxe = {1.061*1.16e-008*sky130_fd_pr__nfet_05v0_nvt__toxe_mult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(20*1.16e-008*sky130_fd_pr__nfet_05v0_nvt__toxe_mult*(sky130_fd_pr__nfet_05v0_nvt__toxe_slope/sqrt(l*w*mult)))}
 + dtox = 0.0
 + ndep = 1.7e+17
 + nsd = 1.0e+20
 + rshg = 0.1
 + rsh = {1*sky130_fd_pr__nfet_05v0_nvt__rshn_mult}
 * Threshold Voltage Parameters
-+ vth0 = {0.06+sky130_fd_pr__nfet_05v0_nvt__vth0_diff_1+sky130_fd_pr__nfet_05v0_nvt__vth0_slope_spectre*(sky130_fd_pr__nfet_05v0_nvt__vth0_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_05v0_nvt__vth0_slope_spectre)
++ vth0 = {0.06+sky130_fd_pr__nfet_05v0_nvt__vth0_diff_1+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_05v0_nvt__vth0_slope/sqrt(l*w*mult))}
 + k1 = 0.364
 + k2 = {0.043475+sky130_fd_pr__nfet_05v0_nvt__k2_diff_1}
 + k3 = 1.4
@@ -124,8 +126,10 @@ Msky130_fd_pr__cap_vpp_11p3x11p8_l1m1m2m3m4_shieldm5_nhv__base d g s b sky130_fd
 + rsw = 0.0
 + rswmin = 0.0
 * Subthreshold Current Parameters
-+ voff = {0+sky130_fd_pr__nfet_05v0_nvt__voff_diff_1+sky130_fd_pr__nfet_05v0_nvt__voff_slope_spectre*(sky130_fd_pr__nfet_05v0_nvt__voff_slope/sqrt(l*w*mult))}
-+ nfactor = {0.63313+sky130_fd_pr__nfet_05v0_nvt__nfactor_diff_1+sky130_fd_pr__nfet_05v0_nvt__nfactor_slope_spectre*(sky130_fd_pr__nfet_05v0_nvt__nfactor_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_05v0_nvt__voff_slope_spectre)
++ voff = {0+sky130_fd_pr__nfet_05v0_nvt__voff_diff_1+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_05v0_nvt__voff_slope/sqrt(l*w*mult))}
+*(mismatch parameter sky130_fd_pr__nfet_05v0_nvt__nfactor_slope_spectre)
++ nfactor = {0.63313+sky130_fd_pr__nfet_05v0_nvt__nfactor_diff_1+MC_MM_SWITCH*AGAUSS(0,1.0,1)*(sky130_fd_pr__nfet_05v0_nvt__nfactor_slope/sqrt(l*w*mult))}
 + up = 0.0
 + ud = 0.0
 + lp = 1.0

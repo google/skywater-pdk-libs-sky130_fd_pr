@@ -1,0 +1,36 @@
+* SKY130 Spice File.
+.param
++ tol_nfom = -0.0483u
++ tol_pfom = -0.042u
++ tol_nw = -0.0483u
++ tol_poly = -0.0287u
++ tol_li = -0.014u
++ tol_m1 = -0.0175u
++ tol_m2 = -0.0175u
++ tol_m3 = -0.0455u
++ tol_m4 = -0.0455u
++ tol_m5 = -0.119u
+.param
++ rcn=296.1
++ rcp=789
++ rdn=128.4
++ rdp=218.7
++ rdn_hv=122.4
++ rdp_hv=212.7
++ rp1=53.52
++ rnw=2022
++ rl1=14.02
++ rm1=0.139
++ rm2=0.139
++ rm3=0.0533
++ rm4=0.0533
++ rm5=0.03361
++ rcp1=213.88
++ rcl1=18.61
++ rcvia=11.85
++ rcvia2=6.623
++ rcvia3=6.623
++ rcvia4=0.7377
++ rspwres=4120
+* P+ Poly Preres Parameters
+.include "sky130_fd_pr__model__res.model.spice"

@@ -39,9 +39,11 @@
 + tc1_voltco = -7.1e-3
 + rend_var = {sky130_fd_pr__res_high_po__var_mult*sqrt(2)*r0_var}
 + rtot_var = {sky130_fd_pr__res_high_po__var_mult*sqrt(2*pow(r0_var,2)+pow((r1_var*l),2))}
-+ res_match = {(body_pelgrom/sqrt(w*l*mult))*sky130_fd_pr__res_high_po__slope_spectre}
+*(mismatch parameter sky130_fd_pr__res_high_po__slope_spectre)
++ res_match = {(body_pelgrom/sqrt(w*l*mult))*MC_MM_SWITCH*AGAUSS(0,1.0,1)}
 + rbody_var = {rtot_var-rend_var}
-+ rend = {(rcon+rend_var)*(1+rend_mm/sqrt(mult)*sky130_fd_pr__res_high_po__con_slope_spectre)}
+*(mismatch parameter sky130_fd_pr__res_high_po__con_slope_spectre)
++ rend = {(rcon+rend_var)*(1+rend_mm/sqrt(mult)*MC_MM_SWITCH*AGAUSS(0,1.0,1))}
 + vc1_end = {vc1_raw_end/pwr(l,0.5)*(1+tc1_voltco*(temper-30))}
 + vc2_end = {vc2_raw_end/pwr(l,0.5)*(1+tc1_voltco*(temper-30))}
 + vc3_end = {vc3_raw_end/pwr(l,0.5)*(1+tc1_voltco*(temper-30))}

@@ -48,13 +48,13 @@
 .param cnwvc_slope2=0.125
 .param
 + cm0='5.571e-16*cnwvc_cintmult'
-+ cm1='4.775e-16' dev/gauss='sky130_fd_pr__cap_var_lvt__cmin_slope_l/sqrt(2*ld*vm)'
-+ cm2='2.019e-16' dev/gauss='sky130_fd_pr__cap_var_lvt__cmin_slope_w/sqrt(2*wd*vm)'
-+ cm3='6.529e-16*cnwvc_cdepmult' dev/gauss='sky130_fd_pr__cap_var_lvt__cmin_slope_wl*cnwvc_cdepmult/sqrt(2*ld*wd*vm)'
++ cm1='4.775e-16+MC_MM_SWITCH*AGAUSS(0,1.0,1)*sky130_fd_pr__cap_var_lvt__cmin_slope_l/sqrt(2*ld*vm)'
++ cm2='2.019e-16+MC_MM_SWITCH*AGAUSS(0,1.0,1)*sky130_fd_pr__cap_var_lvt__cmin_slope_w/sqrt(2*wd*vm)'
++ cm3='6.529e-16*cnwvc_cdepmult+MC_MM_SWITCH*AGAUSS(0,1.0,1)*sky130_fd_pr__cap_var_lvt__cmin_slope_wl*cnwvc_cdepmult/sqrt(2*ld*wd*vm)'
 + cx0=6.261e-16
-+ cx1='5.75e-16' dev/gauss='sky130_fd_pr__cap_var_lvt__cmax_slope_l/sqrt(2*ld*vm)'
-+ cx2='1.712e-16' dev/gauss='sky130_fd_pr__cap_var_lvt__cmax_slope_w/sqrt(2*wd*vm)'
-+ cx3='8.854e-14*3.9/cnwvc_tox' dev/gauss='sky130_fd_pr__cap_var_lvt__cmax_slope_wl/sqrt(2*wd*ld*vm)'
++ cx1='5.75e-16+MC_MM_SWITCH*AGAUSS(0,1.0,1)*sky130_fd_pr__cap_var_lvt__cmax_slope_l/sqrt(2*ld*vm)'
++ cx2='1.712e-16+MC_MM_SWITCH*AGAUSS(0,1.0,1)*sky130_fd_pr__cap_var_lvt__cmax_slope_w/sqrt(2*wd*vm)'
++ cx3='8.854e-14*3.9/cnwvc_tox+MC_MM_SWITCH*AGAUSS(0,1.0,1)*sky130_fd_pr__cap_var_lvt__cmax_slope_wl/sqrt(2*wd*ld*vm)'
 + sky130_fd_pr__cap_var_lvt__vgs_min_1 = '-2.071'
 + sky130_fd_pr__cap_var_lvt__vgs_max_1 = '-1*-2.071'
 + sky130_fd_pr__cap_var_lvt__tmax_vgs_1 = '100.001n'

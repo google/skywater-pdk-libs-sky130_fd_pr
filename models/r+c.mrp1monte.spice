@@ -14,8 +14,8 @@
 
 * SKY130 Spice File.
 .param sky130_fd_pr__res_generic_po__slope = 0.0
-.param sky130_fd_pr__res_generic_po__tc1_slope = 1.0
-.param sky130_fd_pr__res_generic_po__tc2_slope = 1.0
+.param sky130_fd_pr__res_generic_po__tc1_slope = 1.0 + MC_PR_SWITCH*AGAUSS(0,0.125,1)
+.param sky130_fd_pr__res_generic_po__tc2_slope = 1.0 + MC_PR_SWITCH*AGAUSS(0,0.125,1)
 * statistics {
 *   mismatch {
 *     vary  sky130_fd_pr__res_generic_po__slope dist=gauss std=0.12
@@ -28,8 +28,9 @@
 .subckt  sky130_fd_pr__res_generic_po r0 r1
 + 
 .param  w = 1 l = 0 mult = 1 r = 0 tc1 = {tc1rsgpu*sky130_fd_pr__res_generic_po__tc1_slope} tc2 = {tc2rsgpu*sky130_fd_pr__res_generic_po__tc2_slope}
-+ rp1_mm = {rp1*sky130_fd_pr__res_generic_po__slope/sqrt(2.0*l*w*mult+rp1/100000.0)}
+*(mismatch parameter sky130_fd_pr__res_generic_po__slope)
++ rp1_mm = {rp1*MC_MM_SWITCH*AGAUSS(0,0.12,1)/sqrt(2.0*l*w*mult+rp1/100000.0)}
 + r_tot = {(rp1+rp1_mm)*l/(w-1e6*(-tol_poly-poly_dw))+r}
-sky130_fd_pr__res_generic_po r0 r1 sky130_fd_pr__res_generic_po__monte r = {r_tot} tc1r = {tc1} tc2r = {tc2}
+rsky130_fd_pr__res_generic_po r0 r1 sky130_fd_pr__res_generic_po__monte r = {r_tot} tc1 = {tc1} tc2 = {tc2}
 .model sky130_fd_pr__res_generic_po__monte r tref = 30.0
 .ends sky130_fd_pr__res_generic_po

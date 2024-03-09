@@ -1,0 +1,9 @@
+* SKY130 Spice File.
+.include "../../cells/special_nfet_01v8/sky130_fd_pr__special_nfet_01v8__ss.pm3.spice"
+.include "../../cells/special_nfet_01v8/sky130_fd_pr__special_nfet_01v8__mismatch.corner.spice"
+.include "../../cells/special_pfet_01v8_hvt/sky130_fd_pr__special_pfet_01v8_hvt__ss.pm3.spice"
+.include "../../cells/special_pfet_01v8_hvt/sky130_fd_pr__special_pfet_01v8_hvt__mismatch.corner.spice"
+.include "all.spice"
+.include "ss/legacy.spice"
+.include "ss/nonfet.spice"
+.include "ss/rf.spice"

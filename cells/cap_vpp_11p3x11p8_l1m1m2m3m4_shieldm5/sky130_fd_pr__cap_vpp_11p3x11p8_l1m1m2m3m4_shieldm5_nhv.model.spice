@@ -22,7 +22,8 @@
 + 
 .param  mult = 1.0
 + 
-+ ctot_a_toplevel = {48.188e-15*cvpp2_nhvnative10x4_cor+0.0283/sqrt(2*3.6*3.6*mult)*48.188e-15*cvpp2_nhvnative10x4_cor*sky130_fd_pr__model__cap_vpp_only_p__slope}
+*(mismatch parameter sky130_fd_pr__model__cap_vpp_only_p__slope)
++ ctot_a_toplevel = {48.188e-15*cvpp2_nhvnative10x4_cor+0.0283/sqrt(2*3.6*3.6*mult)*48.188e-15*cvpp2_nhvnative10x4_cor*MC_MM_SWITCH*AGAUSS(0,1.0,1)}
 + cm5_c0_toplevel = {4.79e-15*c0m5m4_vpp}
 + cm5_c1_toplevel = {5.02e-15*c1m5m4_vpp}
 + rat_m3_toplevel = 0.5
