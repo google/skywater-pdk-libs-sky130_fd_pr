@@ -162,10 +162,41 @@ R0 1 2 short
 .subckt sky130_fd_pr__diode_pw2nd N P a=0 p=0
 D0 N P sky130_fd_pr__diode_pw2nd_05v5 area=a pj=p
 .ends
+
 * (corresponds to current PDK)
-.subckt sky130_fd_pr__diode_pw2nd_05v5 N P area=0 perimeter=0
-D0 N P sky130_fd_pr__diode_pw2nd_05v5 area=area pj=perimeter
+
+.subckt sky130_fd_pr__diode_pw2nd_05v5_nvt N P area=1e12 perim=1e6
+D0 N P sky130_fd_pr__diode_pw2nd_05v5_nvt area={area} pj={perim}
 .ends
+
+.subckt sky130_fd_pr__diode_pw2nd_05v5_lvt N P area=1e12 perim=1e6
+D0 N P sky130_fd_pr__diode_pw2nd_05v5_lvt area={area} pj={perim}
+.ends
+
+.subckt sky130_fd_pr__diode_pw2nd_05v5 N P area=1e12 perim=1e6
+D0 N P sky130_fd_pr__diode_pw2nd_05v5 area={area} pj={perim}
+.ends
+
+.subckt sky130_fd_pr__diode_pw2nd_11v0 N P area=1e12 perim=1e6
+D0 N P sky130_fd_pr__diode_pw2nd_11v0 area={area} pj={perim}
+.ends
+
+.subckt sky130_fd_pr__diode_pd2nw_05v5_lvt N P area=1e12 perim=1e6
+D0 N P sky130_fd_pr__diode_pd2nw_05v5_lvt area={area} pj={perim}
+.ends
+
+.subckt sky130_fd_pr__diode_pd2nw_05v5_hvt N P area=1e12 perim=1e6
+D0 N P sky130_fd_pr__diode_pd2nw_05v5_hvt area={area} pj={perim}
+.ends
+
+.subckt sky130_fd_pr__diode_pd2nw_05v5 N P area=1e12 perim=1e6
+D0 N P sky130_fd_pr__diode_pd2nw_05v5 area={area} pj={perim}
+.ends
+
+.subckt sky130_fd_pr__diode_pd2nw_11v0 N P area=1e12 perim=1e6
+D0 N P sky130_fd_pr__diode_pd2nw_11v0 area={area} pj={perim}
+.ends
+
 * Subcircuit definition HV diffusion resistors
 
 .subckt sky130_fd_pr__res_generic_nd__hv t1 t2 b w=1 l=1

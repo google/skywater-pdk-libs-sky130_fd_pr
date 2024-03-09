@@ -325,9 +325,9 @@ Qsky130_fd_pr__npn_05v5_W1p00L2p00 c b e s nsky130_fd_pr__pnp_05v5_W0p68L0p68ar1
 *      What    : Converted from sky130_fd_pr__pnp_05v5_W0p68L0p68par model
 *                Changed the B-C capacitance variation from Pwell-Deep Nwell to
 *                Nwell-Pwell (Nwell-Substrate cap is dominated by Nwell).
+* Modified 03/08/2024  Tim Edwards  Removed substrate pin for backwards compatibility
 
-
-.subckt  sky130_fd_pr__pnp_05v5_W3p40L3p40 c b e s mult=1
+.subckt  sky130_fd_pr__pnp_05v5_W3p40L3p40 c b e mult=1
 
 +
 + 
@@ -339,7 +339,7 @@ Qsky130_fd_pr__npn_05v5_W1p00L2p00 c b e s nsky130_fd_pr__pnp_05v5_W0p68L0p68ar1
 + mm_is = {0.13*sw_mm_sky130_fd_pr__pnp_05v5_W0p68L0p68_is*mismatch_factor*MC_MM_SWITCH*AGAUSS(0,1.0,1)/sqrt(mult)}
 
 
-Qsky130_fd_pr__pnp_05v5_W3p40L3p40 c b e s sky130_fd_pr__pnp_05v5_W0p68L0p68par5x_model 
+Qsky130_fd_pr__pnp_05v5_W3p40L3p40 c b e c sky130_fd_pr__pnp_05v5_W0p68L0p68par5x_model 
 
 
 
@@ -395,9 +395,9 @@ Qsky130_fd_pr__pnp_05v5_W3p40L3p40 c b e s sky130_fd_pr__pnp_05v5_W0p68L0p68par5
 * 2021/02/19  UZMN (Usman Suriono)
 *      Why     : New infrastructure of the sky130_fd_pr__pnp_05v5_W0p68L0p68 model
 *      What    : Converted from sky130_fd_pr__pnp_05v5_W0p68L0p68par model
+* Modified 03/08/2024  Tim Edwards  Removed substrate pin for backwards compatibility
 
-
-.subckt  sky130_fd_pr__pnp_05v5_W0p68L0p68 c b e s mult=1
+.subckt  sky130_fd_pr__pnp_05v5_W0p68L0p68 c b e mult=1
 
 +
 + 
@@ -406,7 +406,7 @@ Qsky130_fd_pr__pnp_05v5_W3p40L3p40 c b e s sky130_fd_pr__pnp_05v5_W0p68L0p68par5
 + mm_bf = {sw_mm_sky130_fd_pr__pnp_05v5_W0p68L0p68_bf*mismatch_factor*MC_MM_SWITCH*AGAUSS(0,1.0,1)/sqrt(mult)}
 + mm_is = {sw_mm_sky130_fd_pr__pnp_05v5_W0p68L0p68_is*mismatch_factor*MC_MM_SWITCH*AGAUSS(0,1.0,1)/sqrt(mult)}
 
-Qsky130_fd_pr__pnp_05v5_W0p68L0p68 c b e s sky130_fd_pr__pnp_05v5_W0p68L0p68_model 
+Qsky130_fd_pr__pnp_05v5_W0p68L0p68 c b e c sky130_fd_pr__pnp_05v5_W0p68L0p68_model 
 
 
 **
